@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Zeinab Drameh</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preload" as="image" href="img/headshot.png">
 
     <!--
         FILE LAYOUT (keep it this simple):
@@ -31,150 +30,122 @@
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#consulting">Consulting</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><button id="mode-toggle">night</button></li>
+            <li><button id="mode-toggle" type="button">night</button></li>
         </ul>
     </nav>
 
 
-    <!-- ===================== HOME ===================== -->
+    <!-- ===================== 1. HERO =====================
+         Centered, no photo. Flip animation is kept on the
+         last line — change the three words below anytime. -->
     <section id="home">
-
-        <!-- HERO — split grid -->
         <div class="hero">
+            <span class="hero-mark" aria-hidden="true">+</span>
+            <span class="hero-mark" aria-hidden="true">+</span>
+            <span class="hero-mark" aria-hidden="true">+</span>
+            <span class="hero-mark" aria-hidden="true">+</span>
 
-            <div class="hero-left">
-                <p class="hero-eyebrow">Designer &amp; Developer</p>
-                <h1>
-                    Building<br>
-                    <em>
-                        <div id="flip">
-                            <div style="color: var(--muted);">Change.</div>
-                            <div style="color: var(--muted);">Experiences.</div>
-                            <div style="color: var(--muted);">Futures.</div>
-                        </div>
-                    </em>
-                </h1>
-            </div>
-
-            <div class="hero-right">
-                <div class="hero-photo">
-                    <img src="img/headshot.png" alt="Zeinab Drameh">
-                </div>
-                <div class="hero-bottom">
-                    <p class="hero-sub">
-                        Hi, I'm Zeinab. I design and build digital products
-                        that are thoughtful, accessible, and meaningful.
-                    </p>
-                    <a class="btn" href="#projects">View Work</a>
-                </div>
-            </div>
-
+            <p class="hero-eyebrow">Designer &amp; developer</p>
+            <h1>Zeinab<br>Drameh</h1>
+            <p class="hero-role">Iovine and Young Academy</p>
+            <p class="hero-craft">
+                crafting
+                <em>
+                    <span id="flip">
+                        <span>products.</span>
+                        <span>systems.</span>
+                        <span>stories.</span>
+                    </span>
+                </em>
+            </p>
+            <a class="btn" href="#projects">See the work</a>
         </div>
-
-        <!-- SKILLS STRIP -->
-        <div class="skills-section">
-            <p class="skills-header">Skills</p>
-
-            <div class="skill-item">
-                <span class="skill-name">Graphic Design</span>
-                <span class="skill-desc">Brand identity, print, and visual systems built around clarity and concept.</span>
-            </div>
-
-            <div class="skill-item">
-                <span class="skill-name">UX / UI Design</span>
-                <span class="skill-desc">Research-led interfaces that prioritise usability without sacrificing character.</span>
-            </div>
-
-            <div class="skill-item">
-                <span class="skill-name">Software Development</span>
-                <span class="skill-desc">Clean, well-structured front-end and full-stack web development.</span>
-            </div>
-
-            <div class="skill-item">
-                <span class="skill-name">Machine Learning</span>
-                <span class="skill-desc">Applying AI and data-driven methods to solve real design and product problems.</span>
-            </div>
-        </div>
-
-        <!-- CLIENTS — scrolling circles -->
-        <div class="clients-section">
-            <p class="clients-label">Clients &amp; Collaborators</p>
-
-            <div class="clients-track-wrap">
-                <div class="clients-track">
-                    <!-- logos are duplicated so the marquee loop looks seamless -->
-                    <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/1.png" alt="Client Logo">
-                    </a>
-                    <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/2.png" alt="Client Logo">
-                    </a>
-                    <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/3.png" alt="Client Logo">
-                    </a>
-                    <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/4.png" alt="Client Logo">
-                    </a>
-                    <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/5.png" alt="Client Logo">
-                    </a>
-                    <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/6.png" alt="Client Logo">
-                    </a>
-                    <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/7.png" alt="Client Logo">
-                    </a>
-
-                    <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/1.png" alt="Client Logo">
-                    </a>
-                    <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/2.png" alt="Client Logo">
-                    </a>
-                    <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/3.png" alt="Client Logo">
-                    </a>
-                    <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/4.png" alt="Client Logo">
-                    </a>
-                    <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/5.png" alt="Client Logo">
-                    </a>
-                    <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/6.png" alt="Client Logo">
-                    </a>
-                    <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
-                        <img class="client-circle" src="img/clients/7.png" alt="Client Logo">
-                    </a>
-                </div>
-            </div>
-        </div>
-
     </section>
 
 
-    <!-- ===================== PROJECTS =====================
-         Default view: a click-through carousel of every project.
-         Filter buttons above the carousel show only one category.
-         Click a slide to open its modal (same modal style as before).
-    -->
+    <!-- ===================== 2. CLIENTS ===================== -->
+    <section id="clients" class="clients-section">
+        <p class="clients-label">Clients &amp; Collaborators</p>
+
+        <div class="clients-track-wrap">
+            <div class="clients-track">
+                <!-- duplicated so the marquee loop looks seamless -->
+                <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/1.png" alt="MOCA">
+                </a>
+                <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/2.png" alt="Islah LA">
+                </a>
+                <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/3.png" alt="Mattel">
+                </a>
+                <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/4.png" alt="PresQ Studios">
+                </a>
+                <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/5.png" alt="BOOC">
+                </a>
+                <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/6.png" alt="Nike">
+                </a>
+                <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/7.png" alt="Crocs">
+                </a>
+                <a href="https://corporate.arkadium.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle is-logo" src="img/clients/arkadium.png" alt="Arkadium">
+                </a>
+                <a href="https://www.swimuphill.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle is-logo" src="img/clients/swimuphill.png" alt="Swim Up Hill">
+                </a>
+
+                <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/1.png" alt="MOCA">
+                </a>
+                <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/2.png" alt="Islah LA">
+                </a>
+                <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/3.png" alt="Mattel">
+                </a>
+                <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/4.png" alt="PresQ Studios">
+                </a>
+                <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/5.png" alt="BOOC">
+                </a>
+                <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/6.png" alt="Nike">
+                </a>
+                <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle" src="img/clients/7.png" alt="Crocs">
+                </a>
+                <a href="https://corporate.arkadium.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle is-logo" src="img/clients/arkadium.png" alt="Arkadium">
+                </a>
+                <a href="https://www.swimuphill.org/" target="_blank" rel="noopener noreferrer">
+                    <img class="client-circle is-logo" src="img/clients/swimuphill.png" alt="Swim Up Hill">
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== 3. PROJECTS =====================
+         Coverflow deck — click arrows or a side card to move,
+         click the center card to open its modal. -->
     <section id="projects">
 
-        <div class="page-header">
-            <h1>Projects</h1>
-            <p>Selected work across design, development, and everything in between.</p>
-        </div>
+        <p class="projects-kicker">Filter projects by category</p>
 
-        <!-- CATEGORY FILTERS
-             data-filter must match the words used in each slide's data-categories.
-             "all" shows every slide. -->
+        <!-- data-filter must match words in each slide's data-categories -->
         <div class="project-filters" role="tablist" aria-label="Project categories">
-            <button type="button" class="filter-btn is-active" data-filter="all">All</button>
-            <button type="button" class="filter-btn" data-filter="product">Product Design</button>
-            <button type="button" class="filter-btn" data-filter="ml">ML &amp; Data Analytics</button>
-            <button type="button" class="filter-btn" data-filter="graphic">Graphic Design</button>
+            <button type="button" class="filter-btn is-active" data-filter="all">all</button>
+            <button type="button" class="filter-btn" data-filter="product">design</button>
+            <button type="button" class="filter-btn" data-filter="ml">data analysis</button>
+            <button type="button" class="filter-btn" data-filter="graphic">communications</button>
         </div>
 
         <!-- CAROUSEL
@@ -1204,7 +1175,66 @@
     </div>
 
 
-    <!-- ===================== ABOUT ===================== -->
+    <!-- ===================== 4. SKILLS ===================== -->
+    <section id="skills" class="skills-section">
+        <p class="skills-header">Skills</p>
+
+        <div class="skill-item">
+            <span class="skill-name">Graphic Design</span>
+            <span class="skill-desc">Brand identity, print, and visual systems built around clarity and concept.</span>
+        </div>
+
+        <div class="skill-item">
+            <span class="skill-name">UX / UI Design</span>
+            <span class="skill-desc">Research-led interfaces that prioritise usability without sacrificing character.</span>
+        </div>
+
+        <div class="skill-item">
+            <span class="skill-name">Software Development</span>
+            <span class="skill-desc">Clean, well-structured front-end and full-stack web development.</span>
+        </div>
+
+        <div class="skill-item">
+            <span class="skill-name">Machine Learning</span>
+            <span class="skill-desc">Applying AI and data-driven methods to solve real design and product problems.</span>
+        </div>
+    </section>
+
+
+    <!-- ===================== 5. CONSULTING ===================== -->
+    <section id="consulting">
+        <div class="section-intro">
+            <p class="section-kicker">How I work with teams</p>
+            <h2>Consulting</h2>
+            <p>Short, focused engagements — from research sprints to live product and brand systems.</p>
+        </div>
+
+        <div class="consult-grid">
+            <article class="consult-card">
+                <p class="consult-num">01</p>
+                <h3>Product &amp; UX</h3>
+                <p>User research, information architecture, and interface design for products that have to work in the real world — apps, sites, and physical prototypes.</p>
+                <p class="consult-meta">Mattel · CityWise · Furniture · MemeSocial</p>
+            </article>
+
+            <article class="consult-card">
+                <p class="consult-num">02</p>
+                <h3>Research &amp; Data</h3>
+                <p>Evaluation frameworks, geospatial analysis, and visualization that turn messy public or product data into something a team can actually act on.</p>
+                <p class="consult-meta">Arkadium · Shade Gap · CityWise · Pneumonia CNN</p>
+            </article>
+
+            <article class="consult-card">
+                <p class="consult-num">03</p>
+                <h3>Brand &amp; Communications</h3>
+                <p>Identity systems, posters, campaigns, and youth-facing communications — from first sketch through print, merch, and social.</p>
+                <p class="consult-meta">MOCA · Estera · PresQ · Masjid Al Mumin</p>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- ===================== 6. ABOUT ===================== -->
     <section id="about">
 
         <div class="about-layout">

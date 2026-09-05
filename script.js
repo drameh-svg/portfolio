@@ -74,18 +74,14 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 
-// ── 4. PROJECTS CAROUSEL + FILTERS ────────
-// How this works:
-//   - Each .project-slide has data-categories
-//     (product, ml, graphic — can be more than one)
-//   - Filter buttons set currentFilter
-//   - Only matching slides can be shown
-//   - .is-active is the one slide on screen
-//   - Arrows do NOT autoplay — they only move on click
+// ── 4. PROJECTS COVERFLOW + FILTERS ───────
+// Visible slides get a position:
+//   center = front card (click opens modal)
+//   left / right = tilted side cards (click to rotate)
+//   hidden = not shown
 //
-// To add a category:
-//   1. Add a filter button in index.html
-//   2. Put that same word in data-categories on slides
+// Filter buttons use data-filter: all | product | ml | graphic
+// (labelled on the page as all / design / data analysis / communications)
 
 const filterBtns = document.querySelectorAll('.filter-btn');
 const slides = document.querySelectorAll('.project-slide');
@@ -106,26 +102,35 @@ function getVisibleSlides() {
 
 function renderCarousel() {
     const visible = getVisibleSlides();
+    const n = visible.length;
 
-    if (visible.length === 0) {
-        currentIndex = 0;
-    } else if (currentIndex >= visible.length) {
-        currentIndex = 0;
-    } else if (currentIndex < 0) {
-        currentIndex = visible.length - 1;
+    if (currentIndex >= n) currentIndex = 0;
+    if (currentIndex < 0) currentIndex = Math.max(n - 1, 0);
+
+    slides.forEach(slide => {
+        slide.dataset.pos = 'hidden';
+        slide.classList.remove('is-active');
+    });
+
+    if (!n) {
+        if (counterEl) counterEl.textContent = '0 / 0';
+        return;
     }
 
-    slides.forEach(slide => slide.classList.remove('is-active'));
+    const prev = (currentIndex - 1 + n) % n;
+    const next = (currentIndex + 1) % n;
 
-    if (visible[currentIndex]) {
-        visible[currentIndex].classList.add('is-active');
+    visible[currentIndex].dataset.pos = 'center';
+    visible[currentIndex].classList.add('is-active');
+
+    if (n === 2) {
+        visible[next].dataset.pos = 'right';
+    } else if (n > 2) {
+        visible[prev].dataset.pos = 'left';
+        visible[next].dataset.pos = 'right';
     }
 
-    if (counterEl) {
-        counterEl.textContent = visible.length
-            ? (currentIndex + 1) + ' / ' + visible.length
-            : '0 / 0';
-    }
+    if (counterEl) counterEl.textContent = (currentIndex + 1) + ' / ' + n;
 }
 
 filterBtns.forEach(btn => {
@@ -138,45 +143,51 @@ filterBtns.forEach(btn => {
     });
 });
 
-if (prevArrow) {
-    prevArrow.addEventListener('click', function () {
-        const visible = getVisibleSlides();
-        if (!visible.length) return;
-        currentIndex = (currentIndex - 1 + visible.length) % visible.length;
-        renderCarousel();
-    });
+function stepCarousel(dir) {
+    const visible = getVisibleSlides();
+    if (!visible.length) return;
+    currentIndex = (currentIndex + dir + visible.length) % visible.length;
+    renderCarousel();
 }
 
-if (nextArrow) {
-    nextArrow.addEventListener('click', function () {
-        const visible = getVisibleSlides();
-        if (!visible.length) return;
-        currentIndex = (currentIndex + 1) % visible.length;
-        renderCarousel();
-    });
-}
+if (prevArrow) prevArrow.addEventListener('click', function (e) {
+    e.stopPropagation();
+    stepCarousel(-1);
+});
 
-// Keyboard: left / right arrows (ignored while a modal is open)
+if (nextArrow) nextArrow.addEventListener('click', function (e) {
+    e.stopPropagation();
+    stepCarousel(1);
+});
+
 document.addEventListener('keydown', function (e) {
     if (document.body.classList.contains('modal-open')) return;
     if (e.target.matches('input, textarea')) return;
-    if (e.key === 'ArrowLeft' && prevArrow) prevArrow.click();
-    if (e.key === 'ArrowRight' && nextArrow) nextArrow.click();
+    if (e.key === 'ArrowLeft') stepCarousel(-1);
+    if (e.key === 'ArrowRight') stepCarousel(1);
 });
 
 renderCarousel();
 
 
 // ── 5. PROJECT MODALS ─────────────────────
-// Clicking a slide reads data-modal and opens
-// the matching #modal-... box.
+// Center card opens the modal. Side cards rotate the deck.
 
 document.querySelectorAll('.project-slide').forEach(card => {
     card.addEventListener('click', function () {
-        const modalId = this.dataset.modal;
-        const modal = document.getElementById(modalId);
-        if (!modal) return;
+        const pos = this.dataset.pos;
+        if (pos === 'left') {
+            stepCarousel(-1);
+            return;
+        }
+        if (pos === 'right') {
+            stepCarousel(1);
+            return;
+        }
+        if (pos !== 'center') return;
 
+        const modal = document.getElementById(this.dataset.modal);
+        if (!modal) return;
         modal.classList.add('is-open');
         document.body.classList.add('modal-open');
     });

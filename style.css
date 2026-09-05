@@ -1,62 +1,65 @@
 /* ============================================
    TABLE OF CONTENTS
    1. Fonts
-   2. Color variables   ← change the site colors here
+   2. Color variables
    3. Reset & base
    4. Nav
    5. Hero
-   6. Skills strip
-   7. Clients marquee
-   8. Page header
-   9. Projects carousel + filters   ← main projects layout
-  10. Project modals
+   6. Clients marquee
+   7. Projects coverflow
+   8. Project modals
+   9. Skills
+  10. Consulting
   11. About
   12. Contact
   13. Footer
-  14. Responsive
 ============================================ */
 
 
 /* ============================================
    1. FONTS
+   Outfit ≈ Futura (Spencer Gabor headlines)
+   Inter  = body (Spencer Gabor)
 ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap');
 
 
 /* ============================================
    2. COLOR VARIABLES
-   Light mode uses burgundy text on olive.
-   Dark mode swaps those. Change hex values here
-   and the whole site follows.
 ============================================ */
 :root {
-    --navy:       #65153a;
+    --navy:       #4a1530;
     --blue:       #6b1a3c;
     --mid-blue:   #a42e61;
-    --light-blue: #b0cd76; 
+    --light-blue: #b0cd76;
     --silver:     #c5dfa6;
-    --off-white:  #c5dfa6;
-    --white:     #c5dfa6;     
+    --olive:      #b8c56a;
+    --off-white:  #d7e4b0;
+    --white:      #f4f7e8;
     --black:      #6f0b2e;
-    --text:       #65153a;
-    --muted:      #83194e;
-    --bg:         var(--off-white);
-    --border:     rgba(24, 40, 10, 0.15);
+    --text:       #4a1530;
+    --muted:      #7a2a4e;
+    --bg:         #d7e4b0;
+    --border:     rgba(74, 21, 48, 0.14);
+    --radius:     999px;
+    --radius-lg:  36px;
+    --shadow:     0 12px 40px rgba(74, 21, 48, 0.12);
 }
 
 body.dark {
-    --navy:       #b0cd76;;
+    --navy:       #d7e4b0;
     --blue:       #c5dfa6;
     --mid-blue:   #c5dfa6;
-    --light-blue: #65153a;
+    --light-blue: #4a1530;
     --silver:     #6b1a3c;
-    --off-white:  #a42e61;
-    --white:     #c5dfa6;     
+    --olive:      #4a1530;
+    --off-white:  #3a1026;
+    --white:      #f4f7e8;
     --black:      #6f0b2e;
-    --text:       #b0cd76;
-    --muted:      #8bc092;
-    --bg:         var(--off-white);
-    --border:     rgba(24, 40, 10, 0.15);
+    --text:       #d7e4b0;
+    --muted:      #b0cd76;
+    --bg:         #2a0c1b;
+    --border:     rgba(215, 228, 176, 0.18);
 }
 
 
@@ -72,7 +75,7 @@ body.dark {
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: var(--bg);
     color: var(--text);
     transition: background-color 0.4s ease, color 0.4s ease;
@@ -94,69 +97,75 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    border-bottom: 1px solid var(--border);
+    padding: 18px 48px;
     position: sticky;
     top: 0;
     z-index: 200;
-    background-color: var(--bg);
+    background-color: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(16px);
     transition: background-color 0.4s ease;
 }
 
 .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    letter-spacing: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     color: var(--text);
     text-decoration: none;
-    transition: color 0.25s ease;
+    transition: opacity 0.25s ease;
 }
 
-.nav-logo:hover { color: var(--mid-blue); }
+.nav-logo:hover { opacity: 0.6; }
 
 .nav-links {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: 8px;
+    background: color-mix(in srgb, var(--white) 35%, transparent);
+    padding: 6px 8px;
+    border-radius: var(--radius);
 }
 
-/* TRANSITION 1 — nav link underline slide */
 .nav-links a {
     text-decoration: none;
     color: var(--muted);
-    font-size: 12px;
-    letter-spacing: 2.5px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
-    font-weight: 500;
-    padding-bottom: 3px;
-    border-bottom: 1px solid transparent;
-    transition: color 0.25s ease, border-color 0.25s ease;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    transition: color 0.25s ease, background-color 0.25s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--text);
-    border-bottom-color: var(--mid-blue);
+    color: var(--white);
+    background-color: var(--text);
 }
 
 #mode-toggle {
     background: none;
     border: 1px solid var(--border);
     color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 6px 16px;
+    padding: 8px 16px;
+    border-radius: var(--radius);
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
 }
 
 #mode-toggle:hover {
     background-color: var(--navy);
     color: var(--white);
-    border-color: var(--navy);
+    transform: scale(1.05);
 }
 
 
@@ -164,253 +173,142 @@ nav {
    5. HERO
 ============================================ */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
-    max-height:90vh;
-    border-bottom: 1px solid var(--border);
-}
-
-.hero-left {
-    padding: 80px 60px;
-    border-right: 1px solid var(--border);
+    position: relative;
+    min-height: calc(100vh - 80px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 64px;
 }
 
+.hero-mark {
+    position: absolute;
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    color: var(--muted);
+    opacity: 0.35;
+}
+
+.hero-mark:nth-child(1) { left: 8%; top: 14%; }
+.hero-mark:nth-child(2) { right: 8%; top: 14%; }
+.hero-mark:nth-child(3) { left: 8%; bottom: 16%; }
+.hero-mark:nth-child(4) { right: 8%; bottom: 16%; }
+
 .hero-eyebrow {
-    font-size: 11px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 32px;
+    margin-bottom: 18px;
 }
 
-.hero-left h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 160px;
-    line-height: 0.92;
-    letter-spacing: 1px;
+.hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(4.4rem, 14vw, 10.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
     color: var(--text);
-    flex: 1;
+}
+
+.hero-role {
+    margin-top: 22px;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.hero-craft {
+    margin: 28px 0 36px;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--text);
     display: flex;
-    flex-direction: column;
+    gap: 0.4em;
+    align-items: center;
     justify-content: center;
 }
 
-.hero-left h1 em {
+.hero-craft em {
     font-style: normal;
     color: var(--mid-blue);
 }
 
-/* TRANSITION 2 — flip text */
+/* Flip animation — same timing as before, now on <span>s */
 #flip {
-    height: 0.92em;
+    height: 1.1em;
     overflow: hidden;
     display: block;
 }
 
-#flip div {
-    height: 0.92em;
+#flip span {
+    height: 1.1em;
     display: flex;
     align-items: center;
 }
 
-#flip div:first-child {
+#flip span:first-child {
     animation: doFlip 6s linear infinite;
 }
 
 @keyframes doFlip {
-    0%     { margin-top: -2.76em; }
-    5%     { margin-top: -1.84em; }
-    33%    { margin-top: -1.84em; }
-    38%    { margin-top: -0.92em; }
-    66%    { margin-top: -0.92em; }
+    0%     { margin-top: -3.3em; }
+    5%     { margin-top: -2.2em; }
+    33%    { margin-top: -2.2em; }
+    38%    { margin-top: -1.1em; }
+    66%    { margin-top: -1.1em; }
     71%    { margin-top: 0; }
     99.99% { margin-top: 0; }
-    100%   { margin-top: -2.76em; }
+    100%   { margin-top: -3.3em; }
 }
 
-.hero-right {
-    display: flex;
-    flex-direction: column;
-}
-
-.hero-photo {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    background-color: var(--light-blue);
-    min-height: 400px;
-   filter: brightness(130%);
-}
-
-.hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.85;
-    transition: transform 0.6s ease, opacity 0.4s ease;
-}
-
-.hero-photo:hover img {
-    transform: scale(1.03);
-    opacity: 1;
-}
-
-/* placeholder when no photo yet */
-.hero-photo-placeholder {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--blue);
-    background-color: var(--light-blue);
-}
-
-.hero-bottom {
-    padding: 28px 40px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero-sub {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 340px;
-    line-height: 1.7;
-}
-
-/* TRANSITION 3 — button */
 .btn {
     display: inline-block;
-    padding: 14px 36px;
-    background-color: var(--navy);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
+    padding: 16px 32px;
+    background-color: var(--text);
+    color: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 700;
     text-decoration: none;
-    border: 1px solid var(--navy);
+    border: none;
+    border-radius: var(--radius);
     white-space: nowrap;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+    box-shadow: var(--shadow);
+    transition: transform 0.35s cubic-bezier(.175,.885,.32,1.275), box-shadow 0.35s ease;
 }
 
 .btn:hover {
-    background-color: transparent;
-    color: var(--navy);
-    transform: translateY(-2px);
+    transform: scale(1.05);
 }
 
-body.dark .btn { border-color: var(--light-blue); background-color: var(--light-blue); color: var(--navy); }
-body.dark .btn:hover { background-color: transparent; color: var(--light-blue); }
+body.dark .btn { background-color: var(--text); color: var(--bg); }
 
-/* ── Responsive — tablet ─────────────────── */
-@media (max-width: 1024px) {
-    .hero-left h1 {
-        font-size: 120px;
-    }
-
-    .hero-bottom {
-        padding: 24px 28px;
-    }
-}
-
-/* ── Responsive — small tablet / large phone ─ */
-@media (max-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .hero-left {
-        padding: 50px 32px 40px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .hero-left h1 {
-        font-size: 100px;
-    }
-
-    .hero-photo {
-        min-height: 340px;
-    }
-
-    .hero-bottom {
-        padding: 22px 32px;
-        gap: 20px;
-    }
-}
-
-/* ── Responsive — mobile ─────────────────── */
 @media (max-width: 520px) {
-   nav {
+    nav {
         flex-direction: column;
         align-items: center;
         gap: 12px;
-        padding: 16px;
+        padding: 14px;
     }
 
     .nav-links {
         width: 100%;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 14px;
-    }
-
-   .hero-left {
-        padding: 40px 20px 32px;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-eyebrow {
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .hero-left h1 {
-        font-size: 72px;
-        text-align: center;
-    }
-
-    .hero-photo {
-        min-height: 260px;
-    }
-
-    .hero-bottom {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 22px 20px;
-        gap: 16px;
-    }
-
-    .hero-sub {
-        max-width: 100%;
-        text-align: center;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
+        gap: 4px;
     }
 }
+
 /* ============================================
-   6. SKILLS STRIP
+   9. SKILLS STRIP
 ============================================ */
 .skills-section {
     border-bottom: 1px solid var(--border);
@@ -418,6 +316,7 @@ body.dark .btn:hover { background-color: transparent; color: var(--light-blue); 
 
 .skills-header {
     padding: 32px 60px 16px;
+    font-family: 'Outfit', sans-serif;
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -449,7 +348,8 @@ body.dark .btn:hover { background-color: transparent; color: var(--light-blue); 
 .skill-item:hover::before { transform: scaleX(1); }
 
 .skill-name {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
     font-size: clamp(38px, 5.5vw, 72px);
     letter-spacing: 2px;
     color: var(--text);
@@ -482,31 +382,116 @@ body.dark .btn:hover { background-color: transparent; color: var(--light-blue); 
 
 
 /* ============================================
-   7. CLIENTS — auto-scrolling circles marquee
+   CONSULTING
+============================================ */
+#consulting {
+    padding: 88px 48px;
+}
+
+.section-intro {
+    max-width: 640px;
+    margin-bottom: 40px;
+}
+
+.section-kicker {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.section-intro h2 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 8vw, 92px);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.section-intro p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.consult-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.consult-card {
+    background: color-mix(in srgb, var(--white) 45%, transparent);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+}
+
+.consult-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.consult-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+}
+
+.consult-card p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+.consult-meta {
+    margin-top: 20px;
+    font-size: 11px !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text) !important;
+}
+
+@media (max-width: 800px) {
+    #consulting { padding: 56px 20px; }
+    .consult-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ============================================
+   6. CLIENTS — smaller marquee
 ============================================ */
 .clients-section {
-    padding: 100px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 36px 0 44px;
     overflow: hidden;
 }
 
 .clients-label {
-    padding: 0 60px 24px;
+    padding: 0 48px 16px;
+    font-family: 'Outfit', sans-serif;
     font-size: 11px;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
+    text-align: center;
 }
 
-.clients-track-wrap {
-    width: 100%;
-}
+.clients-track-wrap { width: 100%; }
 
 .clients-track {
     display: flex;
-    gap: 50px;
+    gap: 22px;
     width: max-content;
-    animation: scrollClients 15s linear infinite;
+    animation: scrollClients 22s linear infinite;
 }
 
 .clients-track:hover { animation-play-state: paused; }
@@ -517,171 +502,164 @@ body.dark .btn:hover { background-color: transparent; color: var(--light-blue); 
 }
 
 .client-circle {
-    width: 300px;
-    height: 300px;
+    width: 92px;
+    height: 92px;
     border-radius: 50%;
-    border: 1px solid var(--border);
     overflow: hidden;
     flex-shrink: 0;
-    background-color: var(--light-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.client-circle:hover {
-    transform: scale(1.08);
-    border-color: var(--mid-blue);
-}
-
-/* swap this div for <img src="..." alt="..."> */
-.client-circle img {
-    width: 100%;
-    height: 100%;
+    background-color: var(--white);
     object-fit: cover;
     display: block;
-    filter: grayscale(0.3);
-    transition: filter 0.3s ease;
+    box-shadow: 0 8px 20px rgba(74, 21, 48, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.client-circle:hover img { filter: grayscale(0); }
+.client-circle:hover { transform: scale(1.08); }
 
-.client-placeholder {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--blue);
+.client-circle.is-logo {
+    object-fit: contain;
+    padding: 16px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+
+/* ============================================
+   7. PROJECTS COVERFLOW
+   Plum band + olive rounded cards.
+   Side cards tilt; center card is clickable.
+============================================ */
+#projects {
+    background: #4a1530;
+    color: #f4f7e8;
+    padding: 48px 24px 72px;
+    overflow: hidden;
+}
+
+.projects-kicker {
     text-align: center;
-    padding: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #c5dfa6;
+    margin-bottom: 14px;
 }
 
-
-/* ============================================
-   8. PAGE HEADER
-============================================ */
-.page-header {
-    padding: 80px 60px 40px;
-    border-bottom: 1px solid var(--border);
-}
-
-.page-header h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(64px, 10vw, 130px);
-    letter-spacing: 2px;
-    line-height: 0.95;
-    color: var(--text);
-}
-
-.page-header p {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--muted);
-    margin-top: 16px;
-}
-
-/* ============================================
-   9. PROJECTS CAROUSEL + FILTERS
-   One project at a time. Arrows click through.
-   Filter buttons hide slides that don't match.
-   To restyle the carousel, this is the block to edit.
-============================================ */
-
-/* ── Filter row ──────────────────────────── */
 .project-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 28px 60px;
-    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    gap: 28px;
+    padding: 0 20px 36px;
 }
 
 .filter-btn {
     background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 20px;
+    border: none;
+    color: #a8b160;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    padding: 0;
     cursor: pointer;
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .filter-btn:hover,
 .filter-btn.is-active {
-    background-color: var(--navy);
-    color: var(--white);
-    border-color: var(--navy);
+    color: #fff;
+    background: none;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
 }
 
-body.dark .filter-btn.is-active,
-body.dark .filter-btn:hover {
-    background-color: var(--light-blue);
-    color: var(--navy);
-    border-color: var(--light-blue);
-}
-
-/* ── Carousel shell: arrow | slide | arrow ─ */
 .projects-carousel {
     display: grid;
     grid-template-columns: 72px 1fr 72px;
     grid-template-rows: 1fr auto;
-    align-items: stretch;
-    min-height: 70vh;
-    border-bottom: 1px solid var(--border);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .carousel-arrow {
-    background: none;
+    background: color-mix(in srgb, #f4f7e8 12%, transparent);
     border: none;
-    border-right: 1px solid var(--border);
-    color: var(--text);
+    color: #f4f7e8;
     font-size: 22px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
     cursor: pointer;
-    grid-row: 1 / 3;
-    transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-.carousel-arrow.next {
-    border-right: none;
-    border-left: 1px solid var(--border);
+    justify-self: center;
+    transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .carousel-arrow:hover {
-    background-color: var(--navy);
-    color: var(--white);
+    transform: scale(1.08);
+    background: #b8c56a;
+    color: #4a1530;
 }
 
 .projects-carousel-stage {
     position: relative;
-    overflow: hidden;
-    grid-column: 2;
-    grid-row: 1;
+    height: 560px;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    overflow: visible;
 }
 
-/* Each slide is hidden unless it has .is-active */
 .project-slide {
-    display: none;
-    grid-template-columns: 1.15fr 1fr;
-    min-height: 70vh;
-    width: 100%;
-    cursor: pointer;
-}
-
-.project-slide.is-active {
-    display: grid;
-    animation: modalIn 0.35s ease;
-}
-
-/* Left: cover image (or placeholder if no photo yet) */
-.project-slide-image {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: min(340px, 78vw);
+    height: 500px;
+    background: #b8c56a;
+    border-radius: 48px;
+    padding: 16px 16px 22px;
     overflow: hidden;
-    background-color: var(--light-blue);
-    border-right: 1px solid var(--border);
-    min-height: 420px;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.72);
+    transition: transform 0.5s cubic-bezier(.22,1,.36,1), opacity 0.4s ease;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.28);
+    z-index: 0;
+}
+
+.project-slide[data-pos="center"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) rotateY(0deg) scale(1);
+    z-index: 5;
+}
+
+.project-slide[data-pos="left"] {
+    opacity: 0.95;
+    pointer-events: auto;
+    transform: translateX(-210px) rotateY(32deg) scale(0.86);
+    z-index: 3;
+}
+
+.project-slide[data-pos="right"] {
+    opacity: 0.95;
+    pointer-events: auto;
+    transform: translateX(210px) rotateY(-32deg) scale(0.86);
+    z-index: 3;
+}
+
+.project-slide-image {
+    height: 250px;
+    border-radius: 32px;
+    overflow: hidden;
+    background: #8ea04c;
+    flex-shrink: 0;
 }
 
 .project-slide-image img {
@@ -689,15 +667,8 @@ body.dark .filter-btn:hover {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s ease;
 }
 
-.project-slide:hover .project-slide-image img {
-    transform: scale(1.03);
-}
-
-/* Used when a project does not have a cover photo yet.
-   Change data-label in the HTML to change the big text. */
 .project-slide-image.placeholder {
     display: flex;
     align-items: center;
@@ -706,74 +677,74 @@ body.dark .filter-btn:hover {
 
 .project-slide-image.placeholder::after {
     content: attr(data-label);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 5vw, 72px);
-    letter-spacing: 2px;
-    color: var(--navy);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #4a1530;
     text-align: center;
-    padding: 40px;
-    line-height: 0.95;
+    padding: 16px;
 }
 
-/* Right: tag, title, brief description, skills */
 .project-info {
-    position: relative;
-    z-index: 1;
+    padding: 16px 10px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 48px 40px;
+    gap: 8px;
 }
 
-.project-tag {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-}
+.project-tag,
+.slide-hint { display: none; }
 
 .project-info h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 4vw, 56px);
-    letter-spacing: 1px;
-    color: var(--text);
-    margin-bottom: 14px;
-    line-height: 0.95;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    color: #fff;
+    line-height: 1;
 }
 
 .project-info p {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 440px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #4a1530;
+    line-height: 1.45;
 }
 
-.slide-hint {
-    margin-top: 28px;
-    font-size: 11px !important;
-    letter-spacing: 2px;
+.project-slide .project-skills {
+    display: block;
+    margin-top: 0;
+    font-size: 11px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--mid-blue) !important;
+    color: #4a1530;
+    font-weight: 700;
 }
+
+.project-slide .skill-tag {
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+
+.project-slide .skill-tag:not(:last-child)::after { content: ', '; }
 
 .carousel-status {
-    padding: 14px 20px;
-    border-top: 1px solid var(--border);
-    text-align: center;
     grid-column: 2;
+    text-align: center;
+    padding: 18px 0 0;
 }
 
 #carousel-counter {
-    font-size: 10px;
-    letter-spacing: 3px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: #c5dfa6;
 }
 
-/* ── Skill tags (carousel + modals) ──────── */
 .project-skills {
     display: flex;
     flex-wrap: wrap;
@@ -782,74 +753,52 @@ body.dark .filter-btn:hover {
 }
 
 .skill-tag {
-    padding: 3px 10px;
+    padding: 4px 12px;
     font-size: 10px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.4px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--muted);
     border: 1px solid var(--border);
+    border-radius: var(--radius);
 }
 
-/* ── Carousel responsive ─────────────────── */
 @media (max-width: 900px) {
     .projects-carousel {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto auto;
-        min-height: auto;
+        gap: 8px;
     }
 
     .projects-carousel-stage {
         grid-column: 1 / -1;
-        grid-row: 1;
-        order: 1;
+        height: 520px;
     }
 
-    .project-slide.is-active {
-        grid-template-columns: 1fr;
-        min-height: auto;
+    .project-slide[data-pos="left"],
+    .project-slide[data-pos="right"] {
+        opacity: 0;
+        pointer-events: none;
     }
 
-    .project-slide-image {
-        min-height: 280px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .carousel-status {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        order: 2;
-        border-top: 1px solid var(--border);
-    }
+    .carousel-status { grid-column: 1 / -1; }
 
     .carousel-arrow {
-        border: none;
-        border-top: 1px solid var(--border);
-        height: 56px;
         grid-row: 3;
-        order: 3;
+        margin: 8px auto;
     }
-
-    .carousel-arrow.next {
-        border-left: 1px solid var(--border);
-    }
-
-    .project-filters { padding: 20px 24px; }
-    .project-info { padding: 32px 24px; }
 }
 
 @media (max-width: 520px) {
-    .project-filters { padding: 16px; gap: 8px; }
-    .filter-btn { padding: 8px 14px; font-size: 10px; }
-    .project-info { padding: 24px 16px; }
+    .project-filters { gap: 16px; }
+    .filter-btn { font-size: 1.15rem; }
+    .projects-carousel-stage { height: 480px; }
+    .project-slide { height: 460px; }
 }
 
 
 /* ============================================
-   10. PROJECT MODALS
-   Clicking a carousel slide opens one of these.
-   Keep this look if you add new project modals.
+   8. PROJECT MODALS
 ============================================ */
  
 /* ── Lock body scroll when modal is open ─── */
@@ -879,7 +828,9 @@ body.modal-open { overflow: hidden; }
     width: 100%;
     max-width: 900px;
     background: var(--bg);
-    border: 1px solid var(--border);
+    border: none;
+    border-radius: 28px;
+    overflow: hidden;
     animation: modalIn 0.3s ease;
 }
  
@@ -921,6 +872,7 @@ body.modal-open { overflow: hidden; }
     font-size: 20px;
     width: 38px;
     height: 38px;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -941,9 +893,10 @@ body.modal-open { overflow: hidden; }
 }
  
 .proj-modal-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
     font-size: clamp(52px, 6vw, 84px);
-    letter-spacing: 2px;
+    letter-spacing: -0.04em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 14px;
@@ -1022,6 +975,7 @@ body.modal-open { overflow: hidden; }
     font-size: 16px;
     width: 40px;
     height: 40px;
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -1073,9 +1027,10 @@ body.modal-open { overflow: hidden; }
 }
 
 .about-text h1 {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
     font-size: clamp(60px, 8vw, 110px);
-    letter-spacing: 2px;
+    letter-spacing: -0.04em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 40px;
@@ -1120,7 +1075,7 @@ body.modal-open { overflow: hidden; }
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 28px;
 }
 
 .up .scroll-container {
@@ -1208,9 +1163,10 @@ body.modal-open { overflow: hidden; }
 }
 
 .contact-intro h1 {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
     font-size: clamp(60px, 8vw, 110px);
-    letter-spacing: 2px;
+    letter-spacing: -0.04em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 24px;
@@ -1249,7 +1205,7 @@ body.modal-open { overflow: hidden; }
 
 .form-group input,
 .form-group textarea {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 300;
     padding: 14px 0;
@@ -1271,26 +1227,25 @@ body.modal-open { overflow: hidden; }
 
 .form-submit {
     align-self: flex-start;
-    padding: 14px 40px;
-    background-color: var(--navy);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
+    padding: 14px 32px;
+    background-color: var(--text);
+    color: var(--bg);
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    border: 1px solid var(--navy);
+    border: none;
+    border-radius: var(--radius);
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s cubic-bezier(.175,.885,.32,1.275);
 }
 
 .form-submit:hover {
-    background-color: transparent;
-    color: var(--navy);
-    transform: translateY(-2px);
+    transform: scale(1.05);
 }
 
-body.dark .form-submit { border-color: var(--light-blue); background-color: var(--light-blue); color: var(--navy); }
-body.dark .form-submit:hover { background-color: transparent; color: var(--light-blue); }
+body.dark .form-submit { background-color: var(--text); color: var(--bg); }
 
 #form-message {
     font-size: 13px;
@@ -1321,23 +1276,9 @@ footer {
 ============================================ */
 @media (max-width: 768px) {
     nav { padding: 16px 24px; }
-    .nav-links { gap: 18px; }
-
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 50px 24px 40px; border-right: none; border-bottom: 1px solid var(--border); }
-    .hero-photo { min-height: 320px; }
-    .hero-bottom { padding: 20px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
 
     .skills-header,
     .skill-item { padding-left: 24px; padding-right: 24px; }
-
-    .clients-label { padding-left: 24px; }
-
-    .page-header { padding: 50px 24px 28px; }
-
-    .project-item { grid-template-columns: 50px 1fr; padding: 0 24px; }
-    .project-meta { display: none; }
-    .project-thumb { display: none; }
 
     .about-layout,
     .contact-layout { grid-template-columns: 1fr; }
@@ -1369,8 +1310,9 @@ footer {
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 10px 20px;
+    border: 1px solid var(--border);
     transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
@@ -1385,13 +1327,10 @@ footer {
 ============================================ */
 @media (max-width: 520px) {
     nav { flex-wrap: wrap; gap: 10px; padding: 14px 16px; }
-    .nav-links { width: 100%; gap: 14px; }
+    .nav-links { width: 100%; gap: 4px; }
 
-    .hero-left { padding: 40px 16px; }
     .skill-item { padding: 20px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
     .skill-desc { text-align: left; }
-    .page-header { padding: 40px 16px 20px; }
-    .project-item { padding: 0 16px; min-height: 90px; }
     .about-text,
     .contact-intro,
     .contact-form-wrap { padding: 40px 16px; }
