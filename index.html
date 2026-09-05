@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Zeinab Drameh</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" as="image" href="img/headshot.png">
+
+    <!--
+        FILE LAYOUT (keep it this simple):
+        index.html  — this whole one-page site
+        style.css   — all styling
+        script.js   — dark mode, carousel, filters, modals, form
+        img/        — all images, grouped in folders by project
+
+        HOW TO ADD A NEW PROJECT LATER:
+        1. Duplicate one <article class="project-slide"> in the carousel below.
+        2. Change data-modal to a new id, e.g. "modal-newname".
+        3. Set data-categories to one or more of: product   ml   graphic
+           (a project can have more than one, separated by a space)
+        4. Duplicate a <div class="proj-modal"> and give it the same id.
+        5. Put images in img/newname/ and update the <img src=""> paths.
+    -->
+</head>
+<body>
+
+    <!-- ===================== NAV ===================== -->
+    <nav>
+        <a class="nav-logo" href="#home">Zeinab Drameh</a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button id="mode-toggle">night</button></li>
+        </ul>
+    </nav>
+
+
+    <!-- ===================== HOME ===================== -->
+    <section id="home">
+
+        <!-- HERO — split grid -->
+        <div class="hero">
+
+            <div class="hero-left">
+                <p class="hero-eyebrow">Designer &amp; Developer</p>
+                <h1>
+                    Building<br>
+                    <em>
+                        <div id="flip">
+                            <div style="color: var(--muted);">Change.</div>
+                            <div style="color: var(--muted);">Experiences.</div>
+                            <div style="color: var(--muted);">Futures.</div>
+                        </div>
+                    </em>
+                </h1>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-photo">
+                    <img src="img/headshot.png" alt="Zeinab Drameh">
+                </div>
+                <div class="hero-bottom">
+                    <p class="hero-sub">
+                        Hi, I'm Zeinab. I design and build digital products
+                        that are thoughtful, accessible, and meaningful.
+                    </p>
+                    <a class="btn" href="#projects">View Work</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SKILLS STRIP -->
+        <div class="skills-section">
+            <p class="skills-header">Skills</p>
+
+            <div class="skill-item">
+                <span class="skill-name">Graphic Design</span>
+                <span class="skill-desc">Brand identity, print, and visual systems built around clarity and concept.</span>
+            </div>
+
+            <div class="skill-item">
+                <span class="skill-name">UX / UI Design</span>
+                <span class="skill-desc">Research-led interfaces that prioritise usability without sacrificing character.</span>
+            </div>
+
+            <div class="skill-item">
+                <span class="skill-name">Software Development</span>
+                <span class="skill-desc">Clean, well-structured front-end and full-stack web development.</span>
+            </div>
+
+            <div class="skill-item">
+                <span class="skill-name">Machine Learning</span>
+                <span class="skill-desc">Applying AI and data-driven methods to solve real design and product problems.</span>
+            </div>
+        </div>
+
+        <!-- CLIENTS — scrolling circles -->
+        <div class="clients-section">
+            <p class="clients-label">Clients &amp; Collaborators</p>
+
+            <div class="clients-track-wrap">
+                <div class="clients-track">
+                    <!-- logos are duplicated so the marquee loop looks seamless -->
+                    <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/1.png" alt="Client Logo">
+                    </a>
+                    <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/2.png" alt="Client Logo">
+                    </a>
+                    <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/3.png" alt="Client Logo">
+                    </a>
+                    <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/4.png" alt="Client Logo">
+                    </a>
+                    <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/5.png" alt="Client Logo">
+                    </a>
+                    <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/6.png" alt="Client Logo">
+                    </a>
+                    <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/7.png" alt="Client Logo">
+                    </a>
+
+                    <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/1.png" alt="Client Logo">
+                    </a>
+                    <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/2.png" alt="Client Logo">
+                    </a>
+                    <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/3.png" alt="Client Logo">
+                    </a>
+                    <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/4.png" alt="Client Logo">
+                    </a>
+                    <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/5.png" alt="Client Logo">
+                    </a>
+                    <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/6.png" alt="Client Logo">
+                    </a>
+                    <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
+                        <img class="client-circle" src="img/clients/7.png" alt="Client Logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ===================== PROJECTS =====================
+         Default view: a click-through carousel of every project.
+         Filter buttons above the carousel show only one category.
+         Click a slide to open its modal (same modal style as before).
+    -->
+    <section id="projects">
+
+        <div class="page-header">
+            <h1>Projects</h1>
+            <p>Selected work across design, development, and everything in between.</p>
+        </div>
+
+        <!-- CATEGORY FILTERS
+             data-filter must match the words used in each slide's data-categories.
+             "all" shows every slide. -->
+        <div class="project-filters" role="tablist" aria-label="Project categories">
+            <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+            <button type="button" class="filter-btn" data-filter="product">Product Design</button>
+            <button type="button" class="filter-btn" data-filter="ml">ML &amp; Data Analytics</button>
+            <button type="button" class="filter-btn" data-filter="graphic">Graphic Design</button>
+        </div>
+
+        <!-- CAROUSEL
+             Arrows only move when clicked (no autoplay).
+             Each article is one project. -->
+        <div class="projects-carousel">
+
+            <button type="button" class="carousel-arrow prev" aria-label="Previous project">&#8592;</button>
+
+            <div class="projects-carousel-stage">
+
+                <!-- SLIDE: Mattel — Tell-A-Tale  |  Product Design -->
+                <article class="project-slide is-active" data-modal="modal-mattel" data-categories="product">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project6.png" alt="Mattel Tell-A-Tale">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">Product Design</p>
+                        <h3>Mattel — Tell-A-Tale</h3>
+                        <p>Ideation to physical prototype, user research, Figma app, Fusion 360.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Product Design</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Premiere Pro</span>
+                            <span class="skill-tag">Blender</span>
+                            <span class="skill-tag">Prototyping</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: CityWise / Visic  |  Product Design + ML -->
+                <article class="project-slide" data-modal="modal-visic" data-categories="product ml">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project4.png" alt="CityWise / Visic">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">Product Design  ·  ML &amp; Data</p>
+                        <h3>CityWise / Visic</h3>
+                        <p>UX research, information architecture, map-based UI, and live product — with a data aggregation angle.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">Policy Research</span>
+                            <span class="skill-tag">UI Design</span>
+                            <span class="skill-tag">Consulting</span>
+                            <span class="skill-tag">Outreach</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: PresQ Studios — GOGO Boot  |  Product Design -->
+                <article class="project-slide" data-modal="modal-presq" data-categories="product">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project2.png" alt="PresQ Studios GOGO Boot">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">Product Design</p>
+                        <h3>PresQ Studios — GOGO Boot</h3>
+                        <p>3D product design, Vizcom, and physical mockups inspired by West African fashion.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Product Design</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Vizcom</span>
+                            <span class="skill-tag">Logo Design</span>
+                            <span class="skill-tag">Marketing</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: MemeSocial  |  Product Design + ML
+                     Cover image: drop a file at img/memesocial/cover.png then swap the placeholder for:
+                     <img src="img/memesocial/cover.png" alt="MemeSocial">
+                     and delete class="placeholder" plus the data-label. -->
+                <article class="project-slide" data-modal="modal-memesocial" data-categories="product ml">
+                    <div class="project-slide-image placeholder" data-label="MemeSocial"></div>
+                    <div class="project-info">
+                        <p class="project-tag">Product Design  ·  ML &amp; Data</p>
+                        <h3>MemeSocial</h3>
+                        <p>A product + UX experience designed and built end to end.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Product Design</span>
+                            <span class="skill-tag">UX</span>
+                            <span class="skill-tag">Full-Stack</span>
+                            <span class="skill-tag">Data</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Furniture Website  |  Product Design
+                     Cover image: img/furniture/cover.png -->
+                <article class="project-slide" data-modal="modal-furniture" data-categories="product">
+                    <div class="project-slide-image placeholder" data-label="Furniture Website"></div>
+                    <div class="project-info">
+                        <p class="project-tag">Product Design</p>
+                        <h3>Furniture Website</h3>
+                        <p>UX/UI design for a live client product.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">UX / UI</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Client Work</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Arkadium Research  |  ML & Data
+                     Cover image: img/arkadium/cover.png -->
+                <article class="project-slide" data-modal="modal-arkadium" data-categories="ml">
+                    <div class="project-slide-image placeholder" data-label="Arkadium Research"></div>
+                    <div class="project-info">
+                        <p class="project-tag">ML &amp; Data Analytics</p>
+                        <h3>Arkadium Research</h3>
+                        <p>Evaluation framework across 100+ gameplay episodes, built as a Python/Streamlit platform.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">Research</span>
+                            <span class="skill-tag">Evaluation</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Pneumonia CNN  |  ML & Data
+                     Cover image: img/pneumonia/cover.png -->
+                <article class="project-slide" data-modal="modal-pneumonia" data-categories="ml">
+                    <div class="project-slide-image placeholder" data-label="Pneumonia CNN"></div>
+                    <div class="project-info">
+                        <p class="project-tag">ML &amp; Data Analytics</p>
+                        <h3>Pneumonia CNN</h3>
+                        <p>Deep learning image classification with Sci-Kit Learn.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Deep Learning</span>
+                            <span class="skill-tag">CNN</span>
+                            <span class="skill-tag">Sci-Kit Learn</span>
+                            <span class="skill-tag">Image Classification</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Shade Gap  |  ML & Data -->
+                <article class="project-slide" data-modal="modal-shadegap" data-categories="ml">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project7.png" alt="The Shade Gap">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">ML &amp; Data Analytics</p>
+                        <h3>Shade Gap</h3>
+                        <p>Data visualization, geospatial research, and policy analysis of LA's shade inequality.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Research</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">Consulting</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Estera Moda  |  Graphic Design -->
+                <article class="project-slide" data-modal="modal-estera" data-categories="graphic">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project5.png" alt="Estera Moda">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">Graphic Design</p>
+                        <h3>Estera Moda</h3>
+                        <p>Full brand identity — logo, color systems, pitch decks, and marketing materials.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Brand Identity</span>
+                            <span class="skill-tag">Logo Design</span>
+                            <span class="skill-tag">Color Systems</span>
+                            <span class="skill-tag">Marketing</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: MOCA Teen Night  |  Graphic Design -->
+                <article class="project-slide" data-modal="modal-mca" data-categories="graphic">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project1.png" alt="MOCA Teen Night">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">Graphic Design</p>
+                        <h3>MOCA Teen Night</h3>
+                        <p>Posters, stickers, merchandise, and social content for a citywide teen night of 500+ guests.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Instagram</span>
+                            <span class="skill-tag">TikTok</span>
+                            <span class="skill-tag">Graphic Design</span>
+                            <span class="skill-tag">Event Planning</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Masjid Al Mumin posters  |  Graphic Design
+                     Cover image: img/masjid/cover.png -->
+                <article class="project-slide" data-modal="modal-masjid" data-categories="graphic">
+                    <div class="project-slide-image placeholder" data-label="Masjid Al Mumin"></div>
+                    <div class="project-info">
+                        <p class="project-tag">Graphic Design</p>
+                        <h3>Masjid Al Mumin Posters</h3>
+                        <p>Poster series designed for Masjid Al Mumin.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Poster Design</span>
+                            <span class="skill-tag">Typography</span>
+                            <span class="skill-tag">Photoshop</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: SHIFT SC infographics  |  Graphic Design
+                     Cover image: img/shift/cover.png -->
+                <article class="project-slide" data-modal="modal-shift" data-categories="graphic">
+                    <div class="project-slide-image placeholder" data-label="SHIFT SC"></div>
+                    <div class="project-info">
+                        <p class="project-tag">Graphic Design</p>
+                        <h3>SHIFT SC Infographics</h3>
+                        <p>Infographic design for SHIFT SC.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Infographics</span>
+                            <span class="skill-tag">Graphic Design</span>
+                            <span class="skill-tag">Layout</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: PresQ Studios posters  |  Graphic Design -->
+                <article class="project-slide" data-modal="modal-presq-posters" data-categories="graphic">
+                    <div class="project-slide-image">
+                        <img src="img/gogo/8.png" alt="PresQ Studios posters">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">Graphic Design</p>
+                        <h3>PresQ Studios Posters</h3>
+                        <p>Advertising posters, logo, and campaign graphics for the GOGO brand.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Poster Design</span>
+                            <span class="skill-tag">Branding</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Marketing</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Leimert Park Urban Plan  |  shown in All
+                     Not in the three filter categories — remove this article to hide it. -->
+                <article class="project-slide" data-modal="modal-urbanplan" data-categories="all-only">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project3.png" alt="Leimert Park Urban Plan">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">Urban Design</p>
+                        <h3>Leimert Park Urban Plan</h3>
+                        <p>Restoring Leimert Park's role as a Black cultural hub.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">SketchUp</span>
+                            <span class="skill-tag">Business Strategy</span>
+                            <span class="skill-tag">Brand Development</span>
+                            <span class="skill-tag">Model Building</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Eth-X  |  ML (existing personal project) -->
+                <article class="project-slide" data-modal="modal-ethx" data-categories="ml">
+                    <div class="project-slide-image">
+                        <img src="img/projects/project8.png" alt="Eth-X">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">ML &amp; Data Analytics</p>
+                        <h3>Eth-X</h3>
+                        <p>Responsible AI browser extension exposing biases and addressing accessibility gaps for AI tools.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">UI-UX Design</span>
+                            <span class="skill-tag">Prototyping</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <button type="button" class="carousel-arrow next" aria-label="Next project">&#8594;</button>
+
+            <div class="carousel-status">
+                <span id="carousel-counter">1 / 15</span>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ===================== PROJECT MODALS =====================
+         One modal per project. The id must match the slide's data-modal.
+         Copy any modal below to add a new one.
+    -->
+
+    <!-- MODAL: MCA / MOCA Teen Night -->
+    <div class="proj-modal" id="modal-mca">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2024–2025</span>
+                    <span>Graphic Design</span>
+                    <span>Teen Intern</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">MOCA Teen Night</h2>
+                <p class="proj-modal-sub">Teen intern on communications team — planned a citywide teen night of 500+ guests.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Planned citywide teen night of 500+ teens on the communications team. Marketed the event in person and across social media platforms by creating promotional posters, stickers, merch (hoodies and reusable bottles), and video content. Collaborated with artists and museum professionals to promote museum inclusion for underrepresented youth.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-mca">
+                            <img src="img/moca/1.png" alt="">
+                            <img src="img/moca/2.png" alt="">
+                            <img src="img/moca/3.jpeg" alt="">
+                            <img src="img/moca/4.jpeg" alt="">
+                            <img src="img/moca/5.jpeg" alt="">
+                            <img src="img/moca/6.png" alt="">
+                            <img src="img/moca/7.jpeg" alt="">
+                            <img src="img/moca/8.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-mca" data-total="8">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-mca">1 / 8</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-mca" data-total="8">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Instagram</span>
+                        <span class="skill-tag">TikTok</span>
+                        <span class="skill-tag">Graphic Design</span>
+                        <span class="skill-tag">Event Planning</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: PresQ GOGO Boot -->
+    <div class="proj-modal" id="modal-presq">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2025</span>
+                    <span>Product Design</span>
+                    <span>Designer</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">PresQ Studios — GOGO Boot</h2>
+                <p class="proj-modal-sub">3-D printable GOGO boot inspired by West African fashion — from sketch to render.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">GOGO — a brand that blends bold 1960s fashion with the timeless artistry of West African tailoring. I planned, sketched, designed, and rendered the final boots through Vizcom and Photoshop. I also created a supplementary marketing plan, logo, and advertising posters to bring the brand to life.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-presq">
+                            <img src="img/gogo/1.png" alt="">
+                            <img src="img/gogo/2.png" alt="">
+                            <img src="img/gogo/3.png" alt="">
+                            <img src="img/gogo/4.png" alt="">
+                            <img src="img/gogo/5.png" alt="">
+                            <img src="img/gogo/6.png" alt="">
+                            <img src="img/gogo/7.png" alt="">
+                            <img src="img/gogo/8.png" alt="">
+                            <img src="img/gogo/9.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-presq" data-total="9">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-presq">1 / 9</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-presq" data-total="9">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Product Design</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Vizcom</span>
+                        <span class="skill-tag">Logo Design</span>
+                        <span class="skill-tag">Marketing</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: Urban Plan -->
+    <div class="proj-modal" id="modal-urbanplan">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2024</span>
+                    <span>Urban Design</span>
+                    <span>Designer</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Leimert Park Urban Plan</h2>
+                <p class="proj-modal-sub">Restoring Leimert Park's role as a Black cultural hub through a modern urban design proposal.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">In a 20-page urban plan and pitch, I developed a comprehensive proposal for Leimert Park focused on restoring its role as a cultural and community hub. I led site research and concept development, proposing businesses, community centers, and spatial interventions aligned with Black cultural heritage. Created a full SketchUp mockup, a detailed wood model, and a promotional commercial to communicate the vision to stakeholders.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-urbanplan">
+                            <img src="img/urbanplan/1.png" alt="">
+                            <img src="img/urbanplan/2.png" alt="">
+                            <img src="img/urbanplan/3.png" alt="">
+                            <img src="img/urbanplan/4.png" alt="">
+                            <img src="img/urbanplan/5.png" alt="">
+                            <img src="img/urbanplan/6.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-urbanplan" data-total="6">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-urbanplan">1 / 6</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-urbanplan" data-total="6">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">SketchUp</span>
+                        <span class="skill-tag">Business Strategy</span>
+                        <span class="skill-tag">Brand Development</span>
+                        <span class="skill-tag">Model Building</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: CityWise / Visic -->
+    <div class="proj-modal" id="modal-visic">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2026</span>
+                    <span>Product Design</span>
+                    <span>Full-Stack Developer</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">CityWise / Visic</h2>
+                <p class="proj-modal-sub">CityWise maps out Councilmember impact on their council districts.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">CityWise is the one stop shop for easy-to-access information on Los Angeles councilmembers. By visualizing necessary information, we are making it easier for residents to see the impact their representatives have made on their community. Through a mobile app and website we are condensing scattered information into a map-based, visual format.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-visic">
+                            <img src="img/visic/1.png" alt="">
+                            <img src="img/visic/2.png" alt="">
+                            <img src="img/visic/3.png" alt="">
+                            <img src="img/visic/4.png" alt="">
+                            <img src="img/visic/5.png" alt="">
+                            <img src="img/visic/6.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-visic" data-total="6">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-visic">1 / 6</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-visic" data-total="6">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">UX-Research</span>
+                        <span class="skill-tag">Policy Research</span>
+                        <span class="skill-tag">UI Design</span>
+                        <span class="skill-tag">Consulting</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: Estera Moda -->
+    <div class="proj-modal" id="modal-estera">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2025</span>
+                    <span>Graphic Design</span>
+                    <span>Founder</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Estera Moda</h2>
+                <p class="proj-modal-sub">Discover Europe's best fashion — no passport needed.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Estera bridges continents, connecting American customers to Europe's best fashion houses. We curate timeless pieces crafted with hand-woven linen and silk, made for exceptional fit and durability. Estera cultivates community and creates meaning in what customers wear — fashion as a bridge between cultures. The brand system covers logo, color, pitch decks, and marketing materials.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-estera">
+                            <img src="img/estera/1.png" alt="">
+                            <img src="img/estera/2.png" alt="">
+                            <img src="img/estera/3.png" alt="">
+                            <img src="img/estera/4.png" alt="">
+                            <img src="img/estera/5.png" alt="">
+                            <img src="img/estera/6.png" alt="">
+                            <img src="img/estera/7.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-estera" data-total="7">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-estera">1 / 7</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-estera" data-total="7">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Business Strategy</span>
+                        <span class="skill-tag">Brand Development</span>
+                        <span class="skill-tag">E-commerce</span>
+                        <span class="skill-tag">Fashion</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: Mattel -->
+    <div class="proj-modal" id="modal-mattel">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2024</span>
+                    <span>Product Design</span>
+                    <span>Inventor</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Mattel — Tell-A-Tale</h2>
+                <p class="proj-modal-sub">Tell-A-Tale: an improv storytelling experience from ideation to prototype.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Tell-A-Tale is an improv storytelling experience where anyone can be anything. It consists of dice that give kids prompts for stories and puppets they can build — featuring socially and emotionally complex characters. I created the product from ideation to prototyping and a full business plan, pitching directly to Mattel designers. Work spanned user research, a Figma app, and Fusion 360.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-mattel">
+                            <img src="img/mattel/1.png" alt="">
+                            <img src="img/mattel/2.png" alt="">
+                            <img src="img/mattel/3.png" alt="">
+                            <img src="img/mattel/4.png" alt="">
+                            <img src="img/mattel/5.png" alt="">
+                            <img src="img/mattel/6.png" alt="">
+                            <img src="img/mattel/7.png" alt="">
+                            <img src="img/mattel/8.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-mattel" data-total="8">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-mattel">1 / 8</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-mattel" data-total="8">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Product Design</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Premiere Pro</span>
+                        <span class="skill-tag">Blender</span>
+                        <span class="skill-tag">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: Shade Gap -->
+    <div class="proj-modal" id="modal-shadegap">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2024</span>
+                    <span>ML &amp; Data Analytics</span>
+                    <span>Inventor</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">The Shade Gap</h2>
+                <p class="proj-modal-sub">Interactive insights into LA's shade-inequality problem. With intuitive and insightful data visualizations, policy proposals, strategy in anticipation of the 2028 olympics, and "cool roof" solutions.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">For this project we researched the current problem area, identifying key issues and historical practices like redlining which have exasterbated this issue. To communicate the problem more effectively, we used data visualization techniques to map canopy coverage against heat levels, revealing clearly how poorer neighborhoods receive less shade and as a byproduct, experience higher temperatures and worse health conditions. Following the research, we looked for solutions, drawing heavily from Shade-LA. We came up with an easy to implement change to tree spacing guidelines, as well as drawing inspiration from New York's "cool roof" solution. We also researched next-steps and ways to realistically implement these ideas.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-shadegap">
+                            <img src="img/shade-gap/1.png" alt="">
+                            <img src="img/shade-gap/2.png" alt="">
+                            <img src="img/shade-gap/3.png" alt="">
+                            <img src="img/shade-gap/4.png" alt="">
+                            <img src="img/shade-gap/5.png" alt="">
+                            <img src="img/shade-gap/6.png" alt="">
+                            <img src="img/shade-gap/7.png" alt="">
+                            <img src="img/shade-gap/8.png" alt="">
+                            <img src="img/shade-gap/9.png" alt="">
+                            <img src="img/shade-gap/10.png" alt="">
+                            <img src="img/shade-gap/11.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-shadegap" data-total="11">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-shadegap">1 / 11</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-shadegap" data-total="11">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Geospatial &amp; Policy Research</span>
+                        <span class="skill-tag">Product Design</span>
+                        <span class="skill-tag">Consulting</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: Eth-X -->
+    <div class="proj-modal" id="modal-ethx">
+        <div class="proj-modal-inner">
+
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2024</span>
+                    <span>ML &amp; Data Analytics</span>
+                    <span>Inventor</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Eth-X</h2>
+                <p class="proj-modal-sub">Responsible AI Browser Extension exposing biases and addressing accessibility gaps for AI tools.</p>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Eth-X is a browser extension and website that exposes biases in AI while also providing tools for underprivileged communities to learn about and use AI. It detects bias using a self-made adversarial test set, breaks down complex AI policies through a summarized terms and conditions page for popular AI brands, and provides interactive resources like news articles and videos to keep users informed about recent news in the field and to bridge the AI literacy gap. Users can also file claims to report misuse or request to add a new company.</p>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-ethx">
+                            <img src="img/ethx/1.png" alt="">
+                            <img src="img/ethx/2.png" alt="">
+                            <img src="img/ethx/3.png" alt="">
+                            <img src="img/ethx/4.png" alt="">
+                            <img src="img/ethx/5.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-ethx" data-total="5">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-ethx">1 / 5</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-ethx" data-total="5">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">UI-UX Design</span>
+                        <span class="skill-tag">Business Strategy</span>
+                        <span class="skill-tag">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL: MemeSocial
+         Add gallery images later inside img/memesocial/ (1.png, 2.png, ...) -->
+    <div class="proj-modal" id="modal-memesocial">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Product Design</span>
+                    <span>ML &amp; Data</span>
+                    <span>Designer / Builder</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">MemeSocial</h2>
+                <p class="proj-modal-sub">A product + UX experience designed and built end to end.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">MemeSocial is a product I designed and built from end to end — from product thinking and UX to the data side of the experience. Add more detail here whenever you want, and drop screenshots into img/memesocial/.</p>
+                </div>
+                <!-- GALLERY: uncomment this block after adding images
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-memesocial">
+                            <img src="img/memesocial/1.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-memesocial" data-total="1">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-memesocial">1 / 1</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-memesocial" data-total="1">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                -->
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Product Design</span>
+                        <span class="skill-tag">UX</span>
+                        <span class="skill-tag">Full-Stack</span>
+                        <span class="skill-tag">Data</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Furniture Website -->
+    <div class="proj-modal" id="modal-furniture">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Product Design</span>
+                    <span>UX / UI</span>
+                    <span>Client Work</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Furniture Website</h2>
+                <p class="proj-modal-sub">UX/UI design for a live client product.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">UX and UI design for a live client furniture product. Add process notes, screens, and the live link here. Images go in img/furniture/.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">UX / UI</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Client Work</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Arkadium Research -->
+    <div class="proj-modal" id="modal-arkadium">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>ML &amp; Data Analytics</span>
+                    <span>Research</span>
+                    <span>Python / Streamlit</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Arkadium Research</h2>
+                <p class="proj-modal-sub">Evaluation framework, 100+ gameplay episodes, Python/Streamlit platform.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">An evaluation framework built around 100+ gameplay episodes, delivered as a Python and Streamlit platform. Add findings, screenshots, and method notes here. Images go in img/arkadium/.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Research</span>
+                        <span class="skill-tag">Evaluation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Pneumonia CNN -->
+    <div class="proj-modal" id="modal-pneumonia">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>ML &amp; Data Analytics</span>
+                    <span>Deep Learning</span>
+                    <span>Image Classification</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Pneumonia CNN</h2>
+                <p class="proj-modal-sub">Deep learning image classification with Sci-Kit Learn.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">A convolutional neural network project for pneumonia image classification, using Sci-Kit Learn and deep learning methods. Add accuracy notes, dataset info, and sample images in img/pneumonia/.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">CNN</span>
+                        <span class="skill-tag">Sci-Kit Learn</span>
+                        <span class="skill-tag">Image Classification</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Masjid Al Mumin posters -->
+    <div class="proj-modal" id="modal-masjid">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Graphic Design</span>
+                    <span>Print</span>
+                    <span>Posters</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Masjid Al Mumin Posters</h2>
+                <p class="proj-modal-sub">Poster series designed for Masjid Al Mumin.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">A poster series for Masjid Al Mumin. Drop the finished posters into img/masjid/ and uncomment a gallery block (copy one from MOCA or Estera) when you are ready.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Poster Design</span>
+                        <span class="skill-tag">Typography</span>
+                        <span class="skill-tag">Photoshop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: SHIFT SC infographics -->
+    <div class="proj-modal" id="modal-shift">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Graphic Design</span>
+                    <span>Infographics</span>
+                    <span>SHIFT SC</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">SHIFT SC Infographics</h2>
+                <p class="proj-modal-sub">Infographic design for SHIFT SC.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Infographic work for SHIFT SC. Add the finished graphics to img/shift/ and copy a gallery block from another modal when you want them to click through.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Infographics</span>
+                        <span class="skill-tag">Graphic Design</span>
+                        <span class="skill-tag">Layout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: PresQ Studios posters -->
+    <div class="proj-modal" id="modal-presq-posters">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2025</span>
+                    <span>Graphic Design</span>
+                    <span>Posters</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">PresQ Studios Posters</h2>
+                <p class="proj-modal-sub">Advertising posters, logo, and campaign graphics for the GOGO brand.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Alongside the GOGO boot, I designed a supplementary marketing plan, logo, and advertising posters to bring the brand to life. Swap these gallery images for poster-only files in img/presq-posters/ whenever you want.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-presq-posters">
+                            <img src="img/gogo/7.png" alt="">
+                            <img src="img/gogo/8.png" alt="">
+                            <img src="img/gogo/9.png" alt="">
+                            <img src="img/gogo/1.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-presq-posters" data-total="4">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-presq-posters">1 / 4</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-presq-posters" data-total="4">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Poster Design</span>
+                        <span class="skill-tag">Branding</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Marketing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about">
+
+        <div class="about-layout">
+
+            <div class="about-text">
+                <div>
+                    <h1>Hey!<br>I'm <em>Zeinab.</em></h1>
+
+                    <p>
+                        I'm a designer and developer focused on building
+                        digital experiences that are thoughtful, accessible, and
+                        genuinely useful.
+                    </p>
+
+                    <p>
+                        Currently studying at Iovine and Young Academy. I've worked with
+                        clients across urban planning, fashion, product design and technology.
+                    </p>
+
+                    <p>
+                        Outside of work I love reading, making art, fashion, post-punk music, and exploring LA.
+                    </p>
+                </div>
+
+                <a class="btn" href="#contact">Get in Touch</a>
+            </div>
+
+            <div class="about-photo">
+
+                <div class="carousel up">
+                    <div class="scroll-container">
+                        <img src="img/about/about.jpeg" alt="">
+                        <img src="img/about/about2.jpeg" alt="">
+                        <img src="img/about/about3.jpeg" alt="">
+                        <img src="img/about/about4.jpeg" alt="">
+                        <img src="img/about/about5.jpeg" alt="">
+                        <img src="img/about/about6.jpeg" alt="">
+                        <img src="img/about/about7.jpeg" alt="">
+                        <img src="img/about/about8.jpeg" alt="">
+                        <img src="img/about/about9.jpeg" alt="">
+                        <img src="img/about/IMG_4224.jpeg" alt="">
+                    </div>
+                </div>
+
+                <div class="carousel down">
+                    <div class="scroll-container">
+                        <img src="img/about/about11.jpeg" alt="">
+                        <img src="img/about/about12.jpeg" alt="">
+                        <img src="img/about/about13.jpeg" alt="">
+                        <img src="img/about/about14.jpeg" alt="">
+                        <img src="img/about/about15.jpeg" alt="">
+                        <img src="img/about/about16.jpeg" alt="">
+                        <img src="img/about/about17.jpeg" alt="">
+                        <img src="img/about/about18.jpeg" alt="">
+                        <img src="img/about/about19.jpeg" alt="">
+                        <img src="img/about/IMG_4913.jpeg" alt="">
+                    </div>
+                </div>
+
+                <div class="carousel up">
+                    <div class="scroll-container">
+                        <img src="img/about/about21.jpeg" alt="">
+                        <img src="img/about/about22.jpeg" alt="">
+                        <img src="img/about/about23.jpeg" alt="">
+                        <img src="img/about/about24.jpeg" alt="">
+                        <img src="img/about/about25.jpeg" alt="">
+                        <img src="img/about/about26.jpeg" alt="">
+                        <img src="img/about/about27.jpeg" alt="">
+                        <img src="img/about/about28.jpeg" alt="">
+                        <img src="img/about/about29.jpeg" alt="">
+                        <img src="img/about/about30.jpeg" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact">
+
+        <div class="contact-layout">
+
+            <div class="contact-intro">
+                <h1>Let's<br><em>Talk.</em></h1>
+                <p>
+                    Have a project in mind, a collaboration idea,
+                    or just want to say hello? Fill in the form
+                    and I'll get back to you soon.
+                </p>
+
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="img/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        Resume
+                    </a>
+                </div>
+                <div class="balls">
+                    <div class="ball ball-1"></div>
+                    <div class="ball ball-2"></div>
+                    <div class="ball ball-3"></div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contact-form" novalidate>
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What's it about?" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="body">Message</label>
+                        <textarea id="body" name="body" placeholder="Your message..."></textarea>
+                    </div>
+
+                    <p id="form-message"></p>
+
+                    <button type="submit" class="form-submit">Send Message</button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <span>© 2026 Zeinab Drameh</span>
+        <span>midterm alpha</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
