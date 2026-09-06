@@ -656,7 +656,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .client-circle.is-logo {
     object-fit: contain;
-    padding: 16px;
+    padding: 14px;
     box-sizing: border-box;
     background: #fff;
 }
