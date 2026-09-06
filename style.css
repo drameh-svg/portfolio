@@ -45,6 +45,10 @@
     --shadow:     0 12px 40px rgba(101, 21, 58, 0.12);
     --font-display: 'Bebas Neue', sans-serif;
     --font-body:    'DM Sans', sans-serif;
+    --proj-band:    #65153a;
+    --proj-card:    #b0cd76;
+    --proj-ink:     #65153a;
+    --proj-soft:    #c5dfa6;
 }
 
 body.dark {
@@ -178,18 +182,29 @@ nav {
 .nav-logo {
     font-family: var(--font-display);
     font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0;
+    font-weight: 400;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text);
     text-decoration: none;
     display: inline-flex;
-    align-items: baseline;
-    gap: 0.16em;
-    padding: 8px 0;
+    align-items: center;
+    line-height: 1;
+    gap: 0;
+    padding: 0;
+    height: 32px;
+    transform: translateY(-3px);
 }
 
-.nav-logo .nav-space { width: 0.55em; }
+.nav-logo .nav-space { width: 0.55em; flex-shrink: 0; }
+
+.nav-logo .hero-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0.7;
+    padding-top: 0.12em;
+}
 
 .nav-logo:hover { opacity: 1; }
 
@@ -283,33 +298,47 @@ nav {
 .hero-name {
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(4rem, 12vw, 9.5rem);
-    line-height: 0.92;
-    letter-spacing: 0.06em;
+    font-size: clamp(4.8rem, 13.5vw, 10.6rem);
+    line-height: 0.8;
+    letter-spacing: -0.03em;
     color: var(--text);
     text-transform: uppercase;
     overflow: visible;
+    -webkit-text-stroke: 1.1px currentColor;
+    paint-order: stroke fill;
 }
 
 .hero-line {
     display: flex;
     justify-content: center;
-    gap: 0.04em;
-    padding: 0.08em 0;
+    gap: 0;
+    padding: 0;
 }
 
 .hero-letter {
     display: inline-block;
     cursor: default;
     will-change: transform;
+    margin-right: -0.055em;
+    line-height: 0.8;
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-role {
-    margin-top: 22px;
+    margin-top: 18px;
     font-size: 13px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--muted);
+}
+
+.hero-bio {
+    font-family: 'DM Sans', sans-serif;
+    max-width: 540px;
+    margin: 22px auto 0;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
     color: var(--muted);
 }
 
@@ -664,8 +693,8 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
    Navy band + olive cards, springy coverflow.
 ============================================ */
 #projects {
-    background: var(--navy);
-    color: var(--silver);
+    background: var(--proj-band);
+    color: var(--proj-soft);
     padding: 48px 24px 72px;
     overflow: hidden;
 }
@@ -676,7 +705,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     font-size: 14px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--silver);
+    color: var(--proj-soft);
     margin-bottom: 14px;
 }
 
@@ -691,7 +720,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 .filter-btn {
     background: none;
     border: none;
-    color: var(--light-blue);
+    color: var(--proj-card);
     font-family: var(--font-display);
     font-size: clamp(1.25rem, 2.2vw, 1.85rem);
     font-weight: 400;
@@ -703,7 +732,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .filter-btn:hover,
 .filter-btn.is-active {
-    color: var(--white);
+    color: var(--proj-soft);
     background: none;
     text-decoration: none;
 }
@@ -715,7 +744,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     right: 0;
     bottom: 0;
     height: 2px;
-    background: var(--white);
+    background: var(--proj-soft);
 }
 
 .projects-carousel {
@@ -728,9 +757,9 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 .carousel-arrow {
-    background: color-mix(in srgb, var(--silver) 18%, transparent);
+    background: color-mix(in srgb, var(--proj-soft) 18%, transparent);
     border: none;
-    color: var(--silver);
+    color: var(--proj-soft);
     font-size: 22px;
     width: 52px;
     height: 52px;
@@ -742,8 +771,8 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .carousel-arrow:hover {
     transform: scale(1.1) rotate(-8deg);
-    background: var(--light-blue);
-    color: var(--navy);
+    background: var(--proj-card);
+    color: var(--proj-ink);
 }
 
 .carousel-arrow.next:hover {
@@ -752,7 +781,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .projects-carousel-stage {
     position: relative;
-    height: 560px;
+    height: 620px;
     perspective: 1600px;
     transform-style: preserve-3d;
     overflow: visible;
@@ -762,9 +791,9 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     position: absolute;
     inset: 0;
     margin: auto;
-    width: min(340px, 78vw);
-    height: 500px;
-    background: var(--light-blue);
+    width: min(480px, 90vw);
+    height: 540px;
+    background: var(--proj-card);
     border-radius: 6px;
     padding: 16px 16px 22px;
     overflow: hidden;
@@ -792,14 +821,14 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 .project-slide[data-pos="left"] {
     opacity: 0.95;
     pointer-events: auto;
-    transform: translateX(-236px) translateY(32px) rotateY(34deg) rotateZ(-5deg) scale(0.84);
+    transform: translateX(-300px) translateY(32px) rotateY(34deg) rotateZ(-5deg) scale(0.84);
     z-index: 3;
 }
 
 .project-slide[data-pos="right"] {
     opacity: 0.95;
     pointer-events: auto;
-    transform: translateX(236px) translateY(32px) rotateY(-34deg) rotateZ(5deg) scale(0.84);
+    transform: translateX(300px) translateY(32px) rotateY(-34deg) rotateZ(5deg) scale(0.84);
     z-index: 3;
 }
 
@@ -811,10 +840,10 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 .project-slide-image {
-    height: 250px;
+    height: 280px;
     border-radius: 4px;
     overflow: hidden;
-    background: var(--navy);
+    background: var(--proj-band);
     flex-shrink: 0;
 }
 
@@ -836,7 +865,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 400;
     font-size: 22px;
-    color: var(--light-blue);
+    color: var(--proj-card);
     text-align: center;
     padding: 16px;
 }
@@ -856,36 +885,39 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     font-weight: 400;
     font-size: 26px;
     letter-spacing: 1px;
-    color: var(--navy);
+    color: var(--proj-ink);
     line-height: 1;
 }
 
 .project-info p {
     font-size: 13px;
     font-weight: 400;
-    color: var(--navy);
+    color: var(--proj-ink);
     line-height: 1.45;
 }
 
 .project-slide .project-skills {
-    display: block;
-    margin-top: 0;
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: var(--navy);
-    font-weight: 700;
+    color: var(--proj-ink);
+    font-weight: 600;
 }
 
 .project-slide .skill-tag {
-    border: none;
-    padding: 0;
-    font-size: inherit;
-    letter-spacing: inherit;
-    color: inherit;
+    border: 1px solid color-mix(in srgb, var(--proj-ink) 35%, transparent);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    color: var(--proj-ink);
 }
 
-.project-slide .skill-tag:not(:last-child)::after { content: ', '; }
+.project-slide .skill-tag:not(:last-child)::after { content: none; }
 
 .carousel-status {
     grid-column: 2;
@@ -898,7 +930,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--silver);
+    color: var(--proj-soft);
 }
 
 .project-skills {
@@ -928,7 +960,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
     .projects-carousel-stage {
         grid-column: 1 / -1;
-        height: 520px;
+        height: 560px;
     }
 
     .project-slide[data-pos="left"],
@@ -948,8 +980,12 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 @media (max-width: 520px) {
     .project-filters { gap: 16px; }
     .filter-btn { font-size: 1.15rem; }
-    .projects-carousel-stage { height: 480px; }
-    .project-slide { height: 460px; }
+    .projects-carousel-stage { height: 520px; }
+    .project-slide {
+        width: min(480px, 92vw);
+        height: 500px;
+    }
+    .project-slide-image { height: 220px; }
 }
 
 
