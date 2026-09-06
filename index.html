@@ -16,7 +16,7 @@
         HOW TO ADD A NEW PROJECT LATER:
         1. Duplicate one <article class="project-slide"> in the carousel below.
         2. Change data-modal to a new id, e.g. "modal-newname".
-        3. Set data-categories to one or more of: product   ml   graphic
+        3. Set data-categories to one or more of: product   ml   graphic   consulting
            (a project can have more than one, separated by a space)
         4. Duplicate a <div class="proj-modal"> and give it the same id.
         5. Put images in img/newname/ and update the <img src=""> paths.
@@ -30,7 +30,6 @@
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#consulting">Consulting</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><button id="mode-toggle" type="button">night</button></li>
@@ -142,10 +141,11 @@
 
         <!-- data-filter must match words in each slide's data-categories -->
         <div class="project-filters" role="tablist" aria-label="Project categories">
-            <button type="button" class="filter-btn is-active" data-filter="all">all</button>
-            <button type="button" class="filter-btn" data-filter="product">design</button>
-            <button type="button" class="filter-btn" data-filter="ml">data analysis</button>
-            <button type="button" class="filter-btn" data-filter="graphic">communications</button>
+            <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+            <button type="button" class="filter-btn" data-filter="product">Product Design</button>
+            <button type="button" class="filter-btn" data-filter="ml">ML &amp; Data Analytics</button>
+            <button type="button" class="filter-btn" data-filter="graphic">Graphic Design</button>
+            <button type="button" class="filter-btn" data-filter="consulting">Consulting</button>
         </div>
 
         <!-- CAROUSEL
@@ -178,12 +178,12 @@
                 </article>
 
                 <!-- SLIDE: CityWise / Visic  |  Product Design + ML -->
-                <article class="project-slide" data-modal="modal-visic" data-categories="product ml">
+                <article class="project-slide" data-modal="modal-visic" data-categories="consulting">
                     <div class="project-slide-image">
                         <img src="img/projects/project4.png" alt="CityWise / Visic">
                     </div>
                     <div class="project-info">
-                        <p class="project-tag">Product Design  ·  ML &amp; Data</p>
+                        <p class="project-tag">Consulting</p>
                         <h3>CityWise / Visic</h3>
                         <p>UX research, information architecture, map-based UI, and live product — with a data aggregation angle.</p>
                         <div class="project-skills">
@@ -221,10 +221,10 @@
                      Cover image: drop a file at img/memesocial/cover.png then swap the placeholder for:
                      <img src="img/memesocial/cover.png" alt="MemeSocial">
                      and delete class="placeholder" plus the data-label. -->
-                <article class="project-slide" data-modal="modal-memesocial" data-categories="product ml">
+                <article class="project-slide" data-modal="modal-memesocial" data-categories="product">
                     <div class="project-slide-image placeholder" data-label="MemeSocial"></div>
                     <div class="project-info">
-                        <p class="project-tag">Product Design  ·  ML &amp; Data</p>
+                        <p class="project-tag">Product Design</p>
                         <h3>MemeSocial</h3>
                         <p>A product + UX experience designed and built end to end.</p>
                         <div class="project-skills">
@@ -348,54 +348,20 @@
                     </div>
                 </article>
 
-                <!-- SLIDE: Masjid Al Mumin posters  |  Graphic Design
-                     Cover image: img/masjid/cover.png -->
-                <article class="project-slide" data-modal="modal-masjid" data-categories="graphic">
-                    <div class="project-slide-image placeholder" data-label="Masjid Al Mumin"></div>
+                <!-- SLIDE: Freelance Event Flyers  |  Graphic Design -->
+                <article class="project-slide" data-modal="modal-flyers" data-categories="graphic">
+                    <div class="project-slide-image">
+                        <img src="img/gogo/8.png" alt="Freelance Event Flyers">
+                    </div>
                     <div class="project-info">
                         <p class="project-tag">Graphic Design</p>
-                        <h3>Masjid Al Mumin Posters</h3>
-                        <p>Poster series designed for Masjid Al Mumin.</p>
+                        <h3>Freelance Event Flyers</h3>
+                        <p>Poster and flyer work for events — Masjid Al Mumin, SHIFT SC, and PresQ Studios.</p>
                         <div class="project-skills">
                             <span class="skill-tag">Poster Design</span>
                             <span class="skill-tag">Typography</span>
                             <span class="skill-tag">Photoshop</span>
-                        </div>
-                        <p class="slide-hint">Click to view project</p>
-                    </div>
-                </article>
-
-                <!-- SLIDE: SHIFT SC infographics  |  Graphic Design
-                     Cover image: img/shift/cover.png -->
-                <article class="project-slide" data-modal="modal-shift" data-categories="graphic">
-                    <div class="project-slide-image placeholder" data-label="SHIFT SC"></div>
-                    <div class="project-info">
-                        <p class="project-tag">Graphic Design</p>
-                        <h3>SHIFT SC Infographics</h3>
-                        <p>Infographic design for SHIFT SC.</p>
-                        <div class="project-skills">
-                            <span class="skill-tag">Infographics</span>
-                            <span class="skill-tag">Graphic Design</span>
                             <span class="skill-tag">Layout</span>
-                        </div>
-                        <p class="slide-hint">Click to view project</p>
-                    </div>
-                </article>
-
-                <!-- SLIDE: PresQ Studios posters  |  Graphic Design -->
-                <article class="project-slide" data-modal="modal-presq-posters" data-categories="graphic">
-                    <div class="project-slide-image">
-                        <img src="img/gogo/8.png" alt="PresQ Studios posters">
-                    </div>
-                    <div class="project-info">
-                        <p class="project-tag">Graphic Design</p>
-                        <h3>PresQ Studios Posters</h3>
-                        <p>Advertising posters, logo, and campaign graphics for the GOGO brand.</p>
-                        <div class="project-skills">
-                            <span class="skill-tag">Poster Design</span>
-                            <span class="skill-tag">Branding</span>
-                            <span class="skill-tag">Photoshop</span>
-                            <span class="skill-tag">Marketing</span>
                         </div>
                         <p class="slide-hint">Click to view project</p>
                     </div>
@@ -403,12 +369,12 @@
 
                 <!-- SLIDE: Leimert Park Urban Plan  |  shown in All
                      Not in the three filter categories — remove this article to hide it. -->
-                <article class="project-slide" data-modal="modal-urbanplan" data-categories="all-only">
+                <article class="project-slide" data-modal="modal-urbanplan" data-categories="consulting">
                     <div class="project-slide-image">
                         <img src="img/projects/project3.png" alt="Leimert Park Urban Plan">
                     </div>
                     <div class="project-info">
-                        <p class="project-tag">Urban Design</p>
+                        <p class="project-tag">Consulting</p>
                         <h3>Leimert Park Urban Plan</h3>
                         <p>Restoring Leimert Park's role as a Black cultural hub.</p>
                         <div class="project-skills">
@@ -422,7 +388,7 @@
                 </article>
 
                 <!-- SLIDE: Eth-X  |  ML (existing personal project) -->
-                <article class="project-slide" data-modal="modal-ethx" data-categories="ml">
+                <article class="project-slide" data-modal="modal-ethx" data-categories="all-only">
                     <div class="project-slide-image">
                         <img src="img/projects/project8.png" alt="Eth-X">
                     </div>
@@ -437,6 +403,51 @@
                             <span class="skill-tag">Prototyping</span>
                         </div>
                         <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Product & UX Consulting -->
+                <article class="project-slide" data-modal="modal-consult-product" data-categories="consulting">
+                    <div class="project-slide-image placeholder" data-label="Product & UX"></div>
+                    <div class="project-info">
+                        <p class="project-tag">Consulting</p>
+                        <h3>Product &amp; UX</h3>
+                        <p>User research, information architecture, and interface design for live products and prototypes.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">IA</span>
+                            <span class="skill-tag">UI Design</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Research & Data Consulting -->
+                <article class="project-slide" data-modal="modal-consult-data" data-categories="consulting">
+                    <div class="project-slide-image placeholder" data-label="Research & Data"></div>
+                    <div class="project-info">
+                        <p class="project-tag">Consulting</p>
+                        <h3>Research &amp; Data</h3>
+                        <p>Evaluation frameworks, geospatial analysis, and visualization teams can act on.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Research</span>
+                            <span class="skill-tag">Data Viz</span>
+                            <span class="skill-tag">Strategy</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SLIDE: Brand & Communications Consulting -->
+                <article class="project-slide" data-modal="modal-consult-brand" data-categories="consulting">
+                    <div class="project-slide-image placeholder" data-label="Brand & Comms"></div>
+                    <div class="project-info">
+                        <p class="project-tag">Consulting</p>
+                        <h3>Brand &amp; Communications</h3>
+                        <p>Identity systems, posters, campaigns, and youth-facing communications.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Brand</span>
+                            <span class="skill-tag">Campaigns</span>
+                            <span class="skill-tag">Print</span>
+                        </div>
                     </div>
                 </article>
 
@@ -1175,6 +1186,121 @@
     </div>
 
 
+    <!-- MODAL: Freelance Event Flyers -->
+    <div class="proj-modal" id="modal-flyers">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Graphic Design</span>
+                    <span>Freelance</span>
+                    <span>Print</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Freelance Event Flyers</h2>
+                <p class="proj-modal-sub">Poster and flyer work for events — Masjid Al Mumin, SHIFT SC, and PresQ Studios.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">A run of freelance event flyers and posters: community work for Masjid Al Mumin, infographic-led pieces for SHIFT SC, and campaign posters for PresQ Studios. Drop more finished files into img/masjid/, img/shift/, and img/presq-posters/ anytime.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery">
+                        <div class="proj-gallery-track" id="track-flyers">
+                            <img src="img/gogo/7.png" alt="">
+                            <img src="img/gogo/8.png" alt="">
+                            <img src="img/gogo/9.png" alt="">
+                            <img src="img/moca/1.png" alt="">
+                            <img src="img/moca/2.png" alt="">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-flyers" data-total="5">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-flyers">1 / 5</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-flyers" data-total="5">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Poster Design</span>
+                        <span class="skill-tag">Typography</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Layout</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Product & UX Consulting -->
+    <div class="proj-modal" id="modal-consult-product">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Consulting</span>
+                    <span>Product &amp; UX</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Product &amp; UX</h2>
+                <p class="proj-modal-sub">Short, focused product and UX engagements.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">User research, information architecture, and interface design for products that have to work in the real world — apps, sites, and physical prototypes. Related work includes Mattel, CityWise, Furniture, and MemeSocial.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Research & Data Consulting -->
+    <div class="proj-modal" id="modal-consult-data">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Consulting</span>
+                    <span>Research &amp; Data</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Research &amp; Data</h2>
+                <p class="proj-modal-sub">Evaluation, geospatial analysis, and visualization.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Evaluation frameworks, geospatial analysis, and visualization that turn messy public or product data into something a team can actually act on. Related work includes Arkadium, Shade Gap, CityWise, and Pneumonia CNN.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Brand & Communications Consulting -->
+    <div class="proj-modal" id="modal-consult-brand">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>Consulting</span>
+                    <span>Brand &amp; Communications</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Brand &amp; Communications</h2>
+                <p class="proj-modal-sub">Identity, campaigns, and youth-facing communications.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">Identity systems, posters, campaigns, and youth-facing communications — from first sketch through print, merch, and social. Related work includes MOCA, Estera, PresQ, and Masjid Al Mumin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- ===================== 4. SKILLS ===================== -->
     <section id="skills" class="skills-section">
         <p class="skills-header">Skills</p>
@@ -1198,43 +1324,57 @@
             <span class="skill-name">Machine Learning</span>
             <span class="skill-desc">Applying AI and data-driven methods to solve real design and product problems.</span>
         </div>
+
+        <!-- Toolbox — logos of tools I use. Files live in img/tools/. -->
+        <div class="toolbox">
+            <p class="toolbox-header">Toolbox</p>
+            <ul class="toolbox-grid">
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/adobe.svg')"></span>
+                    <span class="toolbox-name">Adobe Creative Suite</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/figma.svg')"></span>
+                    <span class="toolbox-name">Figma</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/canva.svg')"></span>
+                    <span class="toolbox-name">Canva</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/html5.svg')"></span>
+                    <span class="toolbox-name">HTML</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/css3.svg')"></span>
+                    <span class="toolbox-name">CSS</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/r.svg')"></span>
+                    <span class="toolbox-name">R</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/python.svg')"></span>
+                    <span class="toolbox-name">Python</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/microsoftexcel.svg')"></span>
+                    <span class="toolbox-name">Excel</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/googlecloud.svg')"></span>
+                    <span class="toolbox-name">Google Cloud</span>
+                </li>
+                <li class="toolbox-item">
+                    <span class="toolbox-logo" style="--icon: url('img/tools/framer.svg')"></span>
+                    <span class="toolbox-name">Framer</span>
+                </li>
+            </ul>
+        </div>
     </section>
 
 
-    <!-- ===================== 5. CONSULTING ===================== -->
-    <section id="consulting">
-        <div class="section-intro">
-            <p class="section-kicker">How I work with teams</p>
-            <h2>Consulting</h2>
-            <p>Short, focused engagements — from research sprints to live product and brand systems.</p>
-        </div>
-
-        <div class="consult-grid">
-            <article class="consult-card">
-                <p class="consult-num">01</p>
-                <h3>Product &amp; UX</h3>
-                <p>User research, information architecture, and interface design for products that have to work in the real world — apps, sites, and physical prototypes.</p>
-                <p class="consult-meta">Mattel · CityWise · Furniture · MemeSocial</p>
-            </article>
-
-            <article class="consult-card">
-                <p class="consult-num">02</p>
-                <h3>Research &amp; Data</h3>
-                <p>Evaluation frameworks, geospatial analysis, and visualization that turn messy public or product data into something a team can actually act on.</p>
-                <p class="consult-meta">Arkadium · Shade Gap · CityWise · Pneumonia CNN</p>
-            </article>
-
-            <article class="consult-card">
-                <p class="consult-num">03</p>
-                <h3>Brand &amp; Communications</h3>
-                <p>Identity systems, posters, campaigns, and youth-facing communications — from first sketch through print, merch, and social.</p>
-                <p class="consult-meta">MOCA · Estera · PresQ · Masjid Al Mumin</p>
-            </article>
-        </div>
-    </section>
-
-
-    <!-- ===================== 6. ABOUT ===================== -->
+    <!-- ===================== 5. ABOUT ===================== -->
     <section id="about">
 
         <div class="about-layout">

@@ -80,8 +80,7 @@ onScroll();
 //   left / right = tilted side cards (click to rotate)
 //   hidden = not shown
 //
-// Filter buttons use data-filter: all | product | ml | graphic
-// (labelled on the page as all / design / data analysis / communications)
+// Filter buttons use data-filter: all | product | ml | graphic | consulting
 
 const filterBtns = document.querySelectorAll('.filter-btn');
 const slides = document.querySelectorAll('.project-slide');

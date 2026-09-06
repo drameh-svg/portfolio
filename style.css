@@ -8,58 +8,57 @@
    6. Clients marquee
    7. Projects coverflow
    8. Project modals
-   9. Skills
-  10. Consulting
-  11. About
-  12. Contact
-  13. Footer
+   9. Skills + toolbox
+  10. About
+  11. Contact
+  12. Footer
 ============================================ */
 
 
 /* ============================================
    1. FONTS
-   Outfit ≈ Futura (Spencer Gabor headlines)
-   Inter  = body (Spencer Gabor)
+   Bebas Neue = headlines
+   DM Sans    = body
 ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
 
 /* ============================================
    2. COLOR VARIABLES
 ============================================ */
 :root {
-    --navy:       #4a1530;
+    --navy:       #65153a;
     --blue:       #6b1a3c;
     --mid-blue:   #a42e61;
     --light-blue: #b0cd76;
     --silver:     #c5dfa6;
-    --olive:      #b8c56a;
-    --off-white:  #d7e4b0;
-    --white:      #f4f7e8;
+    --olive:      #b0cd76;
+    --off-white:  #c5dfa6;
+    --white:      #c5dfa6;
     --black:      #6f0b2e;
-    --text:       #4a1530;
-    --muted:      #7a2a4e;
-    --bg:         #d7e4b0;
-    --border:     rgba(74, 21, 48, 0.14);
+    --text:       #65153a;
+    --muted:      #83194e;
+    --bg:         var(--off-white);
+    --border:     rgba(24, 40, 10, 0.15);
     --radius:     999px;
-    --radius-lg:  36px;
-    --shadow:     0 12px 40px rgba(74, 21, 48, 0.12);
+    --radius-lg:  16px;
+    --shadow:     0 12px 40px rgba(101, 21, 58, 0.12);
 }
 
 body.dark {
-    --navy:       #d7e4b0;
+    --navy:       #b0cd76;
     --blue:       #c5dfa6;
     --mid-blue:   #c5dfa6;
-    --light-blue: #4a1530;
+    --light-blue: #65153a;
     --silver:     #6b1a3c;
-    --olive:      #4a1530;
-    --off-white:  #3a1026;
-    --white:      #f4f7e8;
+    --olive:      #65153a;
+    --off-white:  #a42e61;
+    --white:      #c5dfa6;
     --black:      #6f0b2e;
-    --text:       #d7e4b0;
-    --muted:      #b0cd76;
-    --bg:         #2a0c1b;
-    --border:     rgba(215, 228, 176, 0.18);
+    --text:       #b0cd76;
+    --muted:      #8bc092;
+    --bg:         var(--off-white);
+    --border:     rgba(24, 40, 10, 0.15);
 }
 
 
@@ -75,7 +74,7 @@ body.dark {
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     background-color: var(--bg);
     color: var(--text);
     transition: background-color 0.4s ease, color 0.4s ease;
@@ -107,7 +106,7 @@ nav {
 }
 
 .nav-logo {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 18px;
     font-weight: 800;
     letter-spacing: 2px;
@@ -132,7 +131,7 @@ nav {
 .nav-links a {
     text-decoration: none;
     color: var(--muted);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
     letter-spacing: 1.6px;
     text-transform: uppercase;
@@ -152,7 +151,7 @@ nav {
     background: none;
     border: 1px solid var(--border);
     color: var(--muted);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -185,7 +184,7 @@ nav {
 
 .hero-mark {
     position: absolute;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 22px;
     color: var(--muted);
     opacity: 0.35;
@@ -197,7 +196,7 @@ nav {
 .hero-mark:nth-child(4) { right: 8%; bottom: 16%; }
 
 .hero-eyebrow {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -206,7 +205,7 @@ nav {
 }
 
 .hero h1 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: clamp(4.4rem, 14vw, 10.5rem);
     line-height: 0.86;
@@ -224,7 +223,7 @@ nav {
 
 .hero-craft {
     margin: 28px 0 36px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(1.6rem, 3.4vw, 2.4rem);
     font-weight: 700;
     color: var(--text);
@@ -272,7 +271,7 @@ nav {
     padding: 16px 32px;
     background-color: var(--text);
     color: var(--bg);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -308,7 +307,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 /* ============================================
-   9. SKILLS STRIP
+   9. SKILLS STRIP + TOOLBOX
 ============================================ */
 .skills-section {
     border-bottom: 1px solid var(--border);
@@ -316,7 +315,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .skills-header {
     padding: 32px 60px 16px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -348,7 +347,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 .skill-item:hover::before { transform: scaleX(1); }
 
 .skill-name {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: clamp(38px, 5.5vw, 72px);
     letter-spacing: 2px;
@@ -380,90 +379,55 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     color: var(--silver);
 }
 
-
-/* ============================================
-   CONSULTING
-============================================ */
-#consulting {
-    padding: 88px 48px;
+.toolbox {
+    padding: 40px 60px 56px;
+    border-top: 1px solid var(--border);
 }
 
-.section-intro {
-    max-width: 640px;
-    margin-bottom: 40px;
-}
-
-.section-kicker {
-    font-family: 'Outfit', sans-serif;
+.toolbox-header {
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
-    letter-spacing: 0.28em;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 12px;
+    margin-bottom: 28px;
 }
 
-.section-intro h2 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: clamp(48px, 8vw, 92px);
-    letter-spacing: -0.04em;
-    line-height: 0.9;
-    color: var(--text);
-    margin-bottom: 16px;
-}
-
-.section-intro p {
-    color: var(--muted);
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-.consult-grid {
+.toolbox-grid {
+    list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px 16px;
 }
 
-.consult-card {
-    background: color-mix(in srgb, var(--white) 45%, transparent);
-    border-radius: var(--radius-lg);
-    padding: 32px 28px;
-    box-shadow: var(--shadow);
+.toolbox-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
 }
 
-.consult-num {
-    font-family: 'Outfit', sans-serif;
+.toolbox-logo {
+    display: block;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background-color: var(--navy);
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+}
+
+.toolbox-name {
     font-size: 12px;
-    letter-spacing: 0.2em;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     color: var(--muted);
-    margin-bottom: 16px;
-}
-
-.consult-card h3 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 28px;
-    letter-spacing: -0.03em;
-    margin-bottom: 12px;
-}
-
-.consult-card p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.65;
-}
-
-.consult-meta {
-    margin-top: 20px;
-    font-size: 11px !important;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text) !important;
+    line-height: 1.3;
 }
 
 @media (max-width: 800px) {
-    #consulting { padding: 56px 20px; }
-    .consult-grid { grid-template-columns: 1fr; }
+    .toolbox-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 
@@ -477,7 +441,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .clients-label {
     padding: 0 48px 16px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -526,23 +490,23 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 /* ============================================
    7. PROJECTS COVERFLOW
-   Plum band + olive rounded cards.
+   Navy band + olive cards.
    Side cards tilt; center card is clickable.
 ============================================ */
 #projects {
-    background: #4a1530;
-    color: #f4f7e8;
+    background: var(--navy);
+    color: var(--silver);
     padding: 48px 24px 72px;
     overflow: hidden;
 }
 
 .projects-kicker {
     text-align: center;
-    font-family: 'Outfit', sans-serif;
-    font-size: 11px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #c5dfa6;
+    color: var(--silver);
     margin-bottom: 14px;
 }
 
@@ -550,26 +514,24 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 28px;
+    gap: 18px 24px;
     padding: 0 20px 36px;
 }
 
 .filter-btn {
     background: none;
     border: none;
-    color: #a8b160;
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(1.4rem, 3vw, 2.1rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    text-transform: lowercase;
+    color: var(--light-blue);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.3rem, 2.6vw, 2rem);
+    letter-spacing: 1px;
     padding: 0;
     cursor: pointer;
 }
 
 .filter-btn:hover,
 .filter-btn.is-active {
-    color: #fff;
+    color: var(--white);
     background: none;
     text-decoration: underline;
     text-underline-offset: 10px;
@@ -586,13 +548,13 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 .carousel-arrow {
-    background: color-mix(in srgb, #f4f7e8 12%, transparent);
+    background: color-mix(in srgb, var(--silver) 18%, transparent);
     border: none;
-    color: #f4f7e8;
+    color: var(--silver);
     font-size: 22px;
     width: 52px;
     height: 52px;
-    border-radius: 50%;
+    border-radius: 8px;
     cursor: pointer;
     justify-self: center;
     transition: transform 0.25s ease, background 0.25s ease;
@@ -600,8 +562,8 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .carousel-arrow:hover {
     transform: scale(1.08);
-    background: #b8c56a;
-    color: #4a1530;
+    background: var(--light-blue);
+    color: var(--navy);
 }
 
 .projects-carousel-stage {
@@ -618,8 +580,8 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     margin: auto;
     width: min(340px, 78vw);
     height: 500px;
-    background: #b8c56a;
-    border-radius: 48px;
+    background: var(--light-blue);
+    border-radius: 6px;
     padding: 16px 16px 22px;
     overflow: hidden;
     display: flex;
@@ -656,9 +618,9 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .project-slide-image {
     height: 250px;
-    border-radius: 32px;
+    border-radius: 4px;
     overflow: hidden;
-    background: #8ea04c;
+    background: var(--navy);
     flex-shrink: 0;
 }
 
@@ -677,10 +639,10 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .project-slide-image.placeholder::after {
     content: attr(data-label);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: 28px;
-    color: #4a1530;
+    color: var(--navy);
     text-align: center;
     padding: 16px;
 }
@@ -696,7 +658,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 .slide-hint { display: none; }
 
 .project-info h3 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: 28px;
     letter-spacing: -0.03em;
@@ -707,7 +669,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 .project-info p {
     font-size: 13px;
     font-weight: 400;
-    color: #4a1530;
+    color: var(--navy);
     line-height: 1.45;
 }
 
@@ -717,7 +679,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #4a1530;
+    color: var(--navy);
     font-weight: 700;
 }
 
@@ -738,11 +700,11 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 #carousel-counter {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #c5dfa6;
+    color: var(--silver);
 }
 
 .project-skills {
@@ -893,7 +855,7 @@ body.modal-open { overflow: hidden; }
 }
  
 .proj-modal-title {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: clamp(52px, 6vw, 84px);
     letter-spacing: -0.04em;
@@ -1027,7 +989,7 @@ body.modal-open { overflow: hidden; }
 }
 
 .about-text h1 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: clamp(60px, 8vw, 110px);
     letter-spacing: -0.04em;
@@ -1163,7 +1125,7 @@ body.modal-open { overflow: hidden; }
 }
 
 .contact-intro h1 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: clamp(60px, 8vw, 110px);
     letter-spacing: -0.04em;
@@ -1205,7 +1167,7 @@ body.modal-open { overflow: hidden; }
 
 .form-group input,
 .form-group textarea {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 16px;
     font-weight: 300;
     padding: 14px 0;
@@ -1230,7 +1192,7 @@ body.modal-open { overflow: hidden; }
     padding: 14px 32px;
     background-color: var(--text);
     color: var(--bg);
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -1278,7 +1240,8 @@ footer {
     nav { padding: 16px 24px; }
 
     .skills-header,
-    .skill-item { padding-left: 24px; padding-right: 24px; }
+    .skill-item,
+    .toolbox { padding-left: 24px; padding-right: 24px; }
 
     .about-layout,
     .contact-layout { grid-template-columns: 1fr; }
@@ -1331,6 +1294,8 @@ footer {
 
     .skill-item { padding: 20px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
     .skill-desc { text-align: left; }
+    .toolbox { padding: 32px 16px 44px; }
+    .toolbox-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .about-text,
     .contact-intro,
     .contact-form-wrap { padding: 40px 16px; }
