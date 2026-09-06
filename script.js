@@ -10,6 +10,7 @@
 // 5. Project modals
 // 6. Modal gallery arrows
 // 7. Contact form
+// 8. Letter wave (name hover)
 // ============================================
 
 
@@ -167,6 +168,41 @@ document.addEventListener('keydown', function (e) {
 });
 
 renderCarousel();
+
+
+// ── 8. LETTER WAVE ────────────────────────
+// Hovered letter lifts; neighbors lift a little
+// so the motion rolls as the cursor glides.
+
+function bindLetterWave(root) {
+    const letters = [...root.querySelectorAll('.hero-letter')];
+    if (!letters.length) return;
+
+    function reset() {
+        letters.forEach(el => { el.style.transform = 'translateY(0)'; });
+    }
+
+    function liftFromX(clientX) {
+        const centers = letters.map(el => {
+            const r = el.getBoundingClientRect();
+            return r.left + r.width / 2;
+        });
+        const unit = Math.max(letters[0].offsetWidth, 1);
+
+        letters.forEach((el, i) => {
+            const dist = Math.abs(clientX - centers[i]) / unit;
+            const t = Math.max(0, 1 - dist / 2.5);
+            el.style.transform = 'translateY(' + (-0.22 * t * t) + 'em)';
+        });
+    }
+
+    root.addEventListener('mousemove', function (e) {
+        liftFromX(e.clientX);
+    });
+    root.addEventListener('mouseleave', reset);
+}
+
+document.querySelectorAll('.hero-line, .nav-logo').forEach(bindLetterWave);
 
 
 // ── 5. PROJECT MODALS ─────────────────────

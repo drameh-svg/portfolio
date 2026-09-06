@@ -17,10 +17,10 @@
 
 /* ============================================
    1. FONTS
-   Geist      = body  (Johny Vino uses Geist / Geist Mono)
-   Geist Mono = headlines, name, labels
+   Space Grotesk = headers, name, nav, filters (bold, readable)
+   Geist         = body
 ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 
 /* ============================================
@@ -43,6 +43,8 @@
     --radius:     999px;
     --radius-lg:  16px;
     --shadow:     0 12px 40px rgba(0, 0, 0, 0.08);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body:    'Geist', system-ui, sans-serif;
 }
 
 body.dark {
@@ -74,12 +76,84 @@ body.dark {
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Geist', system-ui, sans-serif;
-    background-color: var(--bg);
+    font-family: var(--font-body);
+    background-color: #ffffff;
     color: var(--text);
     transition: background-color 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
 }
+
+body.dark {
+    background-color: #000000;
+}
+
+/* Dot grid + large geometry sit behind every section */
+.site-pattern {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(17, 17, 17, 0.08) 1.1px, transparent 1.2px);
+    background-size: 26px 26px;
+}
+
+body.dark .site-pattern {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1.1px, transparent 1.2px);
+}
+
+.bg-shapes {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-shapes .shape {
+    position: absolute;
+    border-color: rgba(17, 17, 17, 0.14);
+}
+
+body.dark .bg-shapes .shape { border-color: rgba(255, 255, 255, 0.16); }
+
+.bg-shapes .ring {
+    width: min(46vw, 520px);
+    height: min(46vw, 520px);
+    border: 1.5px solid;
+    border-radius: 50%;
+    top: -8%;
+    right: -6%;
+}
+
+.bg-shapes .ring-2 {
+    width: min(28vw, 280px);
+    height: min(28vw, 280px);
+    border: 1.5px solid;
+    border-radius: 50%;
+    bottom: 18%;
+    left: -4%;
+}
+
+.bg-shapes .square {
+    width: 160px;
+    height: 160px;
+    border: 1.5px solid;
+    transform: rotate(21deg);
+    top: 58%;
+    right: 7%;
+}
+
+.bg-shapes .slash {
+    width: 1px;
+    height: 42vh;
+    background: rgba(17, 17, 17, 0.1);
+    top: 22%;
+    left: 9%;
+    transform: rotate(28deg);
+    border: none;
+}
+
+body.dark .bg-shapes .slash { background: rgba(255, 255, 255, 0.12); }
 
 
 /* all sections sit above the halftone layer */
@@ -106,9 +180,9 @@ nav {
 }
 
 .nav-logo {
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-size: 16px;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
     letter-spacing: 0;
     text-transform: uppercase;
     color: var(--text);
@@ -136,9 +210,9 @@ nav {
 .nav-links a {
     text-decoration: none;
     color: var(--muted);
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-size: 11px;
-    letter-spacing: 1.6px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     font-weight: 600;
     padding: 8px 14px;
@@ -156,7 +230,7 @@ nav {
     background: none;
     border: 1px solid var(--border);
     color: var(--muted);
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -189,7 +263,7 @@ nav {
 
 .hero-mark {
     position: absolute;
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 22px;
     color: var(--muted);
     opacity: 0.35;
@@ -201,7 +275,7 @@ nav {
 .hero-mark:nth-child(4) { right: 8%; bottom: 16%; }
 
 .hero-eyebrow {
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -211,30 +285,28 @@ nav {
 
 .hero h1,
 .hero-name {
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-weight: 500;
-    font-size: clamp(3.2rem, 11vw, 8.2rem);
-    line-height: 1.02;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(3.4rem, 11vw, 8.4rem);
+    line-height: 1.08;
     letter-spacing: 0;
     color: var(--text);
-    text-transform: uppercase;
+    text-transform: none;
+    overflow: visible;
 }
 
 .hero-line {
     display: flex;
     justify-content: center;
-    gap: 0.18em;
+    gap: 0.04em;
+    padding: 0.08em 0;
 }
 
 .hero-letter {
     display: inline-block;
     cursor: default;
     will-change: transform;
-    transition: transform 0.32s cubic-bezier(0.22, 1.7, 0.36, 1);
-}
-
-.hero-letter:hover {
-    transform: translateY(-0.28em);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-role {
@@ -247,11 +319,10 @@ nav {
 
 .hero-craft {
     margin: 28px 0 36px;
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(1.6rem, 3.4vw, 2.4rem);
     font-weight: 700;
     color: var(--text);
-    display: flex;
     gap: 0.4em;
     align-items: center;
     justify-content: center;
@@ -295,7 +366,7 @@ nav {
     padding: 16px 32px;
     background-color: var(--text);
     color: var(--bg);
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -341,7 +412,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .skills-header {
     padding: 32px 60px 16px;
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -373,10 +444,10 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 .skill-item:hover::before { transform: scaleX(1); }
 
 .skill-name {
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
     font-size: clamp(38px, 5.5vw, 64px);
-    letter-spacing: 0.04em;
+    letter-spacing: -0.02em;
     color: var(--text);
     position: relative;
     z-index: 1;
@@ -411,7 +482,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 .toolbox-kicker {
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -460,7 +531,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 .toolbox-header {
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -544,7 +615,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .clients-label {
     padding: 0 48px 16px;
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -593,23 +664,22 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 /* ============================================
    7. PROJECTS COVERFLOW
-   Black band + light cards.
-   Side cards tilt; center card is clickable.
+   White page, light cards, springy coverflow.
 ============================================ */
 #projects {
-    background: var(--text);
-    color: var(--bg);
+    background: transparent;
+    color: var(--text);
     padding: 48px 24px 72px;
     overflow: hidden;
 }
 
 .projects-kicker {
     text-align: center;
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-size: 14px;
-    letter-spacing: 0.28em;
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--bg);
+    color: var(--muted);
     margin-bottom: 14px;
 }
 
@@ -617,28 +687,38 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 18px 24px;
+    gap: 8px 28px;
     padding: 0 20px 36px;
 }
 
 .filter-btn {
     background: none;
     border: none;
-    color: color-mix(in srgb, var(--bg) 55%, transparent);
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-size: clamp(1.3rem, 2.6vw, 2rem);
-    letter-spacing: 1px;
-    padding: 0;
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 6px 0;
     cursor: pointer;
+    position: relative;
 }
 
 .filter-btn:hover,
 .filter-btn.is-active {
-    color: var(--bg);
+    color: var(--text);
     background: none;
-    text-decoration: underline;
-    text-underline-offset: 10px;
-    text-decoration-thickness: 3px;
+    text-decoration: none;
+}
+
+.filter-btn.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--text);
 }
 
 .projects-carousel {
@@ -651,28 +731,32 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 .carousel-arrow {
-    background: color-mix(in srgb, var(--bg) 18%, transparent);
-    border: none;
-    color: var(--bg);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
     font-size: 22px;
     width: 52px;
     height: 52px;
     border-radius: 8px;
     cursor: pointer;
     justify-self: center;
-    transition: transform 0.25s ease, background 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.22, 1.4, 0.36, 1), background 0.25s ease, color 0.25s ease;
 }
 
 .carousel-arrow:hover {
-    transform: scale(1.08);
-    background: var(--bg);
-    color: var(--text);
+    transform: scale(1.1) rotate(-8deg);
+    background: var(--text);
+    color: var(--bg);
+}
+
+.carousel-arrow.next:hover {
+    transform: scale(1.1) rotate(8deg);
 }
 
 .projects-carousel-stage {
     position: relative;
     height: 560px;
-    perspective: 1400px;
+    perspective: 1600px;
     transform-style: preserve-3d;
     overflow: visible;
 }
@@ -683,7 +767,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     margin: auto;
     width: min(340px, 78vw);
     height: 500px;
-    background: var(--bg);
+    background: #f4f4f4;
     border-radius: 6px;
     padding: 16px 16px 22px;
     overflow: hidden;
@@ -692,31 +776,43 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
     cursor: pointer;
     opacity: 0;
     pointer-events: none;
-    transform: scale(0.72);
-    transition: transform 0.5s cubic-bezier(.22,1,.36,1), opacity 0.4s ease;
-    box-shadow: 0 24px 50px rgba(0,0,0,0.28);
+    transform: translateY(48px) scale(0.78) rotateZ(8deg);
+    transition:
+        transform 0.72s cubic-bezier(0.22, 1.35, 0.36, 1),
+        opacity 0.42s ease;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
     z-index: 0;
 }
+
+body.dark .project-slide { background: #1a1a1a; }
 
 .project-slide[data-pos="center"] {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(0) rotateY(0deg) scale(1);
+    transform: translateX(0) translateY(-8px) rotateY(0deg) rotateZ(0deg) scale(1);
     z-index: 5;
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.16);
 }
 
 .project-slide[data-pos="left"] {
     opacity: 0.95;
     pointer-events: auto;
-    transform: translateX(-210px) rotateY(32deg) scale(0.86);
+    transform: translateX(-236px) translateY(32px) rotateY(34deg) rotateZ(-5deg) scale(0.84);
     z-index: 3;
 }
 
 .project-slide[data-pos="right"] {
     opacity: 0.95;
     pointer-events: auto;
-    transform: translateX(210px) rotateY(-32deg) scale(0.86);
+    transform: translateX(236px) translateY(32px) rotateY(-34deg) rotateZ(5deg) scale(0.84);
     z-index: 3;
+}
+
+.project-slide[data-pos="hidden"] {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(56px) scale(0.72) rotateZ(10deg);
+    z-index: 0;
 }
 
 .project-slide-image {
@@ -742,7 +838,7 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 
 .project-slide-image.placeholder::after {
     content: attr(data-label);
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 22px;
     color: #fff;
@@ -761,10 +857,10 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 .slide-hint { display: none; }
 
 .project-info h3 {
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-weight: 600;
-    font-size: 22px;
-    letter-spacing: -0.03em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.02em;
     color: var(--text);
     line-height: 1;
 }
@@ -803,11 +899,11 @@ body.dark .btn { background-color: var(--text); color: var(--bg); }
 }
 
 #carousel-counter {
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 12px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--bg);
+    color: var(--muted);
 }
 
 .project-skills {
@@ -958,7 +1054,7 @@ body.modal-open { overflow: hidden; }
 }
  
 .proj-modal-title {
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 800;
     font-size: clamp(52px, 6vw, 84px);
     letter-spacing: -0.04em;
@@ -1092,10 +1188,10 @@ body.modal-open { overflow: hidden; }
 }
 
 .about-text h1 {
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
     font-size: clamp(48px, 7vw, 88px);
-    letter-spacing: 0.02em;
+    letter-spacing: -0.03em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 40px;
@@ -1228,10 +1324,10 @@ body.modal-open { overflow: hidden; }
 }
 
 .contact-intro h1 {
-    font-family: 'Geist Mono', ui-monospace, monospace;
-    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
     font-size: clamp(48px, 7vw, 88px);
-    letter-spacing: 0.02em;
+    letter-spacing: -0.03em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 24px;
@@ -1295,7 +1391,7 @@ body.modal-open { overflow: hidden; }
     padding: 14px 32px;
     background-color: var(--text);
     color: var(--bg);
-    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
