@@ -26,7 +26,11 @@
 
     <!-- ===================== NAV ===================== -->
     <nav>
-        <a class="nav-logo" href="#home">Zeinab Drameh</a>
+        <a class="nav-logo" href="#home" aria-label="Zeinab Drameh">
+            <span class="hero-letter">Z</span><span class="hero-letter">e</span><span class="hero-letter">i</span><span class="hero-letter">n</span><span class="hero-letter">a</span><span class="hero-letter">b</span>
+            <span class="nav-space" aria-hidden="true"></span>
+            <span class="hero-letter">D</span><span class="hero-letter">r</span><span class="hero-letter">a</span><span class="hero-letter">m</span><span class="hero-letter">e</span><span class="hero-letter">h</span>
+        </a>
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -48,7 +52,14 @@
             <span class="hero-mark" aria-hidden="true">+</span>
 
             <p class="hero-eyebrow">Designer &amp; developer</p>
-            <h1>Zeinab<br>Drameh</h1>
+            <h1 class="hero-name" aria-label="Zeinab Drameh">
+                <span class="hero-line" aria-hidden="true">
+                    <span class="hero-letter">Z</span><span class="hero-letter">e</span><span class="hero-letter">i</span><span class="hero-letter">n</span><span class="hero-letter">a</span><span class="hero-letter">b</span>
+                </span>
+                <span class="hero-line" aria-hidden="true">
+                    <span class="hero-letter">D</span><span class="hero-letter">r</span><span class="hero-letter">a</span><span class="hero-letter">m</span><span class="hero-letter">e</span><span class="hero-letter">h</span>
+                </span>
+            </h1>
             <p class="hero-role">Iovine and Young Academy</p>
             <p class="hero-craft">
                 crafting
@@ -1325,51 +1336,63 @@
             <span class="skill-desc">Applying AI and data-driven methods to solve real design and product problems.</span>
         </div>
 
-        <!-- Toolbox — logos of tools I use. Files live in img/tools/. -->
+        <!-- Toolbox — brand logos sit in a chest, like tools in foam. -->
         <div class="toolbox">
-            <p class="toolbox-header">Toolbox</p>
-            <ul class="toolbox-grid">
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/adobe.svg')"></span>
-                    <span class="toolbox-name">Adobe Creative Suite</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/figma.svg')"></span>
-                    <span class="toolbox-name">Figma</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/canva.svg')"></span>
-                    <span class="toolbox-name">Canva</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/html5.svg')"></span>
-                    <span class="toolbox-name">HTML</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/css3.svg')"></span>
-                    <span class="toolbox-name">CSS</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/r.svg')"></span>
-                    <span class="toolbox-name">R</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/python.svg')"></span>
-                    <span class="toolbox-name">Python</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/microsoftexcel.svg')"></span>
-                    <span class="toolbox-name">Excel</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/googlecloud.svg')"></span>
-                    <span class="toolbox-name">Google Cloud</span>
-                </li>
-                <li class="toolbox-item">
-                    <span class="toolbox-logo" style="--icon: url('img/tools/framer.svg')"></span>
-                    <span class="toolbox-name">Framer</span>
-                </li>
-            </ul>
+            <p class="toolbox-kicker">What's in the box</p>
+            <div class="toolbox-chest">
+                <div class="toolbox-handle" aria-hidden="true"></div>
+                <div class="toolbox-body">
+                    <div class="toolbox-lid">
+                        <p class="toolbox-header">Toolbox</p>
+                        <div class="toolbox-latches" aria-hidden="true">
+                            <span class="toolbox-latch"></span>
+                            <span class="toolbox-latch"></span>
+                        </div>
+                    </div>
+                    <ul class="toolbox-tray">
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/adobe.svg" alt=""></span>
+                            <span class="toolbox-name">Adobe Creative Suite</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/figma.svg" alt=""></span>
+                            <span class="toolbox-name">Figma</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/canva.svg" alt=""></span>
+                            <span class="toolbox-name">Canva</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/html5.svg" alt=""></span>
+                            <span class="toolbox-name">HTML</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/css3.svg" alt=""></span>
+                            <span class="toolbox-name">CSS</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/r.svg" alt=""></span>
+                            <span class="toolbox-name">R</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/python.svg" alt=""></span>
+                            <span class="toolbox-name">Python</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/microsoftexcel.svg" alt=""></span>
+                            <span class="toolbox-name">Excel</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/googlecloud.svg" alt=""></span>
+                            <span class="toolbox-name">Google Cloud</span>
+                        </li>
+                        <li class="toolbox-item">
+                            <span class="toolbox-well"><img src="img/tools/framer.svg" alt=""></span>
+                            <span class="toolbox-name">Framer</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1530,7 +1553,6 @@
 
     <footer>
         <span>© 2026 Zeinab Drameh</span>
-        <span>midterm alpha</span>
     </footer>
 
     <script src="script.js"></script>
