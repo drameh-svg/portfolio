@@ -292,19 +292,20 @@
                     </div>
                 </article>
 
-                <!-- SLIDE: Pneumonia CNN  |  ML & Data
-                     Cover image: img/pneumonia/cover.png -->
+                <!-- SLIDE: Pneumonia Detection  |  ML & Data -->
                 <article class="project-slide" data-modal="modal-pneumonia" data-categories="ml">
-                    <div class="project-slide-image placeholder" data-label="Pneumonia CNN"></div>
+                    <div class="project-slide-image">
+                        <img src="img/pneumonia/1.png" alt="Pneumonia Detection">
+                    </div>
                     <div class="project-info">
                         <p class="project-tag">ML &amp; Data Analytics</p>
-                        <h3>Pneumonia CNN</h3>
-                        <p>Deep learning image classification with Sci-Kit Learn.</p>
+                        <h3>Pneumonia Detection</h3>
+                        <p>Chest X-ray classification comparing CNN, SVM, and Random Forest.</p>
                         <div class="project-skills">
-                            <span class="skill-tag">Deep Learning</span>
                             <span class="skill-tag">CNN</span>
-                            <span class="skill-tag">Sci-Kit Learn</span>
-                            <span class="skill-tag">Image Classification</span>
+                            <span class="skill-tag">SVM</span>
+                            <span class="skill-tag">Random Forest</span>
+                            <span class="skill-tag">Python</span>
                         </div>
                         <p class="slide-hint">Click to view project</p>
                     </div>
@@ -1064,30 +1065,62 @@
     </div>
 
 
-    <!-- MODAL: Pneumonia CNN -->
+    <!-- MODAL: Pneumonia Detection -->
     <div class="proj-modal" id="modal-pneumonia">
         <div class="proj-modal-inner">
             <div class="proj-modal-header">
                 <div class="proj-modal-meta">
+                    <span>2026</span>
                     <span>ML &amp; Data Analytics</span>
-                    <span>Deep Learning</span>
                     <span>Image Classification</span>
                 </div>
                 <button class="proj-modal-close" type="button">&times;</button>
             </div>
             <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Pneumonia CNN</h2>
-                <p class="proj-modal-sub">Deep learning image classification with Sci-Kit Learn.</p>
+                <h2 class="proj-modal-title">Pneumonia Detection</h2>
+                <p class="proj-modal-sub">Chest X-ray classification comparing a CNN, SVM, and Random Forest as a clinical decision-support study.</p>
                 <div class="proj-modal-section">
                     <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">A convolutional neural network project for pneumonia image classification, using Sci-Kit Learn and deep learning methods. Add accuracy notes, dataset info, and sample images in img/pneumonia/.</p>
+                    <p class="proj-modal-text">This project asks whether machine learning can reliably distinguish pneumonia from healthy lungs in chest X-rays — and whether those predictions can help clinicians screen faster. I trained and compared three models on ~5,800 grayscale X-rays: a convolutional neural network, an RBF support vector machine, and a random forest. Random Forest led on this data scale (82.4% test accuracy, AUC ~0.98), with the CNN close behind at 80%. The models are framed as a second-opinion tool, not a replacement for clinical judgment. Full code lives in the pneumonia_classification folder of my ML projects repo.</p>
+                    <a class="proj-modal-link" href="https://github.com/drameh-svg/MLProjects/tree/main/pneumonia_classification" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.02-.02-2-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.24-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.85 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery is-slides">
+                        <div class="proj-gallery-track" id="track-pneumonia">
+                            <img src="img/pneumonia/1.png" alt="Pneumonia detection title slide">
+                            <img src="img/pneumonia/2.png" alt="Problem statement">
+                            <img src="img/pneumonia/3.png" alt="The decision we are supporting">
+                            <img src="img/pneumonia/4.png" alt="Dataset overview">
+                            <img src="img/pneumonia/5.png" alt="Methodology overview">
+                            <img src="img/pneumonia/6.png" alt="Data preprocessing and augmentation">
+                            <img src="img/pneumonia/7.png" alt="CNN hyperparameter tuning">
+                            <img src="img/pneumonia/8.png" alt="SVM hyperparameter tuning">
+                            <img src="img/pneumonia/9.png" alt="Random forest results">
+                            <img src="img/pneumonia/10.png" alt="Final test results">
+                            <img src="img/pneumonia/11.png" alt="Analysis and limitations">
+                            <img src="img/pneumonia/12.png" alt="Future recommendations">
+                            <img src="img/pneumonia/13.png" alt="Conclusions">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-pneumonia" data-total="13">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-pneumonia">1 / 13</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-pneumonia" data-total="13">&#8594;</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="proj-modal-section">
                     <p class="proj-modal-label">Skills &amp; Tools</p>
                     <div class="project-skills">
-                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Python</span>
                         <span class="skill-tag">CNN</span>
-                        <span class="skill-tag">Sci-Kit Learn</span>
+                        <span class="skill-tag">SVM</span>
+                        <span class="skill-tag">Random Forest</span>
                         <span class="skill-tag">Image Classification</span>
                     </div>
                 </div>
@@ -1292,7 +1325,7 @@
                 <p class="proj-modal-sub">Evaluation, geospatial analysis, and visualization.</p>
                 <div class="proj-modal-section">
                     <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Evaluation frameworks, geospatial analysis, and visualization that turn messy public or product data into something a team can actually act on. Related work includes Arkadium, Shade Gap, CityWise, and Pneumonia CNN.</p>
+                    <p class="proj-modal-text">Evaluation frameworks, geospatial analysis, and visualization that turn messy public or product data into something a team can actually act on. Related work includes Arkadium, Shade Gap, CityWise, and Pneumonia Detection.</p>
                 </div>
             </div>
         </div>

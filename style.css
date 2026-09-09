@@ -1150,6 +1150,33 @@ body.modal-open { overflow: hidden; }
     flex-shrink: 0;
 }
 
+.proj-gallery.is-slides .proj-gallery-track img {
+    aspect-ratio: 16 / 9;
+    background: #07111f;
+}
+
+.proj-modal-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.proj-modal-link:hover {
+    color: var(--white);
+    background-color: var(--navy);
+    border-color: var(--navy);
+}
+
 /* nav row below the image */
 .proj-gallery-nav-row {
     display: flex;
