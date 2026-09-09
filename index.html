@@ -274,19 +274,20 @@
                     </div>
                 </article>
 
-                <!-- SLIDE: Arkadium Research  |  ML & Data
-                     Cover image: img/arkadium/cover.png -->
+                <!-- SLIDE: Mapping LLM Limits  |  ML & Data -->
                 <article class="project-slide" data-modal="modal-arkadium" data-categories="ml">
-                    <div class="project-slide-image placeholder" data-label="Arkadium Research"></div>
+                    <div class="project-slide-image">
+                        <img src="img/arkadium/1.jpg" alt="Mapping LLM Limits Through Gameplay">
+                    </div>
                     <div class="project-info">
                         <p class="project-tag">ML &amp; Data Analytics</p>
-                        <h3>Arkadium Research</h3>
-                        <p>Evaluation framework across 100+ gameplay episodes, built as a Python/Streamlit platform.</p>
+                        <h3>Mapping LLM Limits</h3>
+                        <p>Arkadium research scoring 115 gameplay episodes across 5 games and 3 frontier models.</p>
                         <div class="project-skills">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">LLM Evaluation</span>
                             <span class="skill-tag">Research</span>
-                            <span class="skill-tag">Evaluation</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Prompt Design</span>
                         </div>
                         <p class="slide-hint">Click to view project</p>
                     </div>
@@ -1033,31 +1034,53 @@
     </div>
 
 
-    <!-- MODAL: Arkadium Research -->
+    <!-- MODAL: Mapping LLM Limits / Arkadium -->
     <div class="proj-modal" id="modal-arkadium">
         <div class="proj-modal-inner">
             <div class="proj-modal-header">
                 <div class="proj-modal-meta">
+                    <span>2026</span>
                     <span>ML &amp; Data Analytics</span>
-                    <span>Research</span>
-                    <span>Python / Streamlit</span>
+                    <span>Arkadium × IYA</span>
                 </div>
                 <button class="proj-modal-close" type="button">&times;</button>
             </div>
             <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Arkadium Research</h2>
-                <p class="proj-modal-sub">Evaluation framework, 100+ gameplay episodes, Python/Streamlit platform.</p>
+                <h2 class="proj-modal-title">Mapping LLM Limits Through Gameplay</h2>
+                <p class="proj-modal-sub">With Arkadium and Iovine and Young Academy, evaluating whether frontier LLMs can reason under structured, rule-bound conditions.</p>
                 <div class="proj-modal-section">
                     <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">An evaluation framework built around 100+ gameplay episodes, delivered as a Python and Streamlit platform. Add findings, screenshots, and method notes here. Images go in img/arkadium/.</p>
+                    <p class="proj-modal-text">We asked a simple question: can frontier models actually follow rules when the world is a game? I helped design and run an evaluation of Claude Opus, Gemini, and Grok across 5 Arkadium games and 115 episodes, scoring every turn in real time as a rule violation, a legal but sub-optimal move, or a strategic one. Models were strong at logical deduction — 94.3% competency on Ancestral Lines — and weak wherever spatial awareness mattered. Play also got worse as sessions ran longer, and 18.1% of all moves were illegal, including nearly a third of Grok's. Gameplay here is a stress test for constraint-following, not just a leaderboard.</p>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery is-slides">
+                        <div class="proj-gallery-track" id="track-arkadium">
+                            <img src="img/arkadium/1.jpg" alt="Mapping LLM Limits Through Gameplay">
+                            <img src="img/arkadium/2.jpg" alt="Research question">
+                            <img src="img/arkadium/3.jpg" alt="Evaluation overview: 5 games, 3 models, 115 episodes">
+                            <img src="img/arkadium/4.jpg" alt="Human evaluation rubric">
+                            <img src="img/arkadium/5.jpg" alt="Prompt architecture">
+                            <img src="img/arkadium/6.jpg" alt="Finding: models fail at spatial reasoning">
+                            <img src="img/arkadium/7.jpg" alt="Finding: performance degrades over a session">
+                            <img src="img/arkadium/8.jpg" alt="Finding: illegal move rates by model">
+                            <img src="img/arkadium/9.jpg" alt="Finding: one in three moves were not the best choice">
+                        </div>
+                        <div class="proj-gallery-nav-row">
+                            <button class="proj-gallery-btn prev" type="button" data-track="track-arkadium" data-total="9">&#8592;</button>
+                            <span class="proj-gallery-counter" id="counter-arkadium">1 / 9</span>
+                            <button class="proj-gallery-btn next" type="button" data-track="track-arkadium" data-total="9">&#8594;</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="proj-modal-section">
                     <p class="proj-modal-label">Skills &amp; Tools</p>
                     <div class="project-skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">LLM Evaluation</span>
                         <span class="skill-tag">Research</span>
-                        <span class="skill-tag">Evaluation</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Prompt Design</span>
+                        <span class="skill-tag">Data Analysis</span>
                     </div>
                 </div>
             </div>
