@@ -52,7 +52,7 @@
     --cream:        #f7f4ea;
     --teal:         #55b8bd;
     --purple:       #6a2b67;
-    --proj-band:    #d6efeb;
+    --proj-band:    var(--bg);
     --proj-card:    #f7f4ea;
     --proj-ink:     #3b3b36;
     --proj-soft:    #3b3b36;
