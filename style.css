@@ -28,53 +28,59 @@
    Mint graph-paper, magenta headlines, teal ink.
 ============================================ */
 :root {
-    --navy:       #1a5c66;
-    --blue:       #247a86;
-    --mid-blue:   #dc1b6a;
-    --light-blue: #9ec47a;
-    --silver:     #c8e8e9;
-    --olive:      #9ec47a;
-    --off-white:  #b5e6e8;
-    --white:      #f7f4ea;
-    --black:      #2c2c2c;
-    --text:       #2c2c2c;
-    --muted:      #3d6b72;
-    --bg:         var(--off-white);
-    --border:     rgba(26, 92, 102, 0.22);
-    --radius:     999px;
-    --radius-lg:  20px;
-    --shadow:     0 12px 32px rgba(26, 92, 102, 0.16);
+    --navy:         #55b8bd;
+    --blue:         #55b8bd;
+    --mid-blue:     #d73363;
+    --light-blue:   #8ec371;
+    --silver:       #d6efeb;
+    --olive:        #8ec371;
+    --off-white:    #90c2a7;
+    --white:        #f7f4ea;
+    --black:        #3b3b36;
+    --text:         #3b3b36;
+    --muted:        #55b8bd;
+    --bg:           #d6efeb;
+    --border:       rgba(59, 59, 54, 0.16);
+    --radius:       999px;
+    --radius-lg:    20px;
+    --shadow:       0 12px 32px rgba(59, 59, 54, 0.12);
     --font-display: 'Bebas Neue', sans-serif;
     --font-body:    'Nunito', sans-serif;
-    --proj-band:    #1a5c66;
-    --proj-card:    #f7f4ea;
-    --proj-ink:     #2c2c2c;
-    --proj-soft:    #b5e6e8;
-    --magenta:      #dc1b6a;
-    --lime:         #9ec47a;
-    --mint:         #b5e6e8;
+    --magenta:      #d73363;
+    --lime:         #8ec371;
+    --mint:         #d6efeb;
     --cream:        #f7f4ea;
-    --teal:         #1a5c66;
+    --teal:         #55b8bd;
+    --purple:       #6a2b67;
+    --proj-band:    #d6efeb;
+    --proj-card:    #f7f4ea;
+    --proj-ink:     #3b3b36;
+    --proj-soft:    #3b3b36;
 }
 
 body.dark {
-    --navy:       #9ec47a;
-    --blue:       #c8e8e9;
-    --mid-blue:   #ff4d8d;
-    --light-blue: #1a5c66;
-    --silver:     #247a86;
-    --olive:      #1a5c66;
-    --off-white:  #14363c;
+    --navy:       #8ec371;
+    --blue:       #d6efeb;
+    --mid-blue:   #d73363;
+    --light-blue: #55b8bd;
+    --silver:     #55b8bd;
+    --olive:      #55b8bd;
+    --off-white:  #3b3b36;
     --white:      #1e4a52;
-    --black:      #0e2a30;
-    --text:       #d4f3f4;
-    --muted:      #8fcdd3;
-    --bg:         var(--off-white);
-    --border:     rgba(182, 230, 232, 0.18);
-    --magenta:    #ff4d8d;
-    --lime:       #c5e08a;
-    --mint:       #d4f3f4;
-    --teal:       #0e2a30;
+    --black:      #3b3b36;
+    --text:       #d6efeb;
+    --muted:      #8ec371;
+    --bg:         #3b3b36;
+    --border:     rgba(214, 239, 235, 0.16);
+    --magenta:    #d73363;
+    --lime:       #8ec371;
+    --mint:       #d6efeb;
+    --teal:       #55b8bd;
+    --purple:     #6a2b67;
+    --proj-band:  #d6efeb;
+    --proj-card:  #f7f4ea;
+    --proj-ink:   #3b3b36;
+    --proj-soft:  #3b3b36;
 }
 
 
@@ -197,14 +203,14 @@ nav {
     font-family: var(--font-display);
     font-size: 18px;
     font-weight: 400;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--text);
+    color: var(--magenta);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     line-height: 1;
-    gap: 0;
+    gap: 0.02em;
     padding: 0;
     height: 32px;
     transform: translateY(-3px);
@@ -218,6 +224,7 @@ nav {
     justify-content: center;
     line-height: 0.7;
     padding-top: 0.12em;
+    margin-right: 0;
 }
 
 .nav-logo:hover { opacity: 1; }
@@ -314,18 +321,16 @@ nav {
     font-weight: 400;
     font-size: clamp(4.8rem, 13.5vw, 10.6rem);
     line-height: 0.8;
-    letter-spacing: -0.03em;
-    color: var(--text);
+    letter-spacing: 0.02em;
+    color: var(--magenta);
     text-transform: uppercase;
     overflow: visible;
-    -webkit-text-stroke: 1.1px currentColor;
-    paint-order: stroke fill;
 }
 
 .hero-line {
     display: flex;
     justify-content: center;
-    gap: 0;
+    gap: 0.04em;
     padding: 0;
 }
 
@@ -333,7 +338,7 @@ nav {
     display: inline-block;
     cursor: default;
     will-change: transform;
-    margin-right: -0.055em;
+    margin-right: 0;
     line-height: 0.8;
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -705,11 +710,11 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 /* ============================================
    7. PROJECTS COVERFLOW
-   Teal band + cream sticker cards, springy coverflow.
+   Pale mint band + cream sticker cards, springy coverflow.
 ============================================ */
 #projects {
     background: var(--proj-band);
-    color: var(--proj-soft);
+    color: var(--proj-ink);
     padding: 48px 24px 72px;
     overflow: hidden;
 }
@@ -720,7 +725,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
     font-size: 14px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--proj-soft);
+    color: var(--magenta);
     margin-bottom: 14px;
 }
 
@@ -735,7 +740,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 .filter-btn {
     background: none;
     border: none;
-    color: var(--proj-card);
+    color: var(--magenta);
     font-family: var(--font-display);
     font-size: clamp(1.25rem, 2.2vw, 1.85rem);
     font-weight: 400;
@@ -747,7 +752,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .filter-btn:hover,
 .filter-btn.is-active {
-    color: var(--proj-soft);
+    color: var(--purple);
     background: none;
     text-decoration: none;
 }
@@ -759,7 +764,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
     right: 0;
     bottom: 0;
     height: 2px;
-    background: var(--proj-soft);
+    background: var(--magenta);
 }
 
 .projects-carousel {
@@ -772,12 +777,12 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 }
 
 .carousel-arrow {
-    background: color-mix(in srgb, var(--proj-soft) 18%, transparent);
+    background: color-mix(in srgb, var(--teal) 18%, transparent);
     border: none;
-    color: var(--proj-soft);
+    color: var(--teal);
     font-size: 22px;
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     border-radius: 8px;
     cursor: pointer;
     justify-self: center;
@@ -786,8 +791,8 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .carousel-arrow:hover {
     transform: scale(1.1) rotate(-8deg);
-    background: var(--proj-card);
-    color: var(--proj-ink);
+    background: var(--magenta);
+    color: var(--cream);
 }
 
 .carousel-arrow.next:hover {
@@ -796,7 +801,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .projects-carousel-stage {
     position: relative;
-    height: 540px;
+    height: 430px;
     perspective: 1600px;
     transform-style: preserve-3d;
     overflow: visible;
@@ -806,7 +811,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
     position: absolute;
     top: 50%;
     left: 50%;
-    width: min(680px, 92vw);
+    width: min(520px, 78vw);
     height: auto;
     background: var(--proj-card);
     border-radius: 20px;
@@ -837,14 +842,14 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 .project-slide[data-pos="left"] {
     opacity: 0.95;
     pointer-events: auto;
-    transform: translate(-50%, -50%) translateX(-420px) translateY(28px) rotateY(34deg) rotateZ(-5deg) scale(0.84);
+    transform: translate(-50%, -50%) translateX(-300px) translateY(24px) rotateY(34deg) rotateZ(-5deg) scale(0.78);
     z-index: 3;
 }
 
 .project-slide[data-pos="right"] {
     opacity: 0.95;
     pointer-events: auto;
-    transform: translate(-50%, -50%) translateX(420px) translateY(28px) rotateY(-34deg) rotateZ(5deg) scale(0.84);
+    transform: translate(-50%, -50%) translateX(300px) translateY(24px) rotateY(-34deg) rotateZ(5deg) scale(0.78);
     z-index: 3;
 }
 
@@ -861,7 +866,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
     aspect-ratio: 16 / 9;
     border-radius: 12px;
     overflow: hidden;
-    background: var(--proj-band);
+    background: var(--teal);
 }
 
 .project-slide-image img {
@@ -983,7 +988,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
     .projects-carousel-stage {
         grid-column: 1 / -1;
-        height: 500px;
+        height: 400px;
     }
 
     .project-slide[data-pos="left"],
@@ -1003,8 +1008,8 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 @media (max-width: 520px) {
     .project-filters { gap: 16px; }
     .filter-btn { font-size: 1.15rem; }
-    .projects-carousel-stage { height: 420px; }
-    .project-slide { width: min(680px, 92vw); }
+    .projects-carousel-stage { height: 360px; }
+    .project-slide { width: min(520px, 86vw); }
 }
 
 
