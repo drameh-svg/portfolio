@@ -17,11 +17,10 @@
 
 /* ============================================
    1. FONTS
-   Bebas Neue = headlines, name, nav, filters
-   Satoshi    = body
+   Satoshi Black (900) = headlines, name, nav, filters
+   Satoshi             = body
 ============================================ */
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 
 /* ============================================
@@ -45,7 +44,7 @@
     --radius:       999px;
     --radius-lg:    20px;
     --shadow:       0 12px 32px rgba(59, 59, 54, 0.12);
-    --font-display: 'Bebas Neue', sans-serif;
+    --font-display: 'Satoshi', sans-serif;
     --font-body:    'Satoshi', sans-serif;
     --magenta:      #d73363;
     --lime:         #8ec371;
@@ -242,9 +241,9 @@ nav > * {
 
 .nav-logo {
     font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.06em;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--magenta);
     text-decoration: none;
@@ -286,9 +285,9 @@ nav > * {
     color: var(--muted);
     font-family: var(--font-display);
     font-size: 11px;
-    letter-spacing: 1.6px;
+    letter-spacing: 1.4px;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 700;
     padding: 8px 14px;
     border-radius: var(--radius);
     transition: color 0.25s ease, background-color 0.25s ease;
@@ -304,9 +303,10 @@ nav > * {
     background: none;
     border: 1px solid var(--border);
     color: var(--muted);
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 11px;
-    letter-spacing: 2px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
     padding: 8px 16px;
     border-radius: var(--radius);
@@ -337,8 +337,10 @@ nav > * {
 
 .hero-mark {
     position: absolute;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
     color: var(--magenta);
     opacity: 0.4;
 }
@@ -349,9 +351,10 @@ nav > * {
 .hero-mark:nth-child(4) { right: 8%; bottom: 16%; }
 
 .hero-eyebrow {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 4px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 18px;
@@ -360,10 +363,10 @@ nav > * {
 .hero h1,
 .hero-name {
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(4.8rem, 13.5vw, 10.6rem);
-    line-height: 0.8;
-    letter-spacing: 0.02em;
+    font-weight: 900;
+    font-size: clamp(3.2rem, 9.2vw, 7.4rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
     color: var(--magenta);
     text-transform: uppercase;
     overflow: visible;
@@ -405,9 +408,10 @@ nav > * {
 
 .hero-craft {
     margin: 28px 0 36px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.8vw, 2rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
     color: var(--text);
     display: flex;
     gap: 0.4em;
@@ -453,9 +457,9 @@ nav > * {
     padding: 16px 32px;
     background-color: var(--magenta);
     color: var(--cream);
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 12px;
-    letter-spacing: 2px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
     font-weight: 700;
     text-decoration: none;
@@ -499,9 +503,10 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .skills-header {
     padding: 32px 60px 16px;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 11px;
-    letter-spacing: 4px;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
 }
@@ -531,10 +536,10 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 .skill-item:hover::before { transform: scaleX(1); }
 
 .skill-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    font-size: clamp(32px, 4.6vw, 64px);
-    letter-spacing: 2px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.7rem, 3.6vw, 3.25rem);
+    letter-spacing: -0.035em;
     color: var(--text);
     position: relative;
     z-index: 1;
@@ -572,9 +577,10 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 }
 
 .toolbox-kicker {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 11px;
-    letter-spacing: 4px;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
     text-align: center;
@@ -625,9 +631,10 @@ body.dark .toolbox-body {
 }
 
 .toolbox-header {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 13px;
-    letter-spacing: 4px;
+    font-weight: 900;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--cream);
     margin: 0;
@@ -709,8 +716,9 @@ body.dark .toolbox-body {
 
 .clients-label {
     padding: 0 48px 16px;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 11px;
+    font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
@@ -768,8 +776,9 @@ body.dark .toolbox-body {
 .featured-label {
     padding: 0 48px 18px;
     font-family: var(--font-display);
-    font-size: 14px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--magenta);
     text-align: center;
@@ -827,8 +836,9 @@ body.dark .toolbox-body {
     display: block;
     padding: 12px 14px 14px;
     font-family: var(--font-display);
-    font-size: 18px;
-    letter-spacing: 0.04em;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
     color: var(--text);
 }
 
@@ -847,8 +857,9 @@ body.dark .toolbox-body {
 .projects-kicker {
     text-align: center;
     font-family: var(--font-display);
-    font-size: 14px;
-    letter-spacing: 0.22em;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--magenta);
     margin-bottom: 14px;
@@ -867,9 +878,9 @@ body.dark .toolbox-body {
     border: none;
     color: var(--magenta);
     font-family: var(--font-display);
-    font-size: clamp(1.25rem, 2.2vw, 1.85rem);
-    font-weight: 400;
-    letter-spacing: 1px;
+    font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
     padding: 6px 0;
     cursor: pointer;
     position: relative;
@@ -1010,9 +1021,9 @@ body.dark .toolbox-body {
 
 .project-slide-image.placeholder::after {
     content: attr(data-label);
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    font-size: 22px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 18px;
     color: var(--proj-card);
     text-align: center;
     padding: 16px;
@@ -1030,10 +1041,10 @@ body.dark .toolbox-body {
 .slide-hint { display: none; }
 
 .project-info h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    font-size: 22px;
-    letter-spacing: 1px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: -0.03em;
     color: var(--proj-ink);
     line-height: 1;
 }
@@ -1079,9 +1090,10 @@ body.dark .toolbox-body {
 }
 
 #carousel-counter {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.2em;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--proj-soft);
 }
@@ -1234,10 +1246,10 @@ body.modal-open { overflow: hidden; }
 }
  
 .proj-modal-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 800;
-    font-size: clamp(52px, 6vw, 84px);
-    letter-spacing: -0.04em;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    letter-spacing: -0.045em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 14px;
@@ -1395,10 +1407,10 @@ body.modal-open { overflow: hidden; }
 }
 
 .about-text h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 700;
-    font-size: clamp(48px, 7vw, 88px);
-    letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+    letter-spacing: -0.045em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 40px;
@@ -1536,10 +1548,10 @@ body.dark .about-text p {
 }
 
 .contact-intro h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 700;
-    font-size: clamp(48px, 7vw, 88px);
-    letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+    letter-spacing: -0.045em;
     line-height: 0.95;
     color: var(--text);
     margin-bottom: 24px;
@@ -1603,9 +1615,10 @@ body.dark .about-text p {
     padding: 14px 32px;
     background-color: var(--magenta);
     color: var(--cream);
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 12px;
-    letter-spacing: 2px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
     border: none;
     border-radius: 14px;
