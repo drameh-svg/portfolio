@@ -6,7 +6,7 @@
 // 1. Dark mode
 // 2. Smooth scroll
 // 3. Scroll spy (nav highlight)
-// 4. Projects carousel + category filters
+// 4. Featured layout grid + gallery filters
 // 5. Project modals
 // 6. Modal gallery arrows
 // 7. Contact form
@@ -58,101 +58,62 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 
-// ── 4. PROJECTS COVERFLOW + FILTERS ───────
-// Visible slides get a position:
-//   center = front card (click opens modal)
-//   left / right = tilted side cards (click to rotate)
-//   hidden = not shown
-//
-// Filter buttons use data-filter: all | product | ml | graphic | consulting
+// ── 4. FEATURED GRID + GALLERY FILTERS ────
+// Featured cards expand on first click (layout-grid),
+// then open their modal on a second click.
+// Gallery tiles filter by data-categories.
 
 const filterBtns = document.querySelectorAll('.filter-btn');
-const slides = document.querySelectorAll('.project-slide');
-const prevArrow = document.querySelector('.carousel-arrow.prev');
-const nextArrow = document.querySelector('.carousel-arrow.next');
-const counterEl = document.getElementById('carousel-counter');
+const tiles = document.querySelectorAll('.project-tile');
+const layoutCards = document.querySelectorAll('.layout-card');
+const featuredScrim = document.getElementById('featured-scrim');
 
-let currentIndex = 0;
-let currentFilter = 'all';
-
-function getVisibleSlides() {
-    return [...slides]
-        .filter(slide => {
-            if (currentFilter === 'all') return true;
-            const cats = (slide.dataset.categories || '').split(/\s+/);
-            return cats.includes(currentFilter);
-        })
-        .sort((a, b) => Number(a.dataset.order || 0) - Number(b.dataset.order || 0));
-}
-
-function renderCarousel() {
-    const visible = getVisibleSlides();
-    const n = visible.length;
-
-    if (currentIndex >= n) currentIndex = 0;
-    if (currentIndex < 0) currentIndex = Math.max(n - 1, 0);
-
-    slides.forEach(slide => {
-        slide.dataset.pos = 'hidden';
-        slide.classList.remove('is-active');
-    });
-
-    if (!n) {
-        if (counterEl) counterEl.textContent = '0 / 0';
-        return;
-    }
-
-    const prev = (currentIndex - 1 + n) % n;
-    const next = (currentIndex + 1) % n;
-
-    visible[currentIndex].dataset.pos = 'center';
-    visible[currentIndex].classList.add('is-active');
-
-    if (n === 2) {
-        visible[next].dataset.pos = 'right';
-    } else if (n > 2) {
-        visible[prev].dataset.pos = 'left';
-        visible[next].dataset.pos = 'right';
-    }
-
-    if (counterEl) counterEl.textContent = (currentIndex + 1) + ' / ' + n;
+function projectMatches(el, filter) {
+    if (filter === 'all') return true;
+    const cats = (el.dataset.categories || '').split(/\s+/);
+    return cats.includes(filter);
 }
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         filterBtns.forEach(b => b.classList.remove('is-active'));
         this.classList.add('is-active');
-        currentFilter = this.dataset.filter;
-        currentIndex = 0;
-        renderCarousel();
+        const filter = this.dataset.filter;
+        tiles.forEach(tile => {
+            tile.classList.toggle('is-hidden', !projectMatches(tile, filter));
+        });
     });
 });
 
-function stepCarousel(dir) {
-    const visible = getVisibleSlides();
-    if (!visible.length) return;
-    currentIndex = (currentIndex + dir + visible.length) % visible.length;
-    renderCarousel();
+function deselectFeatured() {
+    layoutCards.forEach(card => card.classList.remove('is-selected'));
+    if (featuredScrim) featuredScrim.hidden = true;
 }
 
-if (prevArrow) prevArrow.addEventListener('click', function (e) {
-    e.stopPropagation();
-    stepCarousel(-1);
+function openProjectModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    deselectFeatured();
+    modal.classList.add('is-open');
+    document.body.classList.add('modal-open');
+}
+
+layoutCards.forEach(card => {
+    card.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (this.classList.contains('is-selected')) {
+            openProjectModal(this.dataset.modal);
+            return;
+        }
+        deselectFeatured();
+        this.classList.add('is-selected');
+        if (featuredScrim) featuredScrim.hidden = false;
+    });
 });
 
-if (nextArrow) nextArrow.addEventListener('click', function (e) {
-    e.stopPropagation();
-    stepCarousel(1);
-});
-
-document.addEventListener('keydown', function (e) {
-    if (document.body.classList.contains('modal-open')) return;
-    if (e.target.matches('input, textarea')) return;
-    if (e.key === 'ArrowLeft') stepCarousel(-1);
-    if (e.key === 'ArrowRight') stepCarousel(1);
-});
-
-renderCarousel();
+if (featuredScrim) {
+    featuredScrim.addEventListener('click', deselectFeatured);
+}
 
 
 // ── 8. LETTER WAVE ────────────────────────
@@ -191,25 +152,11 @@ document.querySelectorAll('.hero-line, .nav-logo').forEach(bindLetterWave);
 
 
 // ── 5. PROJECT MODALS ─────────────────────
-// Center card opens the modal. Side cards rotate the deck.
+// Gallery tiles open the matching modal immediately.
 
-document.querySelectorAll('.project-slide').forEach(card => {
-    card.addEventListener('click', function () {
-        const pos = this.dataset.pos;
-        if (pos === 'left') {
-            stepCarousel(-1);
-            return;
-        }
-        if (pos === 'right') {
-            stepCarousel(1);
-            return;
-        }
-        if (pos !== 'center') return;
-
-        const modal = document.getElementById(this.dataset.modal);
-        if (!modal) return;
-        modal.classList.add('is-open');
-        document.body.classList.add('modal-open');
+tiles.forEach(tile => {
+    tile.addEventListener('click', function () {
+        openProjectModal(this.dataset.modal);
     });
 });
 
@@ -230,14 +177,16 @@ document.addEventListener('click', function (e) {
     }
 });
 
-// Close: Escape key
+// Close: Escape key (modal first, then featured expand)
 document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.proj-modal.is-open').forEach(m => {
-            m.classList.remove('is-open');
-        });
+    if (e.key !== 'Escape') return;
+    const openModal = document.querySelector('.proj-modal.is-open');
+    if (openModal) {
+        openModal.classList.remove('is-open');
         document.body.classList.remove('modal-open');
+        return;
     }
+    deselectFeatured();
 });
 
 
