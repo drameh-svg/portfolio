@@ -228,6 +228,15 @@ document.querySelectorAll('.project-slide').forEach(card => {
     });
 });
 
+document.querySelectorAll('.featured-card').forEach(card => {
+    card.addEventListener('click', function () {
+        const modal = document.getElementById(this.dataset.modal);
+        if (!modal) return;
+        modal.classList.add('is-open');
+        document.body.classList.add('modal-open');
+    });
+});
+
 // Close: X button
 document.addEventListener('click', function (e) {
     if (e.target.closest('.proj-modal-close')) {
