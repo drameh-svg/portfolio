@@ -1508,16 +1508,16 @@ body.dark .about-text p {
 }
 
 .up .scroll-container {
-    animation: scrollUp 50s linear infinite;
+    animation: scrollUp 42s linear infinite;
 }
 
 .down .scroll-container {
-    animation: scrollDown 50s linear infinite;
+    animation: scrollDown 42s linear infinite;
 }
 
 @keyframes scrollUp {
     from { transform: translateY(0); }
-    to   { transform: translateY(-60%); }
+    to   { transform: translateY(-50%); }
 }
 
 @keyframes scrollDown {
