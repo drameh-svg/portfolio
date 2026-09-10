@@ -323,3 +323,20 @@ if (form) {
         form.reset();
     });
 }
+
+
+// ── 9. LANDING APPEAR ─────────────────────
+document.querySelectorAll('.appear').forEach(el => {
+    el.addEventListener('animationend', function () {
+        el.classList.add('is-in');
+    }, { once: true });
+});
+
+requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+        document.querySelectorAll('.appear').forEach(el => {
+            const running = el.getAnimations ? el.getAnimations().some(a => a.playState === 'running' || a.playState === 'finished') : true;
+            if (!running) el.classList.add('is-in');
+        });
+    });
+});
