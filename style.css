@@ -866,9 +866,9 @@ body.dark .toolbox-name {
 .featured-card img {
     width: 100%;
     aspect-ratio: 16 / 9;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     display: block;
-    background: var(--teal);
 }
 
 .featured-card span {
@@ -1041,21 +1041,26 @@ body.dark .toolbox-name {
     aspect-ratio: 16 / 9;
     border-radius: 12px;
     overflow: hidden;
-    background: var(--teal);
+    background: transparent;
 }
 
 .project-slide-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     display: block;
+}
+
+.project-slide-image.is-portrait img {
+    object-position: top center;
 }
 
 .project-slide-image.placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--teal);
 }
 
 .project-slide-image.placeholder::after {
