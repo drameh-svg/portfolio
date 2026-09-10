@@ -19,7 +19,7 @@
 // can come back later without a rewrite.
 
 document.body.classList.remove('dark');
-localStorage.removeItem('mode');
+try { localStorage.removeItem('mode'); } catch (e) { /* private mode / blocked storage */ }
 
 
 // ── 2. SMOOTH SCROLL ──────────────────────

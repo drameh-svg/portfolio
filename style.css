@@ -17,10 +17,46 @@
 
 /* ============================================
    1. FONTS
-   Satoshi Black (900) = headlines, name, nav, filters
-   Satoshi             = body
+   Satoshi is hosted locally so the school server
+   does not have to wait on Fontshare. If that
+   @import is blocked, the rest of the CSS never
+   applies and the page looks like unstyled text.
 ============================================ */
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap');
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/satoshi-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/satoshi-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/satoshi-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/satoshi-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Satoshi';
+    src: url('fonts/satoshi-900.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 
 /* ============================================
@@ -274,6 +310,7 @@ nav > * {
     display: flex;
     align-items: center;
     gap: 10px;
+    background: rgba(247, 244, 234, 0.72);
     background: color-mix(in srgb, var(--cream) 72%, transparent);
     padding: 10px 14px;
     border-radius: var(--radius);
@@ -1006,6 +1043,7 @@ body.dark .toolbox-name {
     z-index: 0;
 }
 
+.project-slide.is-active,
 .project-slide[data-pos="center"] {
     opacity: 1;
     pointer-events: auto;
