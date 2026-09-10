@@ -227,7 +227,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 48px;
+    padding: 32px 64px;
     position: sticky;
     top: 0;
     z-index: 200;
@@ -273,9 +273,9 @@ nav > * {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: color-mix(in srgb, var(--cream) 72%, transparent);
-    padding: 6px 8px;
+    padding: 10px 14px;
     border-radius: var(--radius);
     backdrop-filter: blur(12px);
 }
@@ -292,7 +292,7 @@ body.dark .nav-links {
     letter-spacing: 1.4px;
     text-transform: uppercase;
     font-weight: 700;
-    padding: 8px 14px;
+    padding: 12px 20px;
     border-radius: var(--radius);
     transition: color 0.25s ease, background-color 0.25s ease;
 }
@@ -485,7 +485,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
         flex-direction: column;
         align-items: center;
         gap: 12px;
-        padding: 14px;
+        padding: 20px;
     }
 
     .nav-links {
@@ -506,7 +506,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 }
 
 .skills-header {
-    padding: 32px 60px 16px;
+    padding: 48px 80px 28px;
     font-family: var(--font-display);
     font-size: 11px;
     font-weight: 700;
@@ -519,7 +519,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 26px 60px;
+    padding: 42px 80px;
     border-top: 1px solid var(--border);
     cursor: default;
     position: relative;
@@ -576,7 +576,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 }
 
 .toolbox {
-    padding: 56px 60px 80px;
+    padding: 72px 80px 96px;
     border-top: 1px solid var(--border);
 }
 
@@ -1705,11 +1705,11 @@ footer {
    RESPONSIVE — tablet
 ============================================ */
 @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
+    nav { padding: 24px 36px; }
 
     .skills-header,
     .skill-item,
-    .toolbox { padding-left: 24px; padding-right: 24px; }
+    .toolbox { padding-left: 36px; padding-right: 36px; }
 
     .about-layout,
     .contact-layout { grid-template-columns: 1fr; }
@@ -1757,10 +1757,10 @@ footer {
    RESPONSIVE — mobile
 ============================================ */
 @media (max-width: 520px) {
-    nav { flex-wrap: wrap; gap: 10px; padding: 14px 16px; }
+    nav { flex-wrap: wrap; gap: 10px; padding: 20px 22px; }
     .nav-links { width: auto; max-width: 100%; gap: 4px; margin-left: auto; }
 
-    .skill-item { padding: 20px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .skill-item { padding: 32px 22px; flex-direction: column; align-items: flex-start; gap: 10px; }
     .skill-name { max-width: none; padding-right: 0; }
     .skill-desc { text-align: left; }
     .toolbox { padding: 32px 16px 44px; }
