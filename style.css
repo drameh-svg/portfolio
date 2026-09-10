@@ -713,7 +713,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
    Pale mint band + cream sticker cards, springy coverflow.
 ============================================ */
 #projects {
-    background: var(--bg);
+    background: transparent;
     color: var(--proj-ink);
     padding: 48px 24px 72px;
     overflow: hidden;
