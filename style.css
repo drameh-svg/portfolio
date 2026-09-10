@@ -1014,9 +1014,8 @@ body.dark .toolbox-name {
 .projects-carousel-stage {
     position: relative;
     height: 430px;
-    perspective: 1600px;
-    transform-style: preserve-3d;
     overflow: visible;
+    isolation: isolate;
 }
 
 .project-slide {
@@ -1035,7 +1034,7 @@ body.dark .toolbox-name {
     cursor: pointer;
     opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, -50%) translateY(48px) scale(0.78) rotateZ(8deg);
+    transform: translate(-50%, -50%) translateY(48px) scale(0.78);
     transition:
         transform 0.72s cubic-bezier(0.22, 1.35, 0.36, 1),
         opacity 0.42s ease;
@@ -1047,29 +1046,29 @@ body.dark .toolbox-name {
 .project-slide[data-pos="center"] {
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%, -50%) translateY(-8px) rotateY(0deg) rotateZ(0deg) scale(1);
+    transform: translate(-50%, -50%) translateY(-8px) scale(1);
     z-index: 5;
     box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22);
 }
 
 .project-slide[data-pos="left"] {
-    opacity: 0.95;
+    opacity: 0.9;
     pointer-events: auto;
-    transform: translate(-50%, -50%) translateX(-300px) translateY(24px) rotateY(34deg) rotateZ(-5deg) scale(0.78);
-    z-index: 3;
+    transform: translate(-50%, -50%) translateX(-340px) translateY(28px) rotate(-6deg) scale(0.78);
+    z-index: 2;
 }
 
 .project-slide[data-pos="right"] {
-    opacity: 0.95;
+    opacity: 0.9;
     pointer-events: auto;
-    transform: translate(-50%, -50%) translateX(300px) translateY(24px) rotateY(-34deg) rotateZ(5deg) scale(0.78);
-    z-index: 3;
+    transform: translate(-50%, -50%) translateX(340px) translateY(28px) rotate(6deg) scale(0.78);
+    z-index: 2;
 }
 
 .project-slide[data-pos="hidden"] {
     opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, -50%) translateY(56px) scale(0.72) rotateZ(10deg);
+    transform: translate(-50%, -50%) translateY(56px) scale(0.72);
     z-index: 0;
 }
 
@@ -1119,8 +1118,10 @@ body.dark .toolbox-name {
     gap: 5px;
 }
 
-.project-tag,
-.slide-hint { display: none; }
+.project-slide .project-info .project-tag,
+.project-slide .project-info .slide-hint {
+    display: none;
+}
 
 .project-info h3 {
     font-family: var(--font-display);
