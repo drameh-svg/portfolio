@@ -76,11 +76,13 @@ let currentIndex = 0;
 let currentFilter = 'all';
 
 function getVisibleSlides() {
-    return [...slides].filter(slide => {
-        if (currentFilter === 'all') return true;
-        const cats = (slide.dataset.categories || '').split(/\s+/);
-        return cats.includes(currentFilter);
-    });
+    return [...slides]
+        .filter(slide => {
+            if (currentFilter === 'all') return true;
+            const cats = (slide.dataset.categories || '').split(/\s+/);
+            return cats.includes(currentFilter);
+        })
+        .sort((a, b) => Number(a.dataset.order || 0) - Number(b.dataset.order || 0));
 }
 
 function renderCarousel() {
