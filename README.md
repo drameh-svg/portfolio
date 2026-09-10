@@ -5,7 +5,7 @@ One-page site. Files are kept simple on purpose:
 ```
 index.html    full page (home, projects, about, contact)
 style.css     all styling
-script.js     featured grid, filters, modals, form
+script.js     featured carousel, filters, modals, form
 img/          all images, grouped by project
 ```
 
@@ -16,7 +16,7 @@ img/          all images, grouped by project
 3. Set `data-categories` to one or more of: `product`  `ml`  `graphic`  `consulting`.
 4. Copy a `<div class="proj-modal">` and give it that same id.
 5. Put images in `img/newname/` and update the `src` paths.
-6. Optional: add it to the Featured Work layout grid as well.
+6. Optional: add it to the Featured Work coverflow as well.
 
 There is a longer version of these steps in a comment at the top of `index.html`.
 

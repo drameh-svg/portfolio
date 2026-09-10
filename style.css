@@ -6,7 +6,7 @@
    4. Nav
    5. Hero
    6. Clients marquee
-   7. Featured work + project gallery
+   7. Featured coverflow + project gallery
    8. Project modals
    9. Skills + toolbox
   10. About
@@ -846,14 +846,15 @@ body.dark .toolbox-name {
 
 
 /* ============================================
-   7. FEATURED WORK + PROJECT GALLERY
-   Four-up layout grid, then a filterable gallery.
+   7. FEATURED COVERFLOW + PROJECT GALLERY
+   Shuffling featured cards, then a masonry gallery
+   whose tile sizes follow each cover image.
 ============================================ */
 #projects {
     background: transparent;
     color: var(--proj-ink);
     padding: 48px 24px 96px;
-    overflow: visible;
+    overflow-x: hidden;
 }
 
 .projects-kicker {
@@ -871,139 +872,153 @@ body.dark .toolbox-name {
     margin-top: 72px;
 }
 
-.layout-grid {
-    position: relative;
+.projects-carousel {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    max-width: 80rem;
+    grid-template-columns: 72px 1fr 72px;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    max-width: 1200px;
     margin: 0 auto;
-    min-height: 0;
 }
 
-.layout-cell {
-    min-height: 280px;
-}
-
-.layout-cell--wide {
-    min-height: 320px;
-}
-
-.layout-card {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: inherit;
-    overflow: hidden;
-    border-radius: 18px;
-    background: var(--proj-card);
-    border: 1.5px solid color-mix(in srgb, var(--teal) 42%, transparent);
+.carousel-arrow {
+    background: color-mix(in srgb, var(--teal) 18%, transparent);
+    border: none;
+    color: var(--teal);
+    font-size: 22px;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
     cursor: pointer;
+    justify-self: center;
+    position: relative;
+    z-index: 6;
+    transition: transform 0.3s cubic-bezier(0.22, 1.4, 0.36, 1), background 0.25s ease, color 0.25s ease;
+}
+
+.carousel-arrow:hover {
+    transform: scale(1.1) rotate(-8deg);
+    background: var(--magenta);
+    color: var(--cream);
+}
+
+.carousel-arrow.next:hover {
+    transform: scale(1.1) rotate(8deg);
+}
+
+.projects-carousel-stage {
+    position: relative;
+    height: 460px;
+    overflow: visible;
     isolation: isolate;
 }
 
-.layout-card img {
+.project-slide {
     position: absolute;
-    inset: 0;
+    top: 50%;
+    left: 50%;
+    width: min(680px, 82vw);
+    height: 420px;
+    background: var(--proj-card);
+    border-radius: 22px;
+    border: 1.5px solid color-mix(in srgb, var(--teal) 42%, transparent);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) translateY(40px) scale(0.82);
+    transition:
+        transform 0.72s cubic-bezier(0.22, 1.35, 0.36, 1),
+        opacity 0.42s ease;
+    box-shadow: 0 16px 40px rgba(59, 59, 54, 0.14);
+    z-index: 0;
+}
+
+.project-slide.is-active,
+.project-slide[data-pos="center"] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) translateY(-6px) scale(1);
+    z-index: 5;
+    box-shadow: 0 22px 54px rgba(59, 59, 54, 0.18);
+}
+
+.project-slide[data-pos="left"] {
+    opacity: 0.78;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) translateX(-430px) translateY(18px) rotate(-3deg) scale(0.76);
+    z-index: 2;
+}
+
+.project-slide[data-pos="right"] {
+    opacity: 0.78;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) translateX(430px) translateY(18px) rotate(3deg) scale(0.76);
+    z-index: 2;
+}
+
+.project-slide[data-pos="hidden"] {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) translateY(48px) scale(0.74);
+    z-index: 0;
+}
+
+.project-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
     display: block;
-    transition: transform 0.45s ease;
 }
 
-.layout-card:hover img {
-    transform: scale(1.04);
+.carousel-status {
+    grid-column: 2;
+    text-align: center;
+    padding: 18px 0 0;
 }
 
-.layout-card-copy {
+#carousel-counter {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--proj-soft);
+}
+
+.project-bar {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
-    padding: 28px 24px 22px;
-    background: linear-gradient(to top, rgba(12, 28, 32, 0.78), rgba(12, 28, 32, 0));
-    color: var(--cream);
+    padding: 10px 14px 12px;
+    background: color-mix(in srgb, var(--teal) 58%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.layout-card-tag {
+.project-bar-cat {
     font-size: 10px;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 700;
-    color: color-mix(in srgb, var(--cream) 80%, var(--teal));
-    margin-bottom: 8px;
+    color: var(--cream);
+    margin-bottom: 3px;
 }
 
-.layout-card-copy h3 {
+.project-bar h3 {
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: clamp(1.35rem, 2.4vw, 2rem);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    margin-bottom: 8px;
-}
-
-.layout-card-copy p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.45;
-    max-width: 36em;
-    color: color-mix(in srgb, var(--cream) 82%, transparent);
-}
-
-.layout-card-copy .layout-card-hint {
-    display: none;
-    margin-top: 12px;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
     color: var(--cream);
-    max-width: none;
 }
 
-.layout-cell:has(.layout-card.is-selected) {
-    z-index: 50;
-}
-
-.layout-card.is-selected {
-    position: absolute;
-    inset: 8%;
-    width: auto;
-    height: auto;
-    min-height: 0;
-    z-index: 50;
-    margin: auto;
-    max-width: 720px;
-    max-height: 70%;
-    box-shadow: 0 28px 60px rgba(12, 28, 32, 0.28);
-}
-
-.layout-card.is-selected .layout-card-copy {
-    background: linear-gradient(to top, rgba(12, 28, 32, 0.88), rgba(12, 28, 32, 0.12));
-    padding-bottom: 28px;
-}
-
-.layout-card.is-selected .layout-card-hint {
-    display: block;
-}
-
-.layout-grid-scrim {
-    position: absolute;
-    inset: 0;
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    background: rgba(12, 28, 32, 0.32);
-    z-index: 40;
-    border-radius: 18px;
-    cursor: pointer;
-}
-
-.layout-grid-scrim[hidden] {
-    display: none;
+.project-slide .project-bar h3 {
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
 }
 
 .project-filters {
@@ -1045,27 +1060,26 @@ body.dark .toolbox-name {
 }
 
 .project-gallery {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    column-count: 1;
+    column-gap: 16px;
     max-width: 80rem;
     margin: 0 auto;
 }
 
 .project-tile {
     position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 16px;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
     overflow: hidden;
     border-radius: 18px;
     background: var(--proj-card);
     border: 1.5px solid color-mix(in srgb, var(--teal) 42%, transparent);
     cursor: pointer;
-    min-height: 220px;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.project-tile:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(85, 184, 189, 0.18);
+    vertical-align: top;
 }
 
 .project-tile.is-hidden {
@@ -1074,9 +1088,7 @@ body.dark .toolbox-name {
 
 .project-tile img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
     display: block;
     transition: transform 0.45s ease;
 }
@@ -1085,17 +1097,9 @@ body.dark .toolbox-name {
     transform: scale(1.04);
 }
 
-.project-tile img.is-portrait {
-    object-position: top center;
-}
-
-.project-tile img.is-contain {
-    object-fit: contain;
-    background: var(--proj-card);
-}
-
 .project-tile-placeholder {
-    height: 220px;
+    aspect-ratio: 16 / 9;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1105,28 +1109,6 @@ body.dark .toolbox-name {
     font-weight: 900;
     font-size: 18px;
     letter-spacing: -0.03em;
-}
-
-.project-tile-info {
-    padding: 14px 16px 16px;
-}
-
-.project-tile-tag {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--teal);
-    margin-bottom: 6px;
-}
-
-.project-tile-info h3 {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 18px;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    color: var(--proj-ink);
 }
 
 .project-skills {
@@ -1147,37 +1129,56 @@ body.dark .toolbox-name {
     border-radius: var(--radius);
 }
 
-@media (min-width: 768px) {
-    .layout-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-auto-rows: 340px;
-    }
-
-    .layout-cell,
-    .layout-cell--wide {
-        min-height: 0;
-    }
-
-    .layout-cell--wide {
-        grid-column: span 2;
-    }
-
+@media (min-width: 700px) {
     .project-gallery {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-count: 2;
     }
 }
 
-@media (max-width: 767px) {
-    .layout-card.is-selected {
-        inset: 12px;
-        max-width: none;
-        max-height: none;
+@media (min-width: 1080px) {
+    .project-gallery {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 900px) {
+    .projects-carousel {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 8px;
+    }
+
+    .projects-carousel-stage {
+        grid-column: 1 / -1;
+        height: 400px;
+    }
+
+    .project-slide {
+        height: 360px;
+    }
+
+    .project-slide[data-pos="left"],
+    .project-slide[data-pos="right"] {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .carousel-status { grid-column: 1 / -1; }
+
+    .carousel-arrow {
+        grid-row: 3;
+        margin: 8px auto;
     }
 }
 
 @media (max-width: 520px) {
     .project-filters { gap: 16px; }
     .filter-btn { font-size: 1.15rem; }
+    .projects-carousel-stage { height: 320px; }
+    .project-slide {
+        width: min(720px, 90vw);
+        height: 280px;
+    }
 }
 
 

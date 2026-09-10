@@ -6,7 +6,7 @@
 // 1. Dark mode
 // 2. Smooth scroll
 // 3. Scroll spy (nav highlight)
-// 4. Featured layout grid + gallery filters
+// 4. Featured coverflow + gallery filters
 // 5. Project modals
 // 6. Modal gallery arrows
 // 7. Contact form
@@ -58,15 +58,72 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 
-// ── 4. FEATURED GRID + GALLERY FILTERS ────
-// Featured cards expand on first click (layout-grid),
-// then open their modal on a second click.
+// ── 4. FEATURED COVERFLOW + GALLERY FILTERS ─
+// Featured deck: center card opens the modal,
+// side cards shuffle the coverflow.
 // Gallery tiles filter by data-categories.
 
 const filterBtns = document.querySelectorAll('.filter-btn');
 const tiles = document.querySelectorAll('.project-tile');
-const layoutCards = document.querySelectorAll('.layout-card');
-const featuredScrim = document.getElementById('featured-scrim');
+const slides = document.querySelectorAll('.project-slide');
+const prevArrow = document.querySelector('.carousel-arrow.prev');
+const nextArrow = document.querySelector('.carousel-arrow.next');
+const counterEl = document.getElementById('carousel-counter');
+
+let currentIndex = 0;
+
+function renderCarousel() {
+    const n = slides.length;
+
+    slides.forEach((slide, i) => {
+        slide.classList.remove('is-active');
+        if (!n) {
+            slide.dataset.pos = 'hidden';
+            return;
+        }
+        const offset = (i - currentIndex + n) % n;
+        if (offset === 0) {
+            slide.dataset.pos = 'center';
+            slide.classList.add('is-active');
+        } else if (offset === 1) {
+            slide.dataset.pos = 'right';
+        } else if (offset === n - 1) {
+            slide.dataset.pos = 'left';
+        } else {
+            slide.dataset.pos = 'hidden';
+        }
+    });
+
+    if (counterEl) {
+        counterEl.textContent = n ? (currentIndex + 1) + ' / ' + n : '0 / 0';
+    }
+}
+
+function stepCarousel(dir) {
+    const n = slides.length;
+    if (!n) return;
+    currentIndex = (currentIndex + dir + n) % n;
+    renderCarousel();
+}
+
+if (prevArrow) prevArrow.addEventListener('click', function (e) {
+    e.stopPropagation();
+    stepCarousel(-1);
+});
+
+if (nextArrow) nextArrow.addEventListener('click', function (e) {
+    e.stopPropagation();
+    stepCarousel(1);
+});
+
+document.addEventListener('keydown', function (e) {
+    if (document.body.classList.contains('modal-open')) return;
+    if (e.target.matches('input, textarea')) return;
+    if (e.key === 'ArrowLeft') stepCarousel(-1);
+    if (e.key === 'ArrowRight') stepCarousel(1);
+});
+
+renderCarousel();
 
 function projectMatches(el, filter) {
     if (filter === 'all') return true;
@@ -85,34 +142,11 @@ filterBtns.forEach(btn => {
     });
 });
 
-function deselectFeatured() {
-    layoutCards.forEach(card => card.classList.remove('is-selected'));
-    if (featuredScrim) featuredScrim.hidden = true;
-}
-
 function openProjectModal(id) {
     const modal = document.getElementById(id);
     if (!modal) return;
-    deselectFeatured();
     modal.classList.add('is-open');
     document.body.classList.add('modal-open');
-}
-
-layoutCards.forEach(card => {
-    card.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (this.classList.contains('is-selected')) {
-            openProjectModal(this.dataset.modal);
-            return;
-        }
-        deselectFeatured();
-        this.classList.add('is-selected');
-        if (featuredScrim) featuredScrim.hidden = false;
-    });
-});
-
-if (featuredScrim) {
-    featuredScrim.addEventListener('click', deselectFeatured);
 }
 
 
@@ -152,7 +186,24 @@ document.querySelectorAll('.hero-line, .nav-logo').forEach(bindLetterWave);
 
 
 // ── 5. PROJECT MODALS ─────────────────────
-// Gallery tiles open the matching modal immediately.
+// Center featured card and gallery tiles open a modal.
+// Side featured cards rotate the deck.
+
+slides.forEach(card => {
+    card.addEventListener('click', function () {
+        const pos = this.dataset.pos;
+        if (pos === 'left') {
+            stepCarousel(-1);
+            return;
+        }
+        if (pos === 'right') {
+            stepCarousel(1);
+            return;
+        }
+        if (pos !== 'center') return;
+        openProjectModal(this.dataset.modal);
+    });
+});
 
 tiles.forEach(tile => {
     tile.addEventListener('click', function () {
@@ -177,16 +228,13 @@ document.addEventListener('click', function (e) {
     }
 });
 
-// Close: Escape key (modal first, then featured expand)
+// Close: Escape key
 document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    const openModal = document.querySelector('.proj-modal.is-open');
-    if (openModal) {
-        openModal.classList.remove('is-open');
-        document.body.classList.remove('modal-open');
-        return;
-    }
-    deselectFeatured();
+    document.querySelectorAll('.proj-modal.is-open').forEach(m => {
+        m.classList.remove('is-open');
+    });
+    document.body.classList.remove('modal-open');
 });
 
 

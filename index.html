@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Zeinab Drameh</title>
-    <link rel="stylesheet" href="./style.css?v=10" />
+    <link rel="stylesheet" href="./style.css?v=11" />
 
     <!--
         FILE LAYOUT (keep it this simple):
         index.html  — this whole one-page site
         style.css   — all styling
-        script.js   — featured grid, filters, modals, form
+        script.js   — featured carousel, filters, modals, form
         fonts/      — Satoshi files (must be uploaded with the site)
         img/        — all images, grouped in folders by project
 
@@ -23,7 +23,7 @@
            (a project can have more than one, separated by a space)
         4. Duplicate a <div class="proj-modal"> and give it the same id.
         5. Put images in img/newname/ and update the <img src=""> paths.
-        6. Optional: add it to the Featured Work layout-grid as well.
+        6. Optional: add it to the Featured Work coverflow as well.
     -->
 </head>
 <body>
@@ -154,58 +154,55 @@
 
 
     <!-- ===================== 3. PROJECTS =====================
-         Featured Work is a 4-card layout grid.
-         All Projects is a filterable gallery. Click a card to open its modal. -->
+         Featured Work is a 4-card shuffling coverflow.
+         All Projects is a filterable masonry gallery.
+         Click a card to open its modal. -->
     <section id="projects">
 
         <p class="projects-kicker">Featured Work</p>
 
-        <div class="layout-grid" id="featured-grid">
-            <div class="layout-cell layout-cell--wide">
-                <article class="layout-card" data-modal="modal-arkadium">
+        <div class="projects-carousel">
+            <button type="button" class="carousel-arrow prev" aria-label="Previous project">&#8592;</button>
+
+            <div class="projects-carousel-stage">
+
+                <article class="project-slide is-active" data-modal="modal-arkadium">
                     <img src="img/arkadium/1.jpg" alt="Arkadium — Mapping LLM Limits">
-                    <div class="layout-card-copy">
-                        <p class="layout-card-tag">ML &amp; Data Analytics</p>
+                    <div class="project-bar">
+                        <p class="project-bar-cat">ML &amp; Data Analytics</p>
                         <h3>Arkadium</h3>
-                        <p>Research scoring 115 gameplay episodes across 5 games and 3 frontier models.</p>
-                        <p class="layout-card-hint">Click again to view project</p>
                     </div>
                 </article>
-            </div>
-            <div class="layout-cell">
-                <article class="layout-card" data-modal="modal-shadegap">
+
+                <article class="project-slide" data-modal="modal-shadegap">
                     <img src="img/projects/project7.png" alt="The Shade Gap">
-                    <div class="layout-card-copy">
-                        <p class="layout-card-tag">ML &amp; Data Analytics</p>
+                    <div class="project-bar">
+                        <p class="project-bar-cat">ML &amp; Data Analytics</p>
                         <h3>The Shade Gap</h3>
-                        <p>Data visualization, geospatial research, and policy analysis of LA's shade inequality.</p>
-                        <p class="layout-card-hint">Click again to view project</p>
                     </div>
                 </article>
-            </div>
-            <div class="layout-cell">
-                <article class="layout-card" data-modal="modal-estera">
+
+                <article class="project-slide" data-modal="modal-estera">
                     <img src="img/projects/project5.png" alt="Estera brand design">
-                    <div class="layout-card-copy">
-                        <p class="layout-card-tag">Graphic Design</p>
+                    <div class="project-bar">
+                        <p class="project-bar-cat">Graphic Design</p>
                         <h3>Estera — Brand Design</h3>
-                        <p>Brand identity for a European slow-fashion house — logo, color, campaign, and launch materials.</p>
-                        <p class="layout-card-hint">Click again to view project</p>
                     </div>
                 </article>
-            </div>
-            <div class="layout-cell layout-cell--wide">
-                <article class="layout-card" data-modal="modal-mca">
+
+                <article class="project-slide" data-modal="modal-mca">
                     <img src="img/projects/project1.png" alt="Museum of Contemporary Art Teen Night">
-                    <div class="layout-card-copy">
-                        <p class="layout-card-tag">Graphic Design</p>
+                    <div class="project-bar">
+                        <p class="project-bar-cat">Graphic Design</p>
                         <h3>Museum of Contemporary Art</h3>
-                        <p>Posters, stickers, merch, and social content for MOCA Teen Night — a citywide event of 500+ guests.</p>
-                        <p class="layout-card-hint">Click again to view project</p>
                     </div>
                 </article>
+
             </div>
-            <div class="layout-grid-scrim" id="featured-scrim" hidden></div>
+
+            <button type="button" class="carousel-arrow next" aria-label="Next project">&#8594;</button>
+
+            <p class="carousel-status"><span id="carousel-counter">1 / 4</span></p>
         </div>
 
         <p class="projects-kicker projects-kicker--gallery">All Projects</p>
@@ -222,144 +219,144 @@
 
             <article class="project-tile" data-modal="modal-arkadium" data-categories="ml" data-order="1">
                 <img src="img/arkadium/1.jpg" alt="Arkadium">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">ML &amp; Data Analytics</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
                     <h3>Arkadium</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-shadegap" data-categories="ml" data-order="2">
                 <img src="img/projects/project7.png" alt="The Shade Gap">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">ML &amp; Data Analytics</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
                     <h3>The Shade Gap</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-estera" data-categories="graphic" data-order="3">
                 <img src="img/projects/project5.png" alt="Estera — Brand Design">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Graphic Design</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Graphic Design</p>
                     <h3>Estera — Brand Design</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-mca" data-categories="graphic" data-order="4">
                 <img src="img/projects/project1.png" alt="Museum of Contemporary Art">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Graphic Design</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Graphic Design</p>
                     <h3>Museum of Contemporary Art</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-swimuphill" data-categories="graphic" data-order="5">
-                <img class="is-portrait" src="img/swimuphill/poster-cream.jpg" alt="Driving Aquatic Inclusion in Africa">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Graphic Design</p>
+                <img src="img/swimuphill/poster-cream.jpg" alt="Driving Aquatic Inclusion in Africa">
+                <div class="project-bar">
+                    <p class="project-bar-cat">Graphic Design</p>
                     <h3>Driving Aquatic Inclusion in Africa</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-claude9" data-categories="consulting" data-order="6">
                 <img src="img/claude9/4.jpg" alt="Claude 9">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Consulting</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Consulting</p>
                     <h3>Claude 9</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-sabi" data-categories="consulting" data-order="7">
                 <img src="img/sabi/1.jpg" alt="Sabi Juices">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Consulting</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Consulting</p>
                     <h3>Sabi Juices</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-resumes" data-categories="graphic" data-order="8">
-                <img class="is-portrait" src="img/resumes/future.png" alt="Current &amp; Future Creative Resume Design">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Graphic Design</p>
+                <img src="img/resumes/future.png" alt="Current &amp; Future Creative Resume Design">
+                <div class="project-bar">
+                    <p class="project-bar-cat">Graphic Design</p>
                     <h3>Current &amp; Future Creative Resume Design</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-pneumonia" data-categories="ml" data-order="9">
                 <img src="img/pneumonia/1.png" alt="Pneumonia Detection">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">ML &amp; Data Analytics</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
                     <h3>Pneumonia Detection</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-clothing" data-categories="ml" data-order="10">
-                <img class="is-contain" src="img/clothing/cover.png" alt="Clothing Categorization">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">ML &amp; Data Analytics</p>
+                <img src="img/clothing/cover.png" alt="Clothing Categorization">
+                <div class="project-bar">
+                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
                     <h3>Clothing Categorization</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-crocs" data-categories="consulting" data-order="11">
                 <img src="img/crocs/6.jpg" alt="Crocs x Winter X Games">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Consulting</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Consulting</p>
                     <h3>Crocs x Winter X Games</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-vectora" data-categories="product" data-order="12">
                 <img src="img/vectora/1.jpg" alt="Vectora">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Product Design</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Product Design</p>
                     <h3>Vectora</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-shift" data-categories="product" data-order="13">
                 <div class="project-tile-placeholder">SHIFT SC</div>
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Product Design</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Product Design</p>
                     <h3>SHIFT SC Website Design</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-mattel" data-categories="product" data-order="14">
                 <img src="img/projects/project6.png" alt="Mattel — Tell-A-Tale">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Product Design</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Product Design</p>
                     <h3>Mattel — Tell-A-Tale</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-whiskware" data-categories="consulting" data-order="15">
                 <img src="img/whiskware/1.jpg" alt="Whiskware — Snack &amp; Splash">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Consulting</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Consulting</p>
                     <h3>Whiskware — Snack &amp; Splash</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-presq" data-categories="graphic" data-order="16">
                 <img src="img/gogo/cover.png" alt="PresQ Studios — GOGO Boot">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Graphic Design</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Graphic Design</p>
                     <h3>PresQ Studios — GOGO Boot</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-memesocial" data-categories="ml" data-order="17">
                 <img src="img/memesocial/1.jpg" alt="MemeSocial">
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">ML &amp; Data Analytics</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
                     <h3>MemeSocial</h3>
                 </div>
             </article>
 
             <article class="project-tile" data-modal="modal-furniture" data-categories="product" data-order="18">
                 <div class="project-tile-placeholder">Furniture Website</div>
-                <div class="project-tile-info">
-                    <p class="project-tile-tag">Product Design</p>
+                <div class="project-bar">
+                    <p class="project-bar-cat">Product Design</p>
                     <h3>Furniture Website Design</h3>
                 </div>
             </article>
@@ -367,6 +364,7 @@
         </div>
 
     </section>
+
 
     <!-- ===================== PROJECT MODALS =====================
          One modal per project. The id must match the card's data-modal.
@@ -1821,6 +1819,6 @@
         <span>© 2026 Zeinab Drameh</span>
     </footer>
 
-    <script src="./script.js?v=10"></script>
+    <script src="./script.js?v=11"></script>
 </body>
 </html>
