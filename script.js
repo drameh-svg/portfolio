@@ -15,28 +15,11 @@
 
 
 // ── 1. DARK MODE ──────────────────────────
-// Saves the choice in localStorage so it
-// stays after a refresh.
+// Off for now. Keep the styles in CSS so it
+// can come back later without a rewrite.
 
-const toggleBtn = document.getElementById('mode-toggle');
-
-if (localStorage.getItem('mode') === 'dark') {
-    document.body.classList.add('dark');
-    if (toggleBtn) toggleBtn.textContent = '☀︎';
-}
-
-if (toggleBtn) {
-    toggleBtn.addEventListener('click', function () {
-        document.body.classList.toggle('dark');
-        if (document.body.classList.contains('dark')) {
-            localStorage.setItem('mode', 'dark');
-            toggleBtn.textContent = '☀︎';
-        } else {
-            localStorage.setItem('mode', 'light');
-            toggleBtn.textContent = '☾';
-        }
-    });
-}
+document.body.classList.remove('dark');
+localStorage.removeItem('mode');
 
 
 // ── 2. SMOOTH SCROLL ──────────────────────
@@ -221,15 +204,6 @@ document.querySelectorAll('.project-slide').forEach(card => {
         }
         if (pos !== 'center') return;
 
-        const modal = document.getElementById(this.dataset.modal);
-        if (!modal) return;
-        modal.classList.add('is-open');
-        document.body.classList.add('modal-open');
-    });
-});
-
-document.querySelectorAll('.featured-card').forEach(card => {
-    card.addEventListener('click', function () {
         const modal = document.getElementById(this.dataset.modal);
         if (!modal) return;
         modal.classList.add('is-open');
