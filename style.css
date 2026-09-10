@@ -365,15 +365,22 @@ body.dark .nav-links {
 /* ============================================
    5. HERO
 ============================================ */
+#home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .hero {
     position: relative;
-    min-height: calc(100vh - 80px);
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 80px 24px 64px;
+    padding: 72px 24px 16px;
 }
 
 .hero-mark {
@@ -386,10 +393,10 @@ body.dark .nav-links {
     opacity: 0.4;
 }
 
-.hero-mark:nth-child(1) { left: 8%; top: 14%; }
-.hero-mark:nth-child(2) { right: 8%; top: 14%; }
-.hero-mark:nth-child(3) { left: 8%; bottom: 16%; }
-.hero-mark:nth-child(4) { right: 8%; bottom: 16%; }
+.hero-mark:nth-child(1) { left: 8%; top: 10%; }
+.hero-mark:nth-child(2) { right: 8%; top: 10%; }
+.hero-mark:nth-child(3) { left: 8%; bottom: 8%; }
+.hero-mark:nth-child(4) { right: 8%; bottom: 8%; }
 
 .hero-eyebrow {
     font-family: var(--font-display);
@@ -448,7 +455,7 @@ body.dark .nav-links {
 }
 
 .hero-craft {
-    margin: 28px 0 36px;
+    margin: 20px 0 28px;
     font-family: var(--font-display);
     font-size: clamp(1.35rem, 2.8vw, 2rem);
     font-weight: 900;
@@ -783,15 +790,16 @@ body.dark .toolbox-name {
 
 
 /* ============================================
-   6. CLIENTS — smaller marquee
+   6. CLIENTS — home-page marquee
 ============================================ */
 .clients-section {
-    padding: 36px 0 44px;
+    flex-shrink: 0;
+    padding: 4px 0 28px;
     overflow: hidden;
 }
 
 .clients-label {
-    padding: 0 48px 16px;
+    padding: 0 48px 14px;
     font-family: var(--font-display);
     font-size: 11px;
     font-weight: 700;
@@ -805,9 +813,9 @@ body.dark .toolbox-name {
 
 .clients-track {
     display: flex;
-    gap: 22px;
+    gap: 18px;
     width: max-content;
-    animation: scrollClients 22s linear infinite;
+    animation: scrollClients 26s linear infinite;
 }
 
 .clients-track:hover { animation-play-state: paused; }
@@ -817,27 +825,41 @@ body.dark .toolbox-name {
     to   { transform: translateX(-50%); }
 }
 
-.client-circle {
+.client-mark {
     width: 92px;
     height: 92px;
     border-radius: 50%;
-    overflow: hidden;
     flex-shrink: 0;
-    background-color: var(--cream);
-    object-fit: cover;
-    display: block;
-    box-shadow: 0 8px 20px rgba(26, 92, 102, 0.14);
-    border: 3px solid var(--teal);
-    transition: transform 0.3s ease;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, var(--teal) 18%, transparent);
+    border: 1.5px solid color-mix(in srgb, var(--teal) 28%, transparent);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--teal) 16%, transparent);
+    overflow: hidden;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.client-circle:hover { transform: scale(1.08); }
+.clients-track a {
+    display: block;
+    flex-shrink: 0;
+    text-decoration: none;
+}
 
-.client-circle.is-logo {
+.client-mark:hover {
+    transform: scale(1.08);
+    background: color-mix(in srgb, var(--teal) 32%, transparent);
+}
+
+.client-mark img {
+    width: 68%;
+    height: 68%;
     object-fit: contain;
-    padding: 14px;
-    box-sizing: border-box;
-    background: var(--cream);
+    display: block;
+}
+
+.client-mark.is-logo img {
+    width: 72%;
+    height: 72%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -908,7 +930,7 @@ body.dark .toolbox-name {
 
 .projects-carousel-stage {
     position: relative;
-    height: 460px;
+    height: 520px;
     overflow: visible;
     isolation: isolate;
 }
@@ -918,7 +940,7 @@ body.dark .toolbox-name {
     top: 50%;
     left: 50%;
     width: min(680px, 82vw);
-    height: 420px;
+    height: 480px;
     background: var(--proj-card);
     border-radius: 22px;
     border: 1.5px solid color-mix(in srgb, var(--teal) 42%, transparent);
@@ -987,16 +1009,76 @@ body.dark .toolbox-name {
     color: var(--proj-soft);
 }
 
+.project-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 18px 20px 16px;
+    background: color-mix(in srgb, var(--teal) 52%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.project-tag {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 6px;
+}
+
+.project-info h3 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 6px;
+}
+
+.project-info > p:not(.project-tag) {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: color-mix(in srgb, var(--cream) 88%, transparent);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-info .project-skills {
+    margin-top: 10px;
+}
+
+.project-info .skill-tag {
+    color: var(--cream);
+    border-color: color-mix(in srgb, var(--cream) 42%, transparent);
+    background: color-mix(in srgb, var(--cream) 10%, transparent);
+}
+
 .project-bar {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
-    padding: 10px 14px 12px;
-    background: color-mix(in srgb, var(--teal) 58%, transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    height: 50%;
+    padding: 0 14px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(
+        to top,
+        color-mix(in srgb, var(--teal) 78%, transparent) 0%,
+        color-mix(in srgb, var(--teal) 48%, transparent) 38%,
+        color-mix(in srgb, var(--teal) 16%, transparent) 72%,
+        transparent 100%
+    );
 }
 
 .project-bar-cat {
@@ -1015,10 +1097,6 @@ body.dark .toolbox-name {
     letter-spacing: -0.03em;
     line-height: 1.15;
     color: var(--cream);
-}
-
-.project-slide .project-bar h3 {
-    font-size: clamp(1.15rem, 2vw, 1.55rem);
 }
 
 .project-filters {
@@ -1080,6 +1158,50 @@ body.dark .toolbox-name {
     border: 1.5px solid color-mix(in srgb, var(--teal) 42%, transparent);
     cursor: pointer;
     vertical-align: top;
+}
+
+.project-tile.is-entering {
+    animation: galleryIn 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.project-tile.is-exiting {
+    animation: galleryOut 0.3s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes galleryIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.94);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+@keyframes galleryOut {
+    to {
+        opacity: 0;
+        transform: translateY(-16px) scale(0.92);
+        filter: blur(8px);
+    }
+}
+
+.filter-btn {
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.filter-btn.is-pop {
+    animation: filterPop 0.45s cubic-bezier(0.22, 1.45, 0.36, 1);
+}
+
+@keyframes filterPop {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 .project-tile.is-hidden {
@@ -1150,11 +1272,11 @@ body.dark .toolbox-name {
 
     .projects-carousel-stage {
         grid-column: 1 / -1;
-        height: 400px;
+        height: 460px;
     }
 
     .project-slide {
-        height: 360px;
+        height: 420px;
     }
 
     .project-slide[data-pos="left"],
@@ -1174,10 +1296,20 @@ body.dark .toolbox-name {
 @media (max-width: 520px) {
     .project-filters { gap: 16px; }
     .filter-btn { font-size: 1.15rem; }
-    .projects-carousel-stage { height: 320px; }
+    .projects-carousel-stage { height: 380px; }
     .project-slide {
         width: min(720px, 90vw);
-        height: 280px;
+        height: 340px;
+    }
+    .project-info { padding: 14px 14px 12px; }
+    .project-info > p:not(.project-tag) { -webkit-line-clamp: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-tile.is-entering,
+    .project-tile.is-exiting,
+    .filter-btn.is-pop {
+        animation: none;
     }
 }
 

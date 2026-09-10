@@ -125,20 +125,90 @@ document.addEventListener('keydown', function (e) {
 
 renderCarousel();
 
+const galleryEl = document.getElementById('project-gallery');
+let filterToken = 0;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (!reduceMotion.matches) {
+    tiles.forEach((tile, i) => {
+        tile.style.animationDelay = Math.min(i, 12) * 40 + 'ms';
+        tile.classList.add('is-entering');
+        tile.addEventListener('animationend', function done(e) {
+            if (e.target !== tile) return;
+            tile.classList.remove('is-entering');
+            tile.style.animationDelay = '';
+            tile.removeEventListener('animationend', done);
+        });
+    });
+}
+
 function projectMatches(el, filter) {
     if (filter === 'all') return true;
     const cats = (el.dataset.categories || '').split(/\s+/);
     return cats.includes(filter);
 }
 
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-        filterBtns.forEach(b => b.classList.remove('is-active'));
-        this.classList.add('is-active');
-        const filter = this.dataset.filter;
+function applyGalleryFilter(filter) {
+    const token = ++filterToken;
+    const toHide = [];
+    const toShow = [];
+
+    tiles.forEach(tile => {
+        const match = projectMatches(tile, filter);
+        const hidden = tile.classList.contains('is-hidden');
+        tile.classList.remove('is-exiting', 'is-entering');
+        tile.style.animationDelay = '';
+        if (!match && !hidden) toHide.push(tile);
+        else if (match && hidden) toShow.push(tile);
+    });
+
+    if (reduceMotion.matches) {
         tiles.forEach(tile => {
             tile.classList.toggle('is-hidden', !projectMatches(tile, filter));
         });
+        return;
+    }
+
+    if (galleryEl) galleryEl.style.minHeight = galleryEl.offsetHeight + 'px';
+
+    toHide.forEach((tile, i) => {
+        tile.style.animationDelay = Math.min(i, 10) * 16 + 'ms';
+        tile.classList.add('is-exiting');
+    });
+
+    const hideMs = toHide.length ? 320 : 0;
+
+    window.setTimeout(function () {
+        if (token !== filterToken) return;
+        toHide.forEach(tile => {
+            tile.classList.add('is-hidden');
+            tile.classList.remove('is-exiting');
+            tile.style.animationDelay = '';
+        });
+        toShow.forEach((tile, i) => {
+            tile.classList.remove('is-hidden');
+            tile.style.animationDelay = i * 42 + 'ms';
+            void tile.offsetWidth;
+            tile.classList.add('is-entering');
+            tile.addEventListener('animationend', function done(e) {
+                if (e.target !== tile) return;
+                tile.classList.remove('is-entering');
+                tile.style.animationDelay = '';
+                tile.removeEventListener('animationend', done);
+            });
+        });
+        window.setTimeout(function () {
+            if (token !== filterToken) return;
+            if (galleryEl) galleryEl.style.minHeight = '';
+        }, 700);
+    }, hideMs);
+}
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+        filterBtns.forEach(b => b.classList.remove('is-active', 'is-pop'));
+        this.classList.add('is-active', 'is-pop');
+        applyGalleryFilter(this.dataset.filter);
     });
 });
 
