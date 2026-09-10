@@ -231,9 +231,12 @@ nav {
     position: sticky;
     top: 0;
     z-index: 200;
-    background-color: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(16px);
-    transition: background-color 0.4s ease;
+    background: transparent;
+    pointer-events: none;
+}
+
+nav > * {
+    pointer-events: auto;
 }
 
 .nav-logo {
@@ -271,9 +274,10 @@ nav {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: color-mix(in srgb, var(--cream) 55%, transparent);
+    background: color-mix(in srgb, var(--cream) 72%, transparent);
     padding: 6px 8px;
     border-radius: var(--radius);
+    backdrop-filter: blur(12px);
 }
 
 .nav-links a {
@@ -798,7 +802,7 @@ body.dark .toolbox-body {
     flex: 0 0 auto;
     width: min(320px, 72vw);
     padding: 0;
-    border: 3px solid var(--text);
+    border: none;
     border-radius: 18px;
     overflow: hidden;
     background: var(--cream);
@@ -935,7 +939,7 @@ body.dark .toolbox-body {
     height: auto;
     background: var(--proj-card);
     border-radius: 20px;
-    border: 3px solid var(--proj-ink);
+    border: none;
     padding: 12px 12px 14px;
     overflow: hidden;
     display: flex;
@@ -1696,7 +1700,7 @@ footer {
 ============================================ */
 @media (max-width: 520px) {
     nav { flex-wrap: wrap; gap: 10px; padding: 14px 16px; }
-    .nav-links { width: 100%; gap: 4px; }
+    .nav-links { width: auto; max-width: 100%; gap: 4px; margin-left: auto; }
 
     .skill-item { padding: 20px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
     .skill-name { max-width: none; padding-right: 0; }
