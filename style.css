@@ -17,10 +17,10 @@
 
 /* ============================================
    1. FONTS
-   Rubik Distressed ≈ Kokoschka (display)
-   Jost             ≈ Avant Garde (body / UI)
+   Bebas Neue = headlines, name, nav, filters
+   Nunito     = body (rounder, matches the resume)
 ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Rubik+Distressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 
 
 /* ============================================
@@ -38,14 +38,14 @@
     --white:        #f7f4ea;
     --black:        #3b3b36;
     --text:         #3b3b36;
-    --muted:        #3f3f3a;
+    --muted:        #55b8bd;
     --bg:           #d6efeb;
-    --border:       rgba(59, 59, 54, 0.18);
+    --border:       rgba(59, 59, 54, 0.16);
     --radius:       999px;
     --radius-lg:    20px;
     --shadow:       0 12px 32px rgba(59, 59, 54, 0.12);
-    --font-display: 'Rubik Distressed', 'Jost', sans-serif;
-    --font-body:    'Jost', 'Century Gothic', sans-serif;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'Nunito', sans-serif;
     --magenta:      #d73363;
     --lime:         #8ec371;
     --mint:         #d6efeb;
@@ -68,8 +68,8 @@ body.dark {
     --off-white:  #3b3b36;
     --white:      #1e4a52;
     --black:      #3b3b36;
-    --text:       #f4f1e6;
-    --muted:      #d9d4c6;
+    --text:       #d6efeb;
+    --muted:      #8ec371;
     --bg:         #3b3b36;
     --border:     rgba(214, 239, 235, 0.16);
     --magenta:    #d73363;
@@ -101,14 +101,7 @@ body {
     color: var(--text);
     transition: background-color 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
 }
-
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; }
 
 /* Graph-paper grid + large geometry sit behind every section */
 .site-pattern {
@@ -248,56 +241,33 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 13px;
-    letter-spacing: -0.01em;
-    text-transform: none;
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
     font-weight: 400;
-    height: 40px;
-    padding: 0 18px;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 7px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid color-mix(in srgb, var(--text) 22%, transparent);
-    background: color-mix(in srgb, var(--cream) 72%, transparent);
-    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
-}
-
-.nav-links a::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%);
-    transform: translateX(-120%);
-    pointer-events: none;
-}
-
-.nav-links a:hover::before {
-    transform: translateX(120%);
-    transition: transform 0.6s ease;
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    transition: color 0.25s ease, background-color 0.25s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--cream);
     background-color: var(--magenta);
-    border-color: var(--magenta);
 }
 
 #mode-toggle {
     background: none;
     border: 1px solid var(--border);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 13px;
-    letter-spacing: -0.01em;
-    text-transform: none;
-    padding: 0 16px;
-    height: 40px;
-    border-radius: 7px;
+    color: var(--muted);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: var(--radius);
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
 }
@@ -318,14 +288,14 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     text-align: center;
-    padding: 80px 24px 85px;
+    padding: 80px 24px 64px;
 }
 
 .hero-mark {
     position: absolute;
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 22px;
     color: var(--magenta);
     opacity: 0.4;
@@ -337,11 +307,11 @@ nav {
 .hero-mark:nth-child(4) { right: 8%; bottom: 16%; }
 
 .hero-eyebrow {
-    font-family: var(--font-body);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 13px;
-    letter-spacing: 0.12em;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--text);
+    color: var(--muted);
     margin-bottom: 18px;
 }
 
@@ -361,8 +331,7 @@ nav {
     display: flex;
     justify-content: center;
     gap: 0.04em;
-    padding: 0.06em 0.15em 0.14em;
-    overflow: hidden;
+    padding: 0;
 }
 
 .hero-letter {
@@ -394,7 +363,7 @@ nav {
 
 .hero-craft {
     margin: 28px 0 36px;
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(1.6rem, 3.4vw, 2.4rem);
     font-weight: 400;
     color: var(--text);
@@ -438,42 +407,21 @@ nav {
 }
 
 .btn {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 18px;
-    height: 42px;
+    display: inline-block;
+    padding: 16px 32px;
     background-color: var(--magenta);
     color: var(--cream);
-    font-family: var(--font-body);
-    font-size: 13.5px;
-    letter-spacing: -0.02em;
-    text-transform: none;
-    font-weight: 500;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
     text-decoration: none;
     border: none;
-    border-radius: 6px;
+    border-radius: 14px;
     white-space: nowrap;
-    cursor: pointer;
     box-shadow: var(--shadow);
-    transition: transform 0.35s cubic-bezier(.175,.885,.32,1.275), box-shadow 0.35s ease, filter 0.35s ease;
-}
-
-.btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.45) 48%, transparent 76%);
-    transform: translateX(-130%);
-    pointer-events: none;
-}
-
-.btn:hover::after {
-    transform: translateX(130%);
-    transition: transform 0.65s ease;
+    transition: transform 0.35s cubic-bezier(.175,.885,.32,1.275), box-shadow 0.35s ease;
 }
 
 .btn:hover {
@@ -509,7 +457,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .skills-header {
     padding: 32px 60px 16px;
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -541,7 +489,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 .skill-item:hover::before { transform: scaleX(1); }
 
 .skill-name {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 400;
     font-size: clamp(38px, 5.5vw, 72px);
     letter-spacing: 2px;
@@ -579,7 +527,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 }
 
 .toolbox-kicker {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -628,7 +576,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 }
 
 .toolbox-header {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -712,7 +660,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .clients-label {
     padding: 0 48px 16px;
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 11px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -765,10 +713,10 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
    Pale mint band + cream sticker cards, springy coverflow.
 ============================================ */
 #projects {
-    background: transparent;
+    background: var(--bg);
     color: var(--proj-ink);
-    padding: 48px 24px 80px;
-    overflow: visible;
+    padding: 48px 24px 72px;
+    overflow: hidden;
 }
 
 .projects-kicker {
@@ -831,7 +779,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 .carousel-arrow {
     background: color-mix(in srgb, var(--teal) 18%, transparent);
     border: none;
-    color: var(--text);
+    color: var(--teal);
     font-size: 22px;
     width: 48px;
     height: 48px;
@@ -853,7 +801,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .projects-carousel-stage {
     position: relative;
-    height: 480px;
+    height: 430px;
     perspective: 1600px;
     transform-style: preserve-3d;
     overflow: visible;
@@ -937,7 +885,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
 .project-slide-image.placeholder::after {
     content: attr(data-label);
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 400;
     font-size: 22px;
     color: var(--proj-card);
@@ -957,7 +905,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 .slide-hint { display: none; }
 
 .project-info h3 {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 400;
     font-size: 22px;
     letter-spacing: 1px;
@@ -1006,7 +954,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 }
 
 #carousel-counter {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -1040,7 +988,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 
     .projects-carousel-stage {
         grid-column: 1 / -1;
-        height: 440px;
+        height: 400px;
     }
 
     .project-slide[data-pos="left"],
@@ -1060,7 +1008,7 @@ body.dark .btn { background-color: var(--magenta); color: var(--cream); }
 @media (max-width: 520px) {
     .project-filters { gap: 16px; }
     .filter-btn { font-size: 1.15rem; }
-    .projects-carousel-stage { height: 400px; }
+    .projects-carousel-stage { height: 360px; }
     .project-slide { width: min(520px, 86vw); }
 }
 
@@ -1161,7 +1109,7 @@ body.modal-open { overflow: hidden; }
 }
  
 .proj-modal-title {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 800;
     font-size: clamp(52px, 6vw, 84px);
     letter-spacing: -0.04em;
@@ -1322,7 +1270,7 @@ body.modal-open { overflow: hidden; }
 }
 
 .about-text h1 {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 700;
     font-size: clamp(48px, 7vw, 88px);
     letter-spacing: -0.03em;
@@ -1459,7 +1407,7 @@ body.modal-open { overflow: hidden; }
 }
 
 .contact-intro h1 {
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-weight: 700;
     font-size: clamp(48px, 7vw, 88px);
     letter-spacing: -0.03em;
@@ -1526,7 +1474,7 @@ body.modal-open { overflow: hidden; }
     padding: 14px 32px;
     background-color: var(--magenta);
     color: var(--cream);
-    font-family: var(--font-display);
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -1670,107 +1618,5 @@ footer {
 @keyframes bounce {
     from { transform: translateY(0); }
     to   { transform: translateY(-70px); }
-}
-
-/* ============================================
-   LANDING MOTION + GRAIN
-============================================ */
-.grain {
-    position: fixed;
-    inset: 0;
-    z-index: 80;
-    pointer-events: none;
-    opacity: 0.1;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-body.dark .grain {
-    mix-blend-mode: overlay;
-    opacity: 0.16;
-}
-
-.appear {
-    opacity: 1;
-    animation-duration: 1.05s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-    animation-delay: var(--d, 0.08s);
-}
-
-.appear.is-in,
-.hero-photo.is-in {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    clip-path: none;
-    filter: none;
-}
-
-.appear--scale { animation-name: in-scale; }
-.appear--soft { animation-name: in-soft; }
-.appear--mask { animation-name: in-mask; }
-.appear--pop { animation-name: in-pop; }
-.appear--btn { animation-name: in-btn; }
-.appear--side { animation-name: in-side; }
-
-@keyframes in-scale {
-    from { opacity: 0; transform: scale(0.84); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes in-soft {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes in-mask {
-    from { opacity: 0; transform: translateY(40%); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes in-pop {
-    0% { opacity: 0; transform: scale(0.9); }
-    70% { opacity: 1; transform: scale(1.03); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes in-btn {
-    from { opacity: 0; transform: translateY(18px) scale(0.94); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes in-side {
-    from { opacity: 0; transform: translateX(22px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes in-star {
-    from { transform: scale(0.2) rotate(-50deg); }
-    65% { transform: scale(1.2) rotate(8deg); }
-    to { transform: scale(1) rotate(0deg); }
-}
-
-.hero-mark svg {
-    width: 18px;
-    height: 20px;
-    display: block;
-    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--magenta) 45%, transparent));
-    animation: in-star 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition: none !important;
-        animation: none !important;
-    }
-    .appear,
-    .hero-photo,
-    .hero-mark svg {
-        opacity: 1;
-        transform: none;
-        clip-path: none;
-        filter: none;
-    }
 }
 
