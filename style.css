@@ -110,48 +110,15 @@ body {
     z-index: 0;
     pointer-events: none;
     background-image:
-        linear-gradient(rgba(59, 59, 54, 0.11) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 59, 54, 0.11) 1px, transparent 1px);
+        linear-gradient(rgba(26, 92, 102, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 92, 102, 0.16) 1px, transparent 1px);
     background-size: 28px 28px;
 }
 
 body.dark .site-pattern {
     background-image:
-        linear-gradient(rgba(247, 244, 234, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(247, 244, 234, 0.08) 1px, transparent 1px);
-}
-
-.site-texture {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image:
-        repeating-radial-gradient(circle at 10% 14%, transparent 0 20px, rgba(59, 59, 54, 0.08) 21px, transparent 22px),
-        repeating-radial-gradient(circle at 92% 76%, transparent 0 26px, rgba(85, 184, 189, 0.12) 27px, transparent 29px),
-        repeating-radial-gradient(circle at 74% 6%, transparent 0 36px, rgba(215, 51, 99, 0.06) 37px, transparent 39px);
-}
-
-body.dark .site-texture {
-    background-image:
-        repeating-radial-gradient(circle at 10% 14%, transparent 0 20px, rgba(247, 244, 234, 0.06) 21px, transparent 22px),
-        repeating-radial-gradient(circle at 92% 76%, transparent 0 26px, rgba(85, 184, 189, 0.12) 27px, transparent 29px),
-        repeating-radial-gradient(circle at 74% 6%, transparent 0 36px, rgba(215, 51, 99, 0.08) 37px, transparent 39px);
-}
-
-.site-noise {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-body.dark .site-noise {
-    mix-blend-mode: overlay;
-    opacity: 0.07;
+        linear-gradient(rgba(182, 230, 232, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(182, 230, 232, 0.12) 1px, transparent 1px);
 }
 
 .bg-shapes {
@@ -185,16 +152,6 @@ body.dark .bg-shapes .shape { border-color: rgba(182, 230, 232, 0.18); }
     border-radius: 50%;
     bottom: 18%;
     left: -4%;
-}
-
-.bg-shapes .ring-3 {
-    width: min(18vw, 180px);
-    height: min(18vw, 180px);
-    border: 1.5px solid;
-    border-radius: 50%;
-    top: 36%;
-    left: 18%;
-    opacity: 0.7;
 }
 
 .bg-shapes .square {
