@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Zeinab Drameh</title>
-    <link rel="stylesheet" href="./style.css?v=3" />
+    <link rel="stylesheet" href="./style.css?v=4" />
 
     <!--
         FILE LAYOUT (keep it this simple):
@@ -291,7 +291,7 @@
                     </div>
                 </article>
 
-                <!-- 6. Pneumonia Detection -->
+                <!-- 7. Pneumonia Detection -->
                 <article class="project-slide" data-modal="modal-pneumonia" data-categories="ml" data-order="7">
                     <div class="project-slide-image">
                         <img src="img/pneumonia/1.png" alt="Pneumonia Detection">
@@ -310,8 +310,27 @@
                     </div>
                 </article>
 
-                <!-- 7. Crocs -->
-                <article class="project-slide" data-modal="modal-crocs" data-categories="consulting" data-order="8">
+                <!-- 8. Clothing Categorization -->
+                <article class="project-slide" data-modal="modal-clothing" data-categories="ml" data-order="8">
+                    <div class="project-slide-image is-contain">
+                        <img src="img/clothing/cover.png" alt="Clothing Categorization">
+                    </div>
+                    <div class="project-info">
+                        <p class="project-tag">ML &amp; Data Analytics</p>
+                        <h3>Clothing Categorization</h3>
+                        <p>A from-scratch neural net classifying 10 Fashion-MNIST clothing types.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Neural Networks</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Fashion-MNIST</span>
+                        </div>
+                        <p class="slide-hint">Click to view project</p>
+                    </div>
+                </article>
+
+                <!-- 9. Crocs -->
+                <article class="project-slide" data-modal="modal-crocs" data-categories="consulting" data-order="9">
                     <div class="project-slide-image">
                         <img src="img/crocs/6.jpg" alt="Crocs x Winter X Games">
                     </div>
@@ -329,8 +348,8 @@
                     </div>
                 </article>
 
-                <!-- 8. Shift SC website design -->
-                <article class="project-slide" data-modal="modal-shift" data-categories="product" data-order="9">
+                <!-- 10. Shift SC website design -->
+                <article class="project-slide" data-modal="modal-shift" data-categories="product" data-order="10">
                     <div class="project-slide-image placeholder" data-label="SHIFT SC"></div>
                     <div class="project-info">
                         <p class="project-tag">Product Design</p>
@@ -345,8 +364,8 @@
                     </div>
                 </article>
 
-                <!-- 9. Mattel -->
-                <article class="project-slide" data-modal="modal-mattel" data-categories="product" data-order="10">
+                <!-- 11. Mattel -->
+                <article class="project-slide" data-modal="modal-mattel" data-categories="product" data-order="11">
                     <div class="project-slide-image">
                         <img src="img/projects/project6.png" alt="Mattel Tell-A-Tale">
                     </div>
@@ -365,8 +384,8 @@
                     </div>
                 </article>
 
-                <!-- 10. Whiskware Slides -->
-                <article class="project-slide" data-modal="modal-whiskware" data-categories="consulting" data-order="11">
+                <!-- 12. Whiskware Slides -->
+                <article class="project-slide" data-modal="modal-whiskware" data-categories="consulting" data-order="12">
                     <div class="project-slide-image placeholder" data-label="Whiskware Slides"></div>
                     <div class="project-info">
                         <p class="project-tag">Consulting</p>
@@ -381,8 +400,8 @@
                     </div>
                 </article>
 
-                <!-- 12. PresQ Studios GOGO Boot -->
-                <article class="project-slide" data-modal="modal-presq" data-categories="graphic" data-order="12">
+                <!-- 13. PresQ Studios GOGO Boot -->
+                <article class="project-slide" data-modal="modal-presq" data-categories="graphic" data-order="13">
                     <div class="project-slide-image">
                         <img src="img/gogo/cover.png" alt="PresQ Studios GOGO posters">
                     </div>
@@ -400,8 +419,8 @@
                     </div>
                 </article>
 
-                <!-- 12. Meme Social -->
-                <article class="project-slide" data-modal="modal-memesocial" data-categories="ml" data-order="13">
+                <!-- 14. Meme Social -->
+                <article class="project-slide" data-modal="modal-memesocial" data-categories="ml" data-order="14">
                     <div class="project-slide-image">
                         <img src="img/memesocial/1.jpg" alt="MemeSocial">
                     </div>
@@ -419,8 +438,8 @@
                     </div>
                 </article>
 
-                <!-- 13. Furniture website design -->
-                <article class="project-slide" data-modal="modal-furniture" data-categories="product" data-order="14">
+                <!-- 15. Furniture website design -->
+                <article class="project-slide" data-modal="modal-furniture" data-categories="product" data-order="15">
                     <div class="project-slide-image placeholder" data-label="Furniture Website"></div>
                     <div class="project-info">
                         <p class="project-tag">Product Design</p>
@@ -440,7 +459,7 @@
             <button type="button" class="carousel-arrow next" aria-label="Next project">&#8594;</button>
 
             <div class="carousel-status">
-                <span id="carousel-counter">1 / 14</span>
+                <span id="carousel-counter">1 / 15</span>
             </div>
         </div>
 
@@ -995,6 +1014,53 @@
                         <span class="skill-tag">CNN</span>
                         <span class="skill-tag">SVM</span>
                         <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">Image Classification</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL: Clothing Categorization -->
+    <div class="proj-modal" id="modal-clothing">
+        <div class="proj-modal-inner">
+            <div class="proj-modal-header">
+                <div class="proj-modal-meta">
+                    <span>2026</span>
+                    <span>ML &amp; Data Analytics</span>
+                    <span>Neural Networks</span>
+                </div>
+                <button class="proj-modal-close" type="button">&times;</button>
+            </div>
+            <div class="proj-modal-body">
+                <h2 class="proj-modal-title">Clothing Categorization</h2>
+                <p class="proj-modal-sub">A multilayer perceptron trained from scratch on Fashion-MNIST to classify ten clothing types.</p>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Overview</p>
+                    <p class="proj-modal-text">This project implements a neural network by hand — weights, forward pass, backpropagation, and training loop in NumPy — then trains it on Fashion-MNIST. The model maps 28×28 grayscale images onto ten classes (T-shirt, trouser, pullover, dress, coat, sandal, shirt, sneaker, bag, and ankle boot). Data is split into train, validation, and test sets, normalized, and run through 60 epochs of minibatch gradient descent. The work sits in my ML projects repo alongside the pneumonia classifier.</p>
+                    <a class="proj-modal-link" href="https://github.com/drameh-svg/MLProjects/tree/main/Clothing_Categorization" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.02-.02-2-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.24-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.85 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Gallery</p>
+                    <div class="proj-gallery is-slides">
+                        <div class="proj-gallery-track" id="track-clothing">
+                            <img src="img/clothing/cover.png" alt="Fashion-MNIST clothing classes">
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-modal-section">
+                    <p class="proj-modal-label">Skills &amp; Tools</p>
+                    <div class="project-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">Fashion-MNIST</span>
                         <span class="skill-tag">Image Classification</span>
                     </div>
                 </div>
@@ -1668,6 +1734,6 @@
         <span>© 2026 Zeinab Drameh</span>
     </footer>
 
-    <script src="./script.js?v=3"></script>
+    <script src="./script.js?v=4"></script>
 </body>
 </html>
