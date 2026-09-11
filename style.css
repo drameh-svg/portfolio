@@ -1149,23 +1149,26 @@ body.dark .toolbox-name {
 }
 
 .project-gallery {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
+    column-count: 1;
+    column-gap: 16px;
     max-width: 80rem;
     margin: 0 auto;
 }
 
 .project-tile {
     position: relative;
-    display: block;
-    width: auto;
-    margin: 0;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 16px;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
     overflow: hidden;
     border-radius: 18px;
     background: var(--proj-card);
     border: 1.5px solid color-mix(in srgb, var(--teal) 42%, transparent);
     cursor: pointer;
+    vertical-align: top;
 }
 
 .project-tile.is-entering {
@@ -1218,10 +1221,7 @@ body.dark .toolbox-name {
 
 .project-tile img {
     width: 100%;
-    aspect-ratio: 16 / 9;
     height: auto;
-    object-fit: cover;
-    object-position: top center;
     display: block;
     transition: transform 0.45s ease;
 }
@@ -1264,13 +1264,13 @@ body.dark .toolbox-name {
 
 @media (min-width: 700px) {
     .project-gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-count: 2;
     }
 }
 
 @media (min-width: 1080px) {
     .project-gallery {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-count: 3;
     }
 }
 
