@@ -943,7 +943,9 @@ body.dark .toolbox-name {
     height: auto;
     display: flex;
     flex-direction: column;
-    background: var(--cream);
+    background: color-mix(in srgb, var(--teal) 52%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 22px;
     border: 1.5px solid color-mix(in srgb, var(--teal) 42%, transparent);
     padding: 12px 12px 0;
@@ -1027,9 +1029,7 @@ body.dark .toolbox-name {
     z-index: 2;
     margin: 12px -12px 0;
     padding: 16px 20px 18px;
-    background: color-mix(in srgb, var(--teal) 52%, transparent);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: transparent;
 }
 
 .project-tag {
