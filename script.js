@@ -179,6 +179,7 @@
 
         var currentFilter = "all";
         var currentIndex = 0;
+        var builtKey = "";
 
         filters.innerHTML = data.categories.map(function (category, index) {
             return '<button type="button" class="filter-btn' + (index === 0 ? " is-active" : "") +
@@ -190,11 +191,13 @@
             return data.inCategory(currentFilter);
         }
 
-        function render() {
-            var list = visible();
+        function buildSlides(list) {
+            var key = currentFilter + ":" + list.map(function (project) { return project.id; }).join(",");
+            if (key === builtKey) return;
+            builtKey = key;
             stage.innerHTML = list.map(function (project) {
                 var image = project.cover
-                    ? '<img src="' + escapeHtml(project.cover) + '" alt="' + escapeHtml(project.coverAlt || project.title) + '">'
+                    ? '<img src="' + escapeHtml(project.cover) + '" alt="' + escapeHtml(project.coverAlt || project.title) + '" decoding="async">'
                     : '<div class="slide-placeholder">' + escapeHtml(project.placeholder || project.title) + "</div>";
                 return '<a class="project-slide" href="' + projectHref(project) + '" data-id="' + project.id + '" data-pos="hidden">' +
                     '<div class="slide-media">' + image +
@@ -208,12 +211,17 @@
                     "</div>" +
                 "</a>";
             }).join("");
+        }
 
+        function render() {
+            var list = visible();
+            buildSlides(list);
             var slides = stage.querySelectorAll(".project-slide");
             var n = slides.length;
             if (currentIndex >= n) currentIndex = 0;
             slides.forEach(function (slide) {
                 slide.dataset.pos = "hidden";
+                slide.tabIndex = -1;
             });
             if (!n) {
                 if (counter) counter.textContent = "0 / 0";
@@ -222,14 +230,12 @@
             var prev = (currentIndex - 1 + n) % n;
             var next = (currentIndex + 1) % n;
             slides[currentIndex].dataset.pos = "center";
+            slides[currentIndex].tabIndex = 0;
             if (n === 2) slides[next].dataset.pos = "right";
             else if (n > 2) {
-                if (currentIndex !== 0) slides[prev].dataset.pos = "left";
+                slides[prev].dataset.pos = "left";
                 slides[next].dataset.pos = "right";
             }
-            slides.forEach(function (slide) {
-                slide.tabIndex = slide.dataset.pos === "center" ? 0 : -1;
-            });
             if (counter) counter.textContent = (currentIndex + 1) + " / " + n;
         }
 
@@ -302,6 +308,9 @@
         if (backdrop) backdrop.visible = false;
         var renderer = app._renderer;
         if (renderer && typeof renderer.setClearAlpha === "function") renderer.setClearAlpha(0);
+        if (renderer && typeof renderer.setPixelRatio === "function") {
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+        }
         var camera = app._camera;
         if (camera) {
             camera.zoom = SPLINE_ZOOM;
@@ -323,6 +332,16 @@
             splineApp = app;
             return app.load(SPLINE_SCENE).then(function () {
                 presentSpline(app);
+                if (!box || !("IntersectionObserver" in window)) return;
+                var watcher = new IntersectionObserver(function (entries) {
+                    var visible = entries.some(function (entry) { return entry.isIntersecting; });
+                    if (visible) {
+                        if (typeof app.play === "function") app.play();
+                    } else if (typeof app.stop === "function") {
+                        app.stop();
+                    }
+                }, { rootMargin: "160px 0px" });
+                watcher.observe(box);
             });
         }).catch(function () {
             if (box) box.hidden = true;
@@ -430,7 +449,7 @@
             "</ul></div>";
         }
         if ((project.tags || []).length) {
-            side += '<div class="case-tools"><p class="case-side-label">Built with</p><div class="tag-row">' +
+            side += '<div class="case-tools"><p class="case-side-label">Skills &amp; tools utilized</p><div class="tag-row">' +
                 tagsHtml(project.tags) + "</div></div>";
         }
 

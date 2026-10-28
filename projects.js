@@ -874,7 +874,7 @@
         categories: categories,
         categoryLabels: categoryLabels,
         projects: projects,
-        featuredIds: ["arkadium", "shadegap", "spotify", "shift"],
+        featuredIds: ["arkadium", "shadegap", "spotify"],
         byId: function (id) {
             for (var i = 0; i < projects.length; i++) {
                 if (projects[i].id === id) return projects[i];
