@@ -80,7 +80,7 @@
         });
 
         document.addEventListener("mouseover", function (event) {
-            var hot = event.target.closest("a, button, .filter-btn, .skill-item, input, textarea");
+            var hot = event.target.closest("a, button, .filter-btn, .skill-item, .case-dot, input, textarea");
             document.body.classList.toggle("is-cursor-hot", !!hot);
         });
 
@@ -285,7 +285,36 @@
         render();
     }
 
+    /* ---------- spline hero ---------- */
+    function initSpline() {
+        var frame = document.querySelector(".hero-spline iframe");
+        if (!frame) return;
+        if (reduce.matches) {
+            var box = frame.closest(".hero-spline");
+            if (box) box.hidden = true;
+            return;
+        }
+        if (frame.dataset.src) frame.src = frame.dataset.src;
+    }
+
     /* ---------- case study ---------- */
+    function galleryFor(project) {
+        var images = [];
+        var seen = {};
+        function add(src, alt) {
+            if (!src || seen[src]) return;
+            seen[src] = true;
+            images.push({ src: src, alt: alt || project.title });
+        }
+        add(project.cover, project.coverAlt || project.title);
+        (project.sections || []).forEach(function (section) {
+            (section.images || []).forEach(function (image) {
+                add(image.src, image.alt);
+            });
+        });
+        return images;
+    }
+
     function renderCase() {
         var mount = document.getElementById("case");
         if (!mount || !data) return;
@@ -300,56 +329,140 @@
         var sorted = data.sorted();
         var index = sorted.findIndex(function (item) { return item.id === project.id; });
         var next = sorted[(index + 1) % sorted.length];
+        var images = galleryFor(project);
 
         var links = (project.links || []).map(function (link) {
-            return '<a class="btn" href="' + escapeHtml(link.href) + '" target="_blank" rel="noopener noreferrer">' +
+            return '<a href="' + escapeHtml(link.href) + '" target="_blank" rel="noopener noreferrer">' +
                 escapeHtml(link.label) + "</a>";
         }).join("");
 
-        var hero = project.cover
-            ? '<div class="case-hero"><img src="' + escapeHtml(project.cover) + '" alt="' + escapeHtml(project.coverAlt || project.title) + '"></div>'
-            : "";
+        var stage = "";
+        if (images.length) {
+            var chevron = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5 9 12l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            var slides = images.map(function (image, imageIndex) {
+                return '<figure class="case-slide' + (imageIndex === 0 ? " is-active" : "") + '">' +
+                    '<img src="' + escapeHtml(image.src) + '" alt="' + escapeHtml(image.alt) + '">' +
+                "</figure>";
+            }).join("");
+            var arrows = "";
+            var pager = "";
+            if (images.length > 1) {
+                var dots = images.map(function (image, imageIndex) {
+                    return '<button type="button" class="case-dot' + (imageIndex === 0 ? " is-active" : "") +
+                        '" aria-label="Image ' + (imageIndex + 1) + " of " + images.length + '" aria-selected="' +
+                        (imageIndex === 0 ? "true" : "false") + '"></button>';
+                }).join("");
+                arrows =
+                    '<button type="button" class="case-nav prev" aria-label="Previous image">' + chevron + "</button>" +
+                    '<button type="button" class="case-nav next" aria-label="Next image">' + chevron + "</button>";
+                pager =
+                    '<div class="case-pager">' +
+                        '<p class="case-caption">' + escapeHtml(images[0].alt || "") + "</p>" +
+                        '<div class="case-dots">' + dots + "</div>" +
+                        '<p class="case-count"><span class="case-count-current">1</span> / ' + images.length + "</p>" +
+                    "</div>";
+            }
+            stage = '<div class="case-stage" data-case-gallery>' +
+                '<div class="case-slides">' + slides + arrows + "</div>" +
+                pager +
+            "</div>";
+        } else {
+            stage = '<div class="case-stage"><div class="case-slides"><div class="slide-placeholder">' +
+                escapeHtml(project.placeholder || project.title) + "</div></div></div>";
+        }
+
+        var highlights = [];
+        (project.sections || []).forEach(function (section) {
+            (section.highlights || []).forEach(function (item) { highlights.push(item); });
+        });
 
         var sections = (project.sections || []).map(function (section) {
             var paragraphs = (section.paragraphs || []).map(function (paragraph) {
                 return "<p>" + escapeHtml(paragraph) + "</p>";
             }).join("");
-            var highlights = (section.highlights || []).length
-                ? '<ul class="case-highlights">' + section.highlights.map(function (item) {
-                    return "<li>" + escapeHtml(item) + "</li>";
-                }).join("") + "</ul>"
-                : "";
-            var figures = (section.images || []).length
-                ? '<div class="case-figures' + (section.layout === "grid" ? " is-grid" : "") + '">' +
-                    section.images.map(function (image) {
-                        return "<figure><img src=\"" + escapeHtml(image.src) + "\" alt=\"" + escapeHtml(image.alt || "") + "\">" +
-                            (image.alt ? "<figcaption>" + escapeHtml(image.alt) + "</figcaption>" : "") +
-                        "</figure>";
-                    }).join("") + "</div>"
-                : "";
+            if (!paragraphs) return "";
             return '<section class="case-section">' +
                 '<h2 class="case-label">' + escapeHtml(section.label) + "</h2>" +
-                '<div class="case-copy">' + paragraphs + highlights + figures + "</div>" +
+                '<div class="case-copy">' + paragraphs + "</div>" +
             "</section>";
         }).join("");
+
+        var side = "";
+        if (highlights.length) {
+            side += '<div><p class="case-side-label">Highlights</p><ul class="case-highlights">' +
+                highlights.map(function (item) { return "<li>" + escapeHtml(item) + "</li>"; }).join("") +
+            "</ul></div>";
+        }
+        if ((project.tags || []).length) {
+            side += '<div class="case-tools"><p class="case-side-label">Built with</p><div class="tag-row">' +
+                tagsHtml(project.tags) + "</div></div>";
+        }
 
         var meta = data.labelsFor(project).join(" · ");
         if (project.year) meta = project.year + " · " + meta;
 
         mount.innerHTML =
             '<article class="wrap case">' +
-                '<a class="case-back" href="projects.html">All projects</a>' +
+                '<a class="case-back" href="projects.html">← All projects</a>' +
                 '<p class="case-kicker">' + escapeHtml(meta) + "</p>" +
                 "<h1>" + escapeHtml(project.title) + "</h1>" +
                 '<p class="case-lede">' + escapeHtml(project.lede || project.summary) + "</p>" +
                 (links ? '<div class="case-links">' + links + "</div>" : "") +
-                hero +
-                sections +
-                '<div class="case-tools"><p>Built with</p><div class="tag-row">' + tagsHtml(project.tags) + "</div></div>" +
+                stage +
+                '<div class="case-layout">' +
+                    '<div class="case-main">' + sections + "</div>" +
+                    (side ? '<aside class="case-side">' + side + "</aside>" : "") +
+                "</div>" +
                 '<a class="next-project" href="' + projectHref(next) + '">' +
                     "<span>Next project</span><strong>" + escapeHtml(next.title) + "</strong>" +
                 "</a>" +
             "</article>";
+
+        bindGallery(mount);
+    }
+
+    function bindGallery(root) {
+        var gallery = root.querySelector("[data-case-gallery]");
+        if (!gallery) return;
+        var slides = gallery.querySelectorAll(".case-slide");
+        var dots = gallery.querySelectorAll(".case-dot");
+        var count = gallery.querySelector(".case-count-current");
+        var caption = gallery.querySelector(".case-caption");
+        if (slides.length < 2) return;
+        var index = 0;
+
+        function show(nextIndex) {
+            index = (nextIndex + slides.length) % slides.length;
+            slides.forEach(function (slide, slideIndex) {
+                slide.classList.toggle("is-active", slideIndex === index);
+            });
+            dots.forEach(function (dot, dotIndex) {
+                var on = dotIndex === index;
+                dot.classList.toggle("is-active", on);
+                dot.setAttribute("aria-selected", on ? "true" : "false");
+            });
+            if (count) count.textContent = String(index + 1);
+            if (caption) {
+                var img = slides[index].querySelector("img");
+                caption.textContent = img ? img.alt : "";
+            }
+        }
+
+        gallery.querySelector(".case-nav.prev").addEventListener("click", function () { show(index - 1); });
+        gallery.querySelector(".case-nav.next").addEventListener("click", function () { show(index + 1); });
+        dots.forEach(function (dot, dotIndex) {
+            dot.addEventListener("click", function () { show(dotIndex); });
+        });
+        gallery.addEventListener("keydown", function (event) {
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                show(index - 1);
+            }
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                show(index + 1);
+            }
+        });
     }
 
     function initContact() {
@@ -380,6 +493,7 @@
     ready(function () {
         initCursor();
         initHeader();
+        initSpline();
         renderHomeFeatured();
         renderFeaturedPage();
         initDeck();
