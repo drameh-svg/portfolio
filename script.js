@@ -392,13 +392,13 @@
 
     function initSpline() {
         var canvas = document.getElementById("hero-canvas");
-        if (!canvas) return;
+        if (!canvas) return Promise.resolve();
         var box = canvas.closest(".hero-spline");
         if (reduce.matches) {
             if (box) box.hidden = true;
-            return;
+            return Promise.resolve();
         }
-        import(SPLINE_RUNTIME).then(function (mod) {
+        var loaded = import(SPLINE_RUNTIME).then(function (mod) {
             var app = new mod.Application(canvas);
             splineApp = app;
             return app.load(SPLINE_SCENE).then(function () {
@@ -421,6 +421,7 @@
             if (!splineApp) return;
             window.requestAnimationFrame(function () { presentSpline(splineApp); });
         });
+        return loaded;
     }
 
     /* ---------- case study ---------- */
@@ -639,15 +640,106 @@
         });
     }
 
+    var loaderDismissed = false;
+
+    function dismissLoader() {
+        if (loaderDismissed) return;
+        loaderDismissed = true;
+        var loader = document.getElementById("loader");
+        document.body.classList.remove("is-loading");
+        if (loader) {
+            loader.classList.add("is-done");
+            loader.setAttribute("aria-busy", "false");
+            window.setTimeout(function () {
+                if (loader.parentNode) loader.parentNode.removeChild(loader);
+            }, 520);
+        }
+        var hash = window.location.hash;
+        if (hash.length > 1) {
+            var target = document.getElementById(hash.slice(1));
+            if (target) window.requestAnimationFrame(function () { target.scrollIntoView(); });
+        }
+    }
+
+    function whenSettled(promise, ms) {
+        return new Promise(function (resolve) {
+            var timer = window.setTimeout(resolve, ms);
+            Promise.resolve(promise).then(function () {
+                window.clearTimeout(timer);
+                resolve();
+            }, function () {
+                window.clearTimeout(timer);
+                resolve();
+            });
+        });
+    }
+
+    function whenImage(img) {
+        function decoded() {
+            if (typeof img.decode === "function") return img.decode().catch(function () {});
+            return Promise.resolve();
+        }
+        if (img.complete) return decoded();
+        return new Promise(function (resolve) {
+            function done() {
+                img.removeEventListener("load", done);
+                img.removeEventListener("error", done);
+                resolve();
+            }
+            img.addEventListener("load", done);
+            img.addEventListener("error", done);
+        }).then(decoded);
+    }
+
+    function whenWindowLoad() {
+        if (document.readyState === "complete") return Promise.resolve();
+        return new Promise(function (resolve) {
+            window.addEventListener("load", resolve, { once: true });
+        });
+    }
+
+    function nextFrames(count) {
+        return new Promise(function (resolve) {
+            function step(left) {
+                if (left <= 0) resolve();
+                else window.requestAnimationFrame(function () { step(left - 1); });
+            }
+            step(count);
+        });
+    }
+
+    function initLoader(splineReady) {
+        var started = performance.now();
+        var images = Array.prototype.map.call(document.images, whenImage);
+        var fonts = document.fonts && document.fonts.ready
+            ? document.fonts.ready
+            : Promise.resolve();
+        var assets = Promise.all([
+            whenWindowLoad(),
+            fonts,
+            Promise.all(images),
+            splineReady || Promise.resolve()
+        ]);
+        whenSettled(assets, 10000).then(function () {
+            var remaining = 700 - (performance.now() - started);
+            if (remaining > 0) return new Promise(function (resolve) { window.setTimeout(resolve, remaining); });
+        }).then(function () {
+            return nextFrames(2);
+        }).then(dismissLoader);
+    }
+
+    window.setTimeout(dismissLoader, 12000);
+
     ready(function () {
         initCursor();
         initHeader();
-        initSpline();
+        var splineReady = initSpline();
         initSectionNav();
         renderHomeFeatured();
         renderFeaturedPage();
         initDeck();
         renderCase();
         initContact();
+        initLoader(splineReady);
     });
 })();

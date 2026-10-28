@@ -118,6 +118,8 @@ body {
     line-height: 1.5;
 }
 
+body.is-loading { overflow: hidden; }
+
 body.has-cursor,
 body.has-cursor a,
 body.has-cursor button,
@@ -1494,6 +1496,33 @@ h1, h2, .display {
 .ball-2 { background: var(--lime); animation-delay: 0.15s; }
 .ball-3 { background: var(--teal); animation-delay: 0.3s; }
 @keyframes bounce { to { transform: translateY(-48px); } }
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--mint);
+    color: var(--text);
+    transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+.loader-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+.loader .balls { margin-top: 8px; }
+.loader.is-done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 
 footer.site-footer {
     padding: 28px;

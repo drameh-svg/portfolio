@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects — Zeinab Drameh</title>
     <meta name="description" content="All projects by Zeinab Drameh, filterable by category.">
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=31">
+    <noscript><style>.loader{display:none!important}body.is-loading{overflow:visible}</style></noscript>
 </head>
-<body data-page="projects">
+<body data-page="projects" class="is-loading">
+    <div class="loader" id="loader" role="status" aria-live="polite" aria-busy="true" aria-label="Loading Zeinab Drameh's portfolio">
+        <p class="loader-name">Zeinab Drameh</p>
+        <div class="balls" aria-hidden="true">
+            <div class="ball ball-1"></div>
+            <div class="ball ball-2"></div>
+            <div class="ball ball-3"></div>
+        </div>
+    </div>
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-bg" aria-hidden="true"><div class="site-pattern"></div></div>
     <div class="cursor-dot" aria-hidden="true"></div>
@@ -54,7 +63,15 @@
         </nav>
     </footer>
 
-    <script src="projects.js?v=30"></script>
-    <script src="script.js?v=30"></script>
+    <script>
+        setTimeout(function () {
+            var loader = document.getElementById("loader");
+            if (!loader || loader.classList.contains("is-done")) return;
+            loader.classList.add("is-done");
+            document.body.classList.remove("is-loading");
+        }, 12000);
+    </script>
+    <script src="projects.js?v=31"></script>
+    <script src="script.js?v=31"></script>
 </body>
 </html>
