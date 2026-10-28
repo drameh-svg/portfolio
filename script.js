@@ -271,7 +271,9 @@
 
         document.addEventListener("keydown", function (event) {
             if (event.target.matches("input, textarea")) return;
-            if (document.body.dataset.page !== "projects") return;
+            var onDeckPage = document.body.dataset.page === "projects";
+            var inDeck = event.target.closest && event.target.closest("#projects");
+            if (!onDeckPage && !inDeck) return;
             if (event.key === "ArrowLeft") {
                 event.preventDefault();
                 step(-1);
@@ -288,6 +290,25 @@
     /* ---------- spline hero ---------- */
     var SPLINE_SCENE = "https://prod.spline.design/9D6gECR1BDJHmO97/scene.splinecode";
     var SPLINE_RUNTIME = "https://cdn.jsdelivr.net/npm/@splinetool/runtime@2.0.114/build/runtime.js";
+    var SPLINE_ZOOM = 0.2;
+    var splineApp = null;
+
+    function presentSpline(app) {
+        var page = app._scene && app._scene.activePage;
+        var color = page && page.bgColor;
+        if (color && typeof color.a === "number") color.a = 0;
+        if (app._scene) app._scene.background = null;
+        var backdrop = app.findObjectByName("Backdrop");
+        if (backdrop) backdrop.visible = false;
+        var renderer = app._renderer;
+        if (renderer && typeof renderer.setClearAlpha === "function") renderer.setClearAlpha(0);
+        var camera = app._camera;
+        if (camera) {
+            camera.zoom = SPLINE_ZOOM;
+            if (typeof camera.updateProjectionMatrix === "function") camera.updateProjectionMatrix();
+        }
+        if (typeof app._requestRenderAutoMode === "function") app._requestRenderAutoMode();
+    }
 
     function initSpline() {
         var canvas = document.getElementById("hero-canvas");
@@ -299,9 +320,16 @@
         }
         import(SPLINE_RUNTIME).then(function (mod) {
             var app = new mod.Application(canvas);
-            return app.load(SPLINE_SCENE);
+            splineApp = app;
+            return app.load(SPLINE_SCENE).then(function () {
+                presentSpline(app);
+            });
         }).catch(function () {
             if (box) box.hidden = true;
+        });
+        window.addEventListener("resize", function () {
+            if (!splineApp) return;
+            window.requestAnimationFrame(function () { presentSpline(splineApp); });
         });
     }
 
@@ -329,7 +357,7 @@
         var params = new URLSearchParams(window.location.search);
         var project = data.byId(params.get("id"));
         if (!project) {
-            mount.innerHTML = '<div class="wrap case"><p>That project is not on this site.</p><p><a class="case-back" href="projects.html">Back to all projects</a></p></div>';
+            mount.innerHTML = '<div class="wrap case"><p>That project is not on this site.</p><p><a class="case-back" href="index.html#projects">Back to all projects</a></p></div>';
             return;
         }
         document.title = project.title + " — Zeinab Drameh";
@@ -411,7 +439,7 @@
 
         mount.innerHTML =
             '<article class="wrap case">' +
-                '<a class="case-back" href="projects.html">← All projects</a>' +
+                '<a class="case-back" href="index.html#projects">← All projects</a>' +
                 '<p class="case-kicker">' + escapeHtml(meta) + "</p>" +
                 "<h1>" + escapeHtml(project.title) + "</h1>" +
                 '<p class="case-lede">' + escapeHtml(project.lede || project.summary) + "</p>" +
@@ -473,6 +501,29 @@
         });
     }
 
+    function initSectionNav() {
+        if (document.body.dataset.page !== "home") return;
+        var links = Array.prototype.slice.call(document.querySelectorAll(".primary-nav a[href^='#']"));
+        var items = links.map(function (link) {
+            return { link: link, section: document.getElementById(link.getAttribute("href").slice(1)) };
+        }).filter(function (item) { return item.section; });
+        if (!items.length) return;
+
+        function update() {
+            var mark = window.scrollY + 140;
+            var current = items[0];
+            items.forEach(function (item) {
+                if (item.section.offsetTop <= mark) current = item;
+            });
+            items.forEach(function (item) {
+                if (item === current) item.link.setAttribute("aria-current", "page");
+                else item.link.removeAttribute("aria-current");
+            });
+        }
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+    }
+
     function initContact() {
         var form = document.getElementById("contact-form");
         var message = document.getElementById("form-message");
@@ -502,6 +553,7 @@
         initCursor();
         initHeader();
         initSpline();
+        initSectionNav();
         renderHomeFeatured();
         renderFeaturedPage();
         initDeck();

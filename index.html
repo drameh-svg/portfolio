@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeinab Drameh</title>
     <meta name="description" content="Zeinab Drameh builds at the intersection of data, design, AI, and communications.">
-    <link rel="stylesheet" href="style.css?v=23">
+    <link rel="stylesheet" href="style.css?v=28">
 </head>
 <body data-page="home">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -14,14 +14,15 @@
     <div class="cursor-ring" aria-hidden="true"></div>
 
     <header class="site-header">
-        <a class="brand" href="index.html">zeinab.drameh</a>
+        <a class="brand" href="#home">zeinab.drameh</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
             <span class="sr-only">Menu</span>
             <span></span>
         </button>
         <nav id="primary-nav" class="primary-nav" aria-label="Primary">
-            <a href="index.html" aria-current="page">Home</a>
-            <a href="projects.html">Projects</a>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
             <a href="#about">About</a>
             <a class="nav-cta" href="#contact">Contact</a>
         </nav>
@@ -48,20 +49,6 @@
                         <canvas id="hero-canvas" aria-label="3D computer that follows the cursor"></canvas>
                     </div>
                 </div>
-            </div>
-            <a class="scroll-hint" href="#featured">Scroll</a>
-        </section>
-
-        <section class="band" id="featured">
-            <div class="wrap">
-                <div class="band-head">
-                    <div>
-                        <p class="eyebrow">Selected work</p>
-                        <h2>Featured projects.</h2>
-                    </div>
-                    <a class="text-link" href="featured.html">All featured</a>
-                </div>
-                <div id="home-featured" class="work-grid"></div>
             </div>
         </section>
 
@@ -91,7 +78,33 @@
             </div>
         </section>
 
-        <section id="skills" class="skills-section">
+        <section class="band" id="featured">
+            <div class="wrap">
+                <div class="band-head">
+                    <div>
+                        <p class="eyebrow">Selected work</p>
+                        <h2>Featured Work</h2>
+                    </div>
+                    <a class="text-link" href="#projects">All projects</a>
+                </div>
+                <div id="home-featured" class="work-grid"></div>
+            </div>
+        </section>
+
+        <section class="home-collection" id="projects">
+            <div class="wrap">
+                <p class="eyebrow">The full collection of my work</p>
+                <div class="project-filters" id="project-filters" role="tablist" aria-label="Project categories"></div>
+            </div>
+            <div class="wrap deck">
+                <button type="button" class="deck-arrow prev" aria-label="Previous project">←</button>
+                <div class="deck-stage" id="deck-stage"></div>
+                <button type="button" class="deck-arrow next" aria-label="Next project">→</button>
+                <p class="deck-status"><span id="deck-counter" aria-live="polite">1 / 1</span></p>
+            </div>
+        </section>
+
+        <section id="process" class="skills-section">
             <p class="skills-header">Skills</p>
             <div class="skill-item">
                 <span class="skill-name">UI / UX Design</span>
@@ -244,13 +257,15 @@
     <footer class="site-footer">
         <span>© 2026 Zeinab Drameh</span>
         <nav aria-label="Footer">
-            <a href="projects.html">Projects</a>
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
             <a href="#about">About</a>
+            <a href="#contact">Contact</a>
             <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </nav>
     </footer>
 
-    <script src="projects.js?v=23"></script>
-    <script src="script.js?v=23"></script>
+    <script src="projects.js?v=28"></script>
+    <script src="script.js?v=28"></script>
 </body>
 </html>
