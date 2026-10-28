@@ -179,7 +179,15 @@
 
         var currentFilter = "all";
         var currentIndex = 0;
-        var builtKey = "";
+        var slideMarkup = '<a class="project-slide" href="#projects" data-pos="center">' +
+            '<div class="slide-media"></div>' +
+            '<div class="slide-copy">' +
+                '<p class="slide-cat"></p>' +
+                '<h3></h3>' +
+                '<p class="slide-summary"></p>' +
+                '<div class="tag-row slide-tags"></div>' +
+                '<p class="slide-hint">Click to view project</p>' +
+            '</div></a>';
 
         filters.innerHTML = data.categories.map(function (category, index) {
             return '<button type="button" class="filter-btn' + (index === 0 ? " is-active" : "") +
@@ -191,51 +199,114 @@
             return data.inCategory(currentFilter);
         }
 
-        function buildSlides(list) {
-            var key = currentFilter + ":" + list.map(function (project) { return project.id; }).join(",");
-            if (key === builtKey) return;
-            builtKey = key;
-            stage.innerHTML = list.map(function (project) {
-                var image = project.cover
-                    ? '<img src="' + escapeHtml(project.cover) + '" alt="' + escapeHtml(project.coverAlt || project.title) + '" decoding="async">'
-                    : '<div class="slide-placeholder">' + escapeHtml(project.placeholder || project.title) + "</div>";
-                return '<a class="project-slide" href="' + projectHref(project) + '" data-id="' + project.id + '" data-pos="hidden">' +
-                    '<div class="slide-media">' + image +
-                        '<div class="glass-bar">' +
-                            '<p class="glass-cat">' + escapeHtml(data.labelsFor(project).join(" · ")) + "</p>" +
-                            "<h3>" + escapeHtml(project.title) + "</h3>" +
-                        "</div>" +
-                    "</div>" +
-                    '<div class="slide-copy"><p>' + escapeHtml(project.summary) + "</p>" +
-                        '<div class="tag-row slide-tags">' + tagsHtml(project.tags.slice(0, 3)) + "</div>" +
-                    "</div>" +
-                "</a>";
-            }).join("");
+        function warm(project) {
+            if (!project || !project.cover) return;
+            var img = new Image();
+            img.decoding = "async";
+            img.src = project.cover;
         }
 
-        function render() {
+        function ensureNodes(count) {
+            while (stage.childElementCount < count) {
+                var holder = document.createElement("div");
+                holder.innerHTML = slideMarkup;
+                stage.appendChild(holder.firstChild);
+            }
+            while (stage.childElementCount > count) stage.removeChild(stage.lastElementChild);
+        }
+
+        function paint(node, project) {
+            if (node.dataset.id === project.id) return;
+            node.dataset.id = project.id;
+            node.href = projectHref(project);
+            var media = node.querySelector(".slide-media");
+            if (project.cover) {
+                var img = media.querySelector("img");
+                if (!img) {
+                    media.textContent = "";
+                    img = document.createElement("img");
+                    img.decoding = "async";
+                    img.alt = "";
+                    media.appendChild(img);
+                }
+                if (img.getAttribute("src") !== project.cover) img.src = project.cover;
+                img.alt = project.coverAlt || project.title;
+            } else {
+                media.innerHTML = '<div class="slide-placeholder">' + escapeHtml(project.placeholder || project.title) + "</div>";
+            }
+            var labels = data.labelsFor(project);
+            node.querySelector(".slide-cat").textContent = labels[0] || "";
+            node.querySelector("h3").textContent = project.title;
+            node.querySelector(".slide-summary").textContent = project.summary;
+            node.querySelector(".slide-tags").innerHTML = tagsHtml((project.tags || []).slice(0, 4));
+        }
+
+        function render(instant, dir) {
             var list = visible();
-            buildSlides(list);
-            var slides = stage.querySelectorAll(".project-slide");
-            var n = slides.length;
+            var n = list.length;
             if (currentIndex >= n) currentIndex = 0;
-            slides.forEach(function (slide) {
-                slide.dataset.pos = "hidden";
-                slide.tabIndex = -1;
-            });
             if (!n) {
+                stage.textContent = "";
                 if (counter) counter.textContent = "0 / 0";
                 return;
             }
-            var prev = (currentIndex - 1 + n) % n;
-            var next = (currentIndex + 1) % n;
-            slides[currentIndex].dataset.pos = "center";
-            slides[currentIndex].tabIndex = 0;
-            if (n === 2) slides[next].dataset.pos = "right";
-            else if (n > 2) {
-                slides[prev].dataset.pos = "left";
-                slides[next].dataset.pos = "right";
+            var roles = n === 1 ? ["center"] : n === 2 ? ["center", "right"] : ["left", "center", "right"];
+            ensureNodes(roles.length);
+            var pool = Array.prototype.slice.call(stage.children);
+            var used = [];
+            var plan = roles.map(function (role) {
+                var index = role === "left" ? (currentIndex - 1 + n) % n
+                    : role === "right" ? (currentIndex + 1) % n
+                    : currentIndex;
+                var project = list[index];
+                var node = null;
+                for (var i = 0; i < pool.length; i++) {
+                    if (used.indexOf(pool[i]) === -1 && pool[i].dataset.id === project.id) {
+                        node = pool[i];
+                        break;
+                    }
+                }
+                if (node) used.push(node);
+                return { role: role, project: project, node: node };
+            });
+            plan.forEach(function (item) {
+                if (item.node) return;
+                for (var i = 0; i < pool.length; i++) {
+                    if (used.indexOf(pool[i]) === -1) {
+                        item.node = pool[i];
+                        item.fresh = !instant;
+                        used.push(pool[i]);
+                        break;
+                    }
+                }
+            });
+            if (!instant) {
+                plan.forEach(function (item) {
+                    if (!item.fresh) return;
+                    item.node.classList.add("is-instant");
+                    paint(item.node, item.project);
+                    item.node.dataset.pos = dir < 0 ? "off-left" : "off-right";
+                });
+                if (plan.some(function (item) { return item.fresh; })) {
+                    stage.getBoundingClientRect();
+                    plan.forEach(function (item) {
+                        if (item.fresh) item.node.classList.remove("is-instant");
+                    });
+                    stage.getBoundingClientRect();
+                }
             }
+            plan.forEach(function (item) {
+                if (instant) item.node.classList.add("is-instant");
+                paint(item.node, item.project);
+                item.node.dataset.pos = item.role;
+                item.node.tabIndex = item.role === "center" ? 0 : -1;
+            });
+            if (instant) {
+                stage.getBoundingClientRect();
+                plan.forEach(function (item) { item.node.classList.remove("is-instant"); });
+            }
+            warm(list[(currentIndex + 2) % n]);
+            warm(list[(currentIndex - 2 + n) % n]);
             if (counter) counter.textContent = (currentIndex + 1) + " / " + n;
         }
 
@@ -243,7 +314,7 @@
             var n = visible().length;
             if (!n) return;
             currentIndex = (currentIndex + dir + n) % n;
-            render();
+            render(false, dir);
         }
 
         filters.addEventListener("click", function (event) {
@@ -257,7 +328,7 @@
             button.setAttribute("aria-selected", "true");
             currentFilter = button.dataset.filter;
             currentIndex = 0;
-            render();
+            render(true, 1);
         });
 
         stage.addEventListener("click", function (event) {
@@ -290,7 +361,7 @@
             }
         });
 
-        render();
+        render(true, 1);
     }
 
     /* ---------- spline hero ---------- */
@@ -309,7 +380,7 @@
         var renderer = app._renderer;
         if (renderer && typeof renderer.setClearAlpha === "function") renderer.setClearAlpha(0);
         if (renderer && typeof renderer.setPixelRatio === "function") {
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+            renderer.setPixelRatio(1);
         }
         var camera = app._camera;
         if (camera) {
