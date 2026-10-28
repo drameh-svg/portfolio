@@ -286,15 +286,23 @@
     }
 
     /* ---------- spline hero ---------- */
+    var SPLINE_SCENE = "https://prod.spline.design/9D6gECR1BDJHmO97/scene.splinecode";
+    var SPLINE_RUNTIME = "https://cdn.jsdelivr.net/npm/@splinetool/runtime@2.0.114/build/runtime.js";
+
     function initSpline() {
-        var frame = document.querySelector(".hero-spline iframe");
-        if (!frame) return;
+        var canvas = document.getElementById("hero-canvas");
+        if (!canvas) return;
+        var box = canvas.closest(".hero-spline");
         if (reduce.matches) {
-            var box = frame.closest(".hero-spline");
             if (box) box.hidden = true;
             return;
         }
-        if (frame.dataset.src) frame.src = frame.dataset.src;
+        import(SPLINE_RUNTIME).then(function (mod) {
+            var app = new mod.Application(canvas);
+            return app.load(SPLINE_SCENE);
+        }).catch(function () {
+            if (box) box.hidden = true;
+        });
     }
 
     /* ---------- case study ---------- */
