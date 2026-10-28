@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Zeinab Drameh</title>
+    <meta name="description" content="All projects by Zeinab Drameh, filterable by category.">
+    <link rel="stylesheet" href="style.css?v=20">
+</head>
+<body data-page="projects">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-bg" aria-hidden="true"><div class="site-pattern"></div></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <a class="brand" href="index.html">zeinab.drameh</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+            <span class="sr-only">Menu</span>
+            <span></span>
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="featured.html">Featured</a>
+            <a href="projects.html" aria-current="page">Projects</a>
+            <a href="index.html#about">About</a>
+            <a class="nav-cta" href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="main" class="projects-page">
+        <header class="page-intro">
+            <div class="wrap">
+                <p class="eyebrow">Projects</p>
+                <h1>The full deck.</h1>
+                <p class="lede">Filter by category. The center card opens the project. Arrows and the side cards move through the deck, starting from the same order every time you switch filters.</p>
+                <div class="project-filters" id="project-filters" role="tablist" aria-label="Project categories"></div>
+            </div>
+        </header>
+        <div class="wrap deck">
+            <button type="button" class="deck-arrow prev" aria-label="Previous project">←</button>
+            <div class="deck-stage" id="deck-stage"></div>
+            <button type="button" class="deck-arrow next" aria-label="Next project">→</button>
+            <p class="deck-status"><span id="deck-counter" aria-live="polite">1 / 1</span></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 Zeinab Drameh</span>
+        <nav aria-label="Footer">
+            <a href="featured.html">Featured</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </footer>
+
+    <script src="projects.js?v=20"></script>
+    <script src="script.js?v=20"></script>
+</body>
+</html>
