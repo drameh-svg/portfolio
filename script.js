@@ -179,6 +179,7 @@
 
         var currentFilter = "all";
         var currentIndex = 0;
+        var swapTimer = 0;
         var slideMarkup = '<a class="project-slide" href="#projects" data-pos="center">' +
             '<div class="slide-media"></div>' +
             '<div class="slide-copy">' +
@@ -238,7 +239,7 @@
             node.querySelector(".slide-cat").textContent = labels[0] || "";
             node.querySelector("h3").textContent = project.title;
             node.querySelector(".slide-summary").textContent = project.summary;
-            node.querySelector(".slide-tags").innerHTML = tagsHtml((project.tags || []).slice(0, 4));
+            node.querySelector(".slide-tags").innerHTML = tagsHtml((project.tags || []).slice(0, 3));
         }
 
         function render(instant, dir) {
@@ -328,7 +329,12 @@
             button.setAttribute("aria-selected", "true");
             currentFilter = button.dataset.filter;
             currentIndex = 0;
-            render(true, 1);
+            window.clearTimeout(swapTimer);
+            stage.classList.add("is-swap");
+            swapTimer = window.setTimeout(function () {
+                render(true, 1);
+                stage.classList.remove("is-swap");
+            }, 180);
         });
 
         stage.addEventListener("click", function (event) {
@@ -641,6 +647,7 @@
     }
 
     var loaderDismissed = false;
+    var playRise = null;
 
     function dismissLoader() {
         if (loaderDismissed) return;
@@ -652,12 +659,17 @@
             loader.setAttribute("aria-busy", "false");
             window.setTimeout(function () {
                 if (loader.parentNode) loader.parentNode.removeChild(loader);
-            }, 520);
+            }, 680);
         }
         var hash = window.location.hash;
         if (hash.length > 1) {
             var target = document.getElementById(hash.slice(1));
-            if (target) window.requestAnimationFrame(function () { target.scrollIntoView(); });
+            if (target) target.scrollIntoView();
+        }
+        if (playRise) {
+            var start = playRise;
+            playRise = null;
+            window.requestAnimationFrame(start);
         }
     }
 
@@ -728,6 +740,32 @@
         }).then(dismissLoader);
     }
 
+    function initRise() {
+        if (reduce.matches || !("IntersectionObserver" in window)) return;
+        var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-rise]"));
+        if (!nodes.length) return;
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("is-in");
+                observer.unobserve(entry.target);
+            });
+        }, { rootMargin: "0px 0px 18% 0px", threshold: 0 });
+        nodes.forEach(function (node) {
+            node.classList.add("rise-in", "is-armed");
+        });
+        function play() {
+            nodes.forEach(function (node) {
+                if (node.classList.contains("is-in")) return;
+                var rect = node.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.96) node.classList.add("is-in");
+                else observer.observe(node);
+            });
+        }
+        window.addEventListener("scroll", play, { passive: true });
+        return play;
+    }
+
     window.setTimeout(dismissLoader, 12000);
 
     ready(function () {
@@ -740,6 +778,7 @@
         initDeck();
         renderCase();
         initContact();
+        playRise = initRise();
         initLoader(splineReady);
     });
 })();
