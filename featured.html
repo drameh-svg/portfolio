@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Projects — Zeinab Drameh</title>
+    <meta name="description" content="Featured projects by Zeinab Drameh: Arkadium, The Shade Gap, Spotify Data Analysis, and Shift Website.">
+    <link rel="stylesheet" href="style.css?v=32">
+    <noscript><style>.loader{display:none!important}body.is-loading{overflow:visible}</style></noscript>
+</head>
+<body data-page="featured" class="is-loading">
+    <div class="loader" id="loader" role="status" aria-live="polite" aria-busy="true" aria-label="Loading Zeinab Drameh's portfolio">
+        <p class="loader-name">Zeinab<br>Drameh</p>
+        <div class="balls" aria-hidden="true">
+            <div class="ball ball-1"></div>
+            <div class="ball ball-2"></div>
+            <div class="ball ball-3"></div>
+        </div>
+    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-bg" aria-hidden="true"><div class="site-pattern"></div></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <a class="brand" href="index.html">zeinab.drameh</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+            <span class="sr-only">Menu</span>
+            <span></span>
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#process">Process</a>
+            <a href="index.html#about">About</a>
+            <a class="nav-cta" href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="main" data-rise>
+        <header class="page-intro">
+            <div class="wrap">
+                <p class="eyebrow">Featured</p>
+                <h1>Work I want you to open first.</h1>
+                <p class="lede">Four projects across research, data, and product. Each one links to the full project page. The rest of the work, with category filters, lives on the projects page.</p>
+            </div>
+        </header>
+        <div class="wrap feature-list" id="featured-list"></div>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 Zeinab Drameh</span>
+        <nav aria-label="Footer">
+            <a href="index.html#projects">All projects</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </footer>
+
+    <script>
+        setTimeout(function () {
+            var loader = document.getElementById("loader");
+            if (!loader || loader.classList.contains("is-done")) return;
+            loader.classList.add("is-done");
+            document.body.classList.remove("is-loading");
+        }, 12000);
+    </script>
+    <script src="projects.js?v=32"></script>
+    <script src="script.js?v=32"></script>
+</body>
+</html>

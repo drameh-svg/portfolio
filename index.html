@@ -1,1892 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>ZEINAB DRAMEH</title>
-    <link rel="stylesheet" href="./style.css?v=17" />
-
-    <!--
-        FILE LAYOUT (keep it this simple):
-        index.html  — this whole one-page site
-        style.css   — all styling
-        script.js   — featured carousel, filters, modals, form
-        fonts/      — Satoshi files (must be uploaded with the site)
-        img/        — all images, grouped in folders by project
-
-        Upload the whole folder (not just index.html) to the server.
-
-        HOW TO ADD A NEW PROJECT LATER:
-        1. Duplicate one <article class="project-tile"> in the All Projects gallery.
-        2. Change data-modal to a new id, e.g. "modal-newname".
-        3. Set data-categories to one or more of: product   ml   graphic   consulting
-           (a project can have more than one, separated by a space)
-        4. Duplicate a <div class="proj-modal"> and give it the same id.
-        5. Put images in img/newname/ and update the <img src=""> paths.
-        6. Optional: add it to the Featured Work coverflow as well.
-    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeinab Drameh</title>
+    <meta name="description" content="Zeinab Drameh builds at the intersection of data, design, AI, and communications.">
+    <link rel="stylesheet" href="style.css?v=32">
+    <noscript><style>.loader{display:none!important}body.is-loading{overflow:visible}</style></noscript>
 </head>
-<body>
-
-    <div class="site-bg" aria-hidden="true">
-        <div class="site-aurora">
-            <div class="site-aurora-sheet"></div>
+<body data-page="home" class="is-loading">
+    <div class="loader" id="loader" role="status" aria-live="polite" aria-busy="true" aria-label="Loading Zeinab Drameh's portfolio">
+        <p class="loader-name">Zeinab<br>Drameh</p>
+        <div class="balls" aria-hidden="true">
+            <div class="ball ball-1"></div>
+            <div class="ball ball-2"></div>
+            <div class="ball ball-3"></div>
         </div>
-        <div class="site-pattern"></div>
     </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-bg" aria-hidden="true"><div class="site-pattern"></div></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
 
-    <!-- ===================== NAV ===================== -->
-    <nav>
-        <a class="nav-logo" href="#home" aria-label="ZEINAB DRAMEH">
-            <span class="hero-letter">Z</span><span class="hero-letter">E</span><span class="hero-letter">I</span><span class="hero-letter">N</span><span class="hero-letter">A</span><span class="hero-letter">B</span>
-            <span class="nav-space" aria-hidden="true"></span>
-            <span class="hero-letter">D</span><span class="hero-letter">R</span><span class="hero-letter">A</span><span class="hero-letter">M</span><span class="hero-letter">E</span><span class="hero-letter">H</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <header class="site-header">
+        <a class="brand" href="#home">zeinab.drameh</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+            <span class="sr-only">Menu</span>
+            <span></span>
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
+            <a href="#about">About</a>
+            <a class="nav-cta" href="#contact">Contact</a>
+        </nav>
+    </header>
 
+    <main id="main">
+        <section class="hero" id="home">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow line"><span class="pulse" aria-hidden="true"></span> Zeinab Drameh · Los Angeles</p>
+                    <h1>
+                        <span class="hl">Building</span>
+                        <span class="hl">at the</span>
+                        <span class="hl hl-last">intersection.</span>
+                    </h1>
+                    <p class="hero-support">Utilizing my skills in <em>data, design, AI, and communications</em> to create innovative solutions to complex problems. Grounded in a strong set of values, I seek out projects and opportunities committed to <em>social impact</em>.</p>
+                    <div class="hero-actions">
+                        <a class="btn" href="#featured">See the work</a>
+                        <a class="btn btn-quiet" href="img/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-spline">
+                        <canvas id="hero-canvas" aria-label="3D computer that follows the cursor"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- ===================== 1. HOME =====================
-         Name sits higher so the clients marquee fits on the
-         first screen. Flip animation is on the last line. -->
-    <section id="home">
-        <div class="hero">
-            <span class="hero-mark" aria-hidden="true">+</span>
-            <span class="hero-mark" aria-hidden="true">+</span>
-            <span class="hero-mark" aria-hidden="true">+</span>
-            <span class="hero-mark" aria-hidden="true">+</span>
-
-            <p class="hero-eyebrow">Designer &amp; developer</p>
-            <h1 class="hero-name" aria-label="ZEINAB DRAMEH">
-                <span class="hero-line" aria-hidden="true">
-                    <span class="hero-letter">Z</span><span class="hero-letter">E</span><span class="hero-letter">I</span><span class="hero-letter">N</span><span class="hero-letter">A</span><span class="hero-letter">B</span>
-                </span>
-                <span class="hero-line" aria-hidden="true">
-                    <span class="hero-letter">D</span><span class="hero-letter">R</span><span class="hero-letter">A</span><span class="hero-letter">M</span><span class="hero-letter">E</span><span class="hero-letter">H</span>
-                </span>
-            </h1>
-            <p class="hero-role">Iovine and Young Academy</p>
-            <p class="hero-craft">
-                crafting
-                <em>
-                    <span id="flip">
-                        <span>products.</span>
-                        <span>systems.</span>
-                        <span>stories.</span>
-                    </span>
-                </em>
-            </p>
-            <a class="btn" href="#projects">See the work</a>
-        </div>
-
-        <div class="clients-section">
+        <section class="clients-section" data-rise aria-label="Clients and collaborators">
             <p class="clients-label">Clients &amp; Collaborators</p>
             <div class="clients-track-wrap">
                 <div class="clients-track">
-                    <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/1.png" alt="MOCA">
-                        </span>
-                    </a>
-                    <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/2.png" alt="Islah LA">
-                        </span>
-                    </a>
-                    <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/3.png" alt="Mattel">
-                        </span>
-                    </a>
-                    <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/4.png" alt="PresQ Studios">
-                        </span>
-                    </a>
-                    <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/5.png" alt="BOOC">
-                        </span>
-                    </a>
-                    <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/6.png" alt="Nike">
-                        </span>
-                    </a>
-                    <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/7.png" alt="Crocs">
-                        </span>
-                    </a>
-                    <a href="https://corporate.arkadium.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark is-logo">
-                            <img src="img/clients/arkadium.png" alt="Arkadium">
-                        </span>
-                    </a>
-                    <a href="https://www.swimuphill.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark is-logo">
-                            <img src="img/clients/swimuphill.png" alt="Swim Up Hill">
-                        </span>
-                    </a>
-
-                    <a href="https://www.moca.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/1.png" alt="MOCA">
-                        </span>
-                    </a>
-                    <a href="https://islahla.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/2.png" alt="Islah LA">
-                        </span>
-                    </a>
-                    <a href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/3.png" alt="Mattel">
-                        </span>
-                    </a>
-                    <a href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/4.png" alt="PresQ Studios">
-                        </span>
-                    </a>
-                    <a href="https://booclt.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/5.png" alt="BOOC">
-                        </span>
-                    </a>
-                    <a href="https://www.nike.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/6.png" alt="Nike">
-                        </span>
-                    </a>
-                    <a href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark">
-                            <img src="img/clients/7.png" alt="Crocs">
-                        </span>
-                    </a>
-                    <a href="https://corporate.arkadium.com/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark is-logo">
-                            <img src="img/clients/arkadium.png" alt="Arkadium">
-                        </span>
-                    </a>
-                    <a href="https://www.swimuphill.org/" target="_blank" rel="noopener noreferrer">
-                        <span class="client-mark is-logo">
-                            <img src="img/clients/swimuphill.png" alt="Swim Up Hill">
-                        </span>
-                    </a>
+                    <a class="client-mark" href="https://www.moca.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/1.png" alt="MOCA"></a>
+                    <a class="client-mark" href="https://islahla.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/2.png" alt="Islah LA"></a>
+                    <a class="client-mark" href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/3.png" alt="Mattel"></a>
+                    <a class="client-mark" href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer"><img src="img/clients/4.png" alt="PresQ Studios"></a>
+                    <a class="client-mark" href="https://booclt.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/5.png" alt="BOOC"></a>
+                    <a class="client-mark" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/6.png" alt="Nike"></a>
+                    <a class="client-mark" href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/7.png" alt="Crocs"></a>
+                    <a class="client-mark is-logo" href="https://corporate.arkadium.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/arkadium.png" alt="Arkadium"></a>
+                    <a class="client-mark is-logo" href="https://www.swimuphill.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/swimuphill.png" alt="Swim Up Hill"></a>
+                    <a class="client-mark" href="https://www.moca.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/1.png" alt=""></a>
+                    <a class="client-mark" href="https://islahla.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/2.png" alt=""></a>
+                    <a class="client-mark" href="https://about.mattel.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/3.png" alt=""></a>
+                    <a class="client-mark" href="https://www.presq.studio/" target="_blank" rel="noopener noreferrer"><img src="img/clients/4.png" alt=""></a>
+                    <a class="client-mark" href="https://booclt.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/5.png" alt=""></a>
+                    <a class="client-mark" href="https://www.nike.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/6.png" alt=""></a>
+                    <a class="client-mark" href="https://www.crocs.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/7.png" alt=""></a>
+                    <a class="client-mark is-logo" href="https://corporate.arkadium.com/" target="_blank" rel="noopener noreferrer"><img src="img/clients/arkadium.png" alt=""></a>
+                    <a class="client-mark is-logo" href="https://www.swimuphill.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/swimuphill.png" alt=""></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-
-    <!-- ===================== 3. PROJECTS =====================
-         Featured Work is a 4-card shuffling coverflow.
-         All Projects is a filterable masonry gallery.
-         Click a card to open its modal. -->
-    <section id="projects">
-
-        <p class="projects-kicker">Featured Work</p>
-
-        <div class="projects-carousel">
-            <button type="button" class="carousel-arrow prev" aria-label="Previous project">&#8592;</button>
-
-            <div class="projects-carousel-stage">
-
-                <article class="project-slide is-active" data-modal="modal-arkadium">
-                    <div class="project-slide-image">
-                        <img src="img/arkadium/1.jpg" alt="Arkadium — Mapping LLM Limits">
+        <section class="band" id="featured" data-rise>
+            <div class="wrap">
+                <div class="band-head">
+                    <div>
+                        <p class="eyebrow">Selected work</p>
+                        <h2>Featured Work</h2>
                     </div>
-                    <div class="project-info">
-                        <p class="project-tag">ML &amp; Data Analytics</p>
-                        <h3>Arkadium</h3>
-                        <p>Research scoring 115 gameplay episodes across 5 games and 3 frontier models.</p>
-                        <div class="project-skills">
-                            <span class="skill-tag">LLM Evaluation</span>
-                            <span class="skill-tag">Research</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Prompt Design</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-slide" data-modal="modal-shadegap">
-                    <div class="project-slide-image">
-                        <img src="img/projects/project7.png" alt="The Shade Gap">
-                    </div>
-                    <div class="project-info">
-                        <p class="project-tag">ML &amp; Data Analytics</p>
-                        <h3>The Shade Gap</h3>
-                        <p>Data visualization, geospatial research, and policy analysis of LA's shade inequality.</p>
-                        <div class="project-skills">
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">Research</span>
-                            <span class="skill-tag">Data Visualization</span>
-                            <span class="skill-tag">Consulting</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-slide" data-modal="modal-estera">
-                    <div class="project-slide-image">
-                        <img src="img/projects/project5.png" alt="Estera brand design">
-                    </div>
-                    <div class="project-info">
-                        <p class="project-tag">Graphic Design</p>
-                        <h3>Estera — Brand Design</h3>
-                        <p>Brand identity for a European slow-fashion house — logo, color, campaign, and launch materials.</p>
-                        <div class="project-skills">
-                            <span class="skill-tag">Brand Identity</span>
-                            <span class="skill-tag">Logo Design</span>
-                            <span class="skill-tag">Art Direction</span>
-                            <span class="skill-tag">Campaign</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-slide" data-modal="modal-mca">
-                    <div class="project-slide-image">
-                        <img src="img/projects/project1.png" alt="Museum of Contemporary Art Teen Night">
-                    </div>
-                    <div class="project-info">
-                        <p class="project-tag">Graphic Design</p>
-                        <h3>Museum of Contemporary Art</h3>
-                        <p>Posters, stickers, merch, and social content for MOCA Teen Night — a citywide event of 500+ guests.</p>
-                        <div class="project-skills">
-                            <span class="skill-tag">Photoshop</span>
-                            <span class="skill-tag">Poster Design</span>
-                            <span class="skill-tag">Social Media</span>
-                            <span class="skill-tag">Graphic Design</span>
-                        </div>
-                    </div>
-                </article>
-
+                    <a class="text-link" href="#projects">All projects</a>
+                </div>
+                <div id="home-featured" class="work-grid"></div>
             </div>
+        </section>
 
-            <button type="button" class="carousel-arrow next" aria-label="Next project">&#8594;</button>
-
-            <p class="carousel-status"><span id="carousel-counter">1 / 4</span></p>
-        </div>
-
-        <p class="projects-kicker projects-kicker--gallery">All Projects</p>
-
-        <div class="project-filters" role="tablist" aria-label="Project categories">
-            <button type="button" class="filter-btn is-active" data-filter="all">All</button>
-            <button type="button" class="filter-btn" data-filter="product">Product Design</button>
-            <button type="button" class="filter-btn" data-filter="ml">ML &amp; Data Analytics</button>
-            <button type="button" class="filter-btn" data-filter="graphic">Graphic Design</button>
-            <button type="button" class="filter-btn" data-filter="consulting">Consulting</button>
-        </div>
-
-        <div class="project-gallery" id="project-gallery">
-
-            <article class="project-tile" data-modal="modal-arkadium" data-categories="ml" data-order="1">
-                <img src="img/arkadium/1.jpg" alt="Arkadium">
-                <div class="project-bar">
-                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
-                    <h3>Arkadium</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-shadegap" data-categories="ml" data-order="2">
-                <img src="img/projects/project7.png" alt="The Shade Gap">
-                <div class="project-bar">
-                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
-                    <h3>The Shade Gap</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-estera" data-categories="graphic" data-order="3">
-                <img src="img/projects/project5.png" alt="Estera — Brand Design">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Graphic Design</p>
-                    <h3>Estera — Brand Design</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-mca" data-categories="graphic" data-order="4">
-                <img src="img/projects/project1.png" alt="Museum of Contemporary Art">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Graphic Design</p>
-                    <h3>Museum of Contemporary Art</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-swimuphill" data-categories="graphic" data-order="5">
-                <img src="img/swimuphill/poster-cream.jpg" alt="Driving Aquatic Inclusion in Africa">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Graphic Design</p>
-                    <h3>Driving Aquatic Inclusion in Africa</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-claude9" data-categories="consulting" data-order="6">
-                <img src="img/claude9/4.jpg" alt="Claude 9">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Consulting</p>
-                    <h3>Claude 9</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-sabi" data-categories="consulting" data-order="7">
-                <img src="img/sabi/1.jpg" alt="Sabi Juices">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Consulting</p>
-                    <h3>Sabi Juices</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-resumes" data-categories="graphic" data-order="8">
-                <img src="img/resumes/future.png" alt="Current &amp; Future Creative Resume Design">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Graphic Design</p>
-                    <h3>Current &amp; Future Creative Resume Design</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-pneumonia" data-categories="ml" data-order="9">
-                <img src="img/pneumonia/1.png" alt="Pneumonia Detection">
-                <div class="project-bar">
-                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
-                    <h3>Pneumonia Detection</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-clothing" data-categories="ml" data-order="10">
-                <img src="img/clothing/cover.png" alt="Clothing Categorization">
-                <div class="project-bar">
-                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
-                    <h3>Clothing Categorization</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-crocs" data-categories="consulting" data-order="11">
-                <img src="img/crocs/6.jpg" alt="Crocs x Winter X Games">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Consulting</p>
-                    <h3>Crocs x Winter X Games</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-vectora" data-categories="product" data-order="12">
-                <img src="img/vectora/1.jpg" alt="Vectora">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Product Design</p>
-                    <h3>Vectora</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-shift" data-categories="product" data-order="13">
-                <div class="project-tile-placeholder">SHIFT SC</div>
-                <div class="project-bar">
-                    <p class="project-bar-cat">Product Design</p>
-                    <h3>SHIFT SC Website Design</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-mattel" data-categories="product" data-order="14">
-                <img src="img/projects/project6.png" alt="Mattel — Tell-A-Tale">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Product Design</p>
-                    <h3>Mattel — Tell-A-Tale</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-whiskware" data-categories="consulting" data-order="15">
-                <img src="img/whiskware/1.jpg" alt="Whiskware — Snack &amp; Splash">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Consulting</p>
-                    <h3>Whiskware — Snack &amp; Splash</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-presq" data-categories="graphic" data-order="16">
-                <img src="img/gogo/cover.png" alt="PresQ Studios — GOGO Boot">
-                <div class="project-bar">
-                    <p class="project-bar-cat">Graphic Design</p>
-                    <h3>PresQ Studios — GOGO Boot</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-memesocial" data-categories="ml" data-order="17">
-                <img src="img/memesocial/1.jpg" alt="MemeSocial">
-                <div class="project-bar">
-                    <p class="project-bar-cat">ML &amp; Data Analytics</p>
-                    <h3>MemeSocial</h3>
-                </div>
-            </article>
-
-            <article class="project-tile" data-modal="modal-furniture" data-categories="product" data-order="18">
-                <div class="project-tile-placeholder">Furniture Website</div>
-                <div class="project-bar">
-                    <p class="project-bar-cat">Product Design</p>
-                    <h3>Furniture Website Design</h3>
-                </div>
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================== PROJECT MODALS =====================
-         One modal per project. The id must match the card's data-modal.
-         Copy any modal below to add a new one.
-    -->
-
-    <!-- MODAL: MCA / MOCA Teen Night -->
-    <div class="proj-modal" id="modal-mca">
-        <div class="proj-modal-inner">
-
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2024–2025</span>
-                    <span>Graphic Design</span>
-                    <span>Teen Intern</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
+        <section class="home-collection" id="projects" data-rise>
+            <div class="wrap">
+                <p class="eyebrow">The full collection of my work</p>
+                <p class="collection-note">Filter all projects by category</p>
+                <div class="project-filters" id="project-filters" role="tablist" aria-label="Filter all projects by category"></div>
             </div>
+            <div class="wrap deck">
+                <button type="button" class="deck-arrow prev" aria-label="Previous project">←</button>
+                <div class="deck-stage" id="deck-stage"></div>
+                <button type="button" class="deck-arrow next" aria-label="Next project">→</button>
+                <p class="deck-status"><span id="deck-counter" aria-live="polite">1 / 1</span></p>
+            </div>
+        </section>
 
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Museum of Contemporary Art</h2>
-                <p class="proj-modal-sub">Communications teen intern — posters, merch, and social for a citywide Teen Night of 500+ guests.</p>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Planned citywide teen night of 500+ teens on the communications team. Marketed the event in person and across social media platforms by creating promotional posters, stickers, merch (hoodies and reusable bottles), and video content. Collaborated with artists and museum professionals to promote museum inclusion for underrepresented youth.</p>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-mca">
-                            <img src="img/moca/1.png" alt="REFLECT Teen Night poster">
-                            <img src="img/moca/2.png" alt="ARRIVE / DEPART Teen Night poster">
-                            <img src="img/moca/3.jpeg" alt="MOCA Teen Night work">
-                            <img src="img/moca/4.jpeg" alt="MOCA Teen Night work">
-                            <img src="img/moca/5.jpeg" alt="MOCA Teen Night work">
-                            <img src="img/moca/6.png" alt="MOCA Teen Night graphic">
-                            <img src="img/moca/7.jpeg" alt="MOCA Teen Night work">
-                            <img src="img/moca/8.png" alt="MOCA Teen Night graphic">
-                            <img src="img/moca/9.jpg" alt="What is Teen Night promotional poster">
-                            <img src="img/moca/IMG_0015.jpeg" alt="Printed ARRIVE Teen Night posters">
+        <section id="process" class="skills-section" data-rise>
+            <p class="skills-header">Skills</p>
+            <div class="skill-item">
+                <span class="skill-name">UI / UX Design</span>
+                <span class="skill-desc">Research-led interfaces that prioritize usability without sacrificing character.</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Brand Design and Marketing</span>
+                <span class="skill-desc">Brand identity, print, and visual systems built around clarity and concept.</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Data Analytics / Machine Learning</span>
+                <span class="skill-desc">Models, analysis, and visualization that turn messy data into decisions.</span>
+            </div>
+            <div class="skill-item">
+                <span class="skill-name">Communications</span>
+                <span class="skill-desc">Campaigns, nonprofit messaging, and visual storytelling that make the work easy to follow.</span>
+            </div>
+            <div class="toolbox">
+                <p class="toolbox-kicker">What's in the box</p>
+                <div class="toolbox-chest">
+                    <div class="toolbox-handle" aria-hidden="true"></div>
+                    <div class="toolbox-body">
+                        <div class="toolbox-lid">
+                            <p class="toolbox-header">Toolbox</p>
+                            <div class="toolbox-latches" aria-hidden="true">
+                                <span class="toolbox-latch"></span>
+                                <span class="toolbox-latch"></span>
+                            </div>
                         </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-mca" data-total="10">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-mca">1 / 10</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-mca" data-total="10">&#8594;</button>
+                        <ul class="toolbox-tray">
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/adobe.svg" alt=""></span><span class="toolbox-name">Adobe Creative Suite</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/figma.svg" alt=""></span><span class="toolbox-name">Figma</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/canva.svg" alt=""></span><span class="toolbox-name">Canva</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/html5.svg" alt=""></span><span class="toolbox-name">HTML</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/css3.svg" alt=""></span><span class="toolbox-name">CSS</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/r.svg" alt=""></span><span class="toolbox-name">R</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/python.svg" alt=""></span><span class="toolbox-name">Python</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/microsoftexcel.svg" alt=""></span><span class="toolbox-name">Excel</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/googlecloud.svg" alt=""></span><span class="toolbox-name">Google Cloud</span></li>
+                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/framer.svg" alt=""></span><span class="toolbox-name">Framer</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" data-rise>
+            <div class="about-layout">
+                <div class="about-text">
+                    <div>
+                        <h1>Hey!<br>I'm <em>ZEINAB.</em></h1>
+                        <p>ZEINAB DRAMEH is a designer, developer, and strategist at the USC Iovine and Young Academy with a background spanning UX design, brand identity, data analytics, machine learning, nonprofit communications, and research.</p>
+                        <p>Rooted in Central LA, she builds work that sits at the intersection of design, technology and social impact, bringing both creative and analytical thinking to every problem she takes on.</p>
+                        <p>In her free time, she enjoys reading, spending time with friends, listening to post-punk music, and making art :)</p>
+                    </div>
+                    <a class="btn" href="#contact">Get in Touch</a>
+                </div>
+                <div class="about-photo">
+                    <div class="carousel up">
+                        <div class="scroll-container">
+                            <img src="img/about/speaking.jpeg" alt="Zeinab speaking at the Ronald Tutor Campus Center">
+                            <img src="img/about/09.jpg" alt="">
+                            <img src="img/about/15.jpg" alt="">
+                            <img src="img/about/16.jpg" alt="">
+                            <img src="img/about/01.jpg" alt="">
+                            <img src="img/about/08.jpg" alt="">
+                            <img src="img/about/speaking.jpeg" alt="">
+                            <img src="img/about/09.jpg" alt="">
+                            <img src="img/about/15.jpg" alt="">
+                            <img src="img/about/16.jpg" alt="">
+                            <img src="img/about/01.jpg" alt="">
+                            <img src="img/about/08.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="carousel down">
+                        <div class="scroll-container">
+                            <img src="img/about/03.jpg" alt="">
+                            <img src="img/about/10.jpg" alt="">
+                            <img src="img/about/14.jpg" alt="">
+                            <img src="img/about/04.jpg" alt="">
+                            <img src="img/about/05.jpg" alt="">
+                            <img src="img/about/12.jpg" alt="">
+                            <img src="img/about/03.jpg" alt="">
+                            <img src="img/about/10.jpg" alt="">
+                            <img src="img/about/14.jpg" alt="">
+                            <img src="img/about/04.jpg" alt="">
+                            <img src="img/about/05.jpg" alt="">
+                            <img src="img/about/12.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="carousel up">
+                        <div class="scroll-container">
+                            <img src="img/about/02.jpg" alt="">
+                            <img src="img/about/06.jpg" alt="">
+                            <img src="img/about/07.jpg" alt="">
+                            <img src="img/about/11.jpg" alt="">
+                            <img src="img/about/13.jpg" alt="">
+                            <img src="img/about/02.jpg" alt="">
+                            <img src="img/about/06.jpg" alt="">
+                            <img src="img/about/07.jpg" alt="">
+                            <img src="img/about/11.jpg" alt="">
+                            <img src="img/about/13.jpg" alt="">
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Instagram</span>
-                        <span class="skill-tag">TikTok</span>
-                        <span class="skill-tag">Graphic Design</span>
-                        <span class="skill-tag">Event Planning</span>
+        <section id="contact" data-rise>
+            <div class="contact-layout">
+                <div class="contact-intro">
+                    <h1>Let's<br><em>Talk.</em></h1>
+                    <p>Have a project in mind, a collaboration idea, or just want to say hello? Fill in the form and I'll get back to you soon.</p>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">LinkedIn</a>
+                        <a href="img/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-icon-link">Resume</a>
+                    </div>
+                    <div class="balls" aria-hidden="true">
+                        <div class="ball ball-1"></div>
+                        <div class="ball ball-2"></div>
+                        <div class="ball ball-3"></div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- MODAL: Swim Up Hill posters -->
-    <div class="proj-modal" id="modal-swimuphill">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2026</span>
-                    <span>Graphic Design</span>
-                    <span>Posters</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Driving Aquatic Inclusion in Africa</h2>
-                <p class="proj-modal-sub">Event posters for Swim Up Hill's landmark US/South Africa partnership at Nike Shapa Soweto.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Two posters for Swim Up Hill's September 22 event celebrating a US/South Africa partnership and the pledge to teach one million people to swim. The series covers featured speakers — including Paralympian Jamal Hill — an LA28 quick-start guide, and partner marks from Swim Up Hill, Local Action Marketing, and South African sport institutions. One version is photographic and aquatic; the other is a clean cream layout built for print and social.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-swimuphill">
-                            <img src="img/swimuphill/poster-cream.jpg" alt="Cream event poster for Driving Aquatic Inclusion in Africa">
-                            <img src="img/swimuphill/poster-blue.jpg" alt="Blue photographic poster for Driving Aquatic Inclusion in Africa">
+                <div class="contact-form-wrap">
+                    <form class="contact-form" id="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" autocomplete="name">
                         </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-swimuphill" data-total="2">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-swimuphill">1 / 2</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-swimuphill" data-total="2">&#8594;</button>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email">
                         </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Poster Design</span>
-                        <span class="skill-tag">Typography</span>
-                        <span class="skill-tag">Layout</span>
-                        <span class="skill-tag">Campaign</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: PresQ GOGO Boot -->
-    <div class="proj-modal" id="modal-presq">
-        <div class="proj-modal-inner">
-
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2025</span>
-                    <span>Graphic Design</span>
-                    <span>Posters</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">PresQ Studios — GOGO Boot</h2>
-                <p class="proj-modal-sub">Poster series for GOGO — a brand blending 1960s fashion with West African tailoring.</p>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">GOGO blends bold 1960s fashion with the timeless artistry of West African tailoring. These posters carry that energy into print: three colorways of the same walking-boot composition, built around the GOGO mark.</p>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-presq">
-                            <img src="img/gogo/poster-orange.png" alt="GOGO poster, orange">
-                            <img src="img/gogo/poster-blue.png" alt="GOGO poster, blue">
-                            <img src="img/gogo/poster-pink.png" alt="GOGO poster, pink">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
                         </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-presq" data-total="3">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-presq">1 / 3</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-presq" data-total="3">&#8594;</button>
+                        <div class="form-group">
+                            <label for="body">Message</label>
+                            <textarea id="body" name="body"></textarea>
                         </div>
-                    </div>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Poster Design</span>
-                        <span class="skill-tag">Illustration</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Branding</span>
-                    </div>
+                        <p id="form-message" role="status"></p>
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
                 </div>
             </div>
-
-        </div>
-    </div>
-
-
-    <!-- MODAL: Estera Moda -->
-    <div class="proj-modal" id="modal-estera">
-        <div class="proj-modal-inner">
-
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2025</span>
-                    <span>Graphic Design</span>
-                    <span>Founder</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Estera — Brand Design</h2>
-                <p class="proj-modal-sub">Discover Europe's best fashion — no passport needed.</p>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Estera bridges continents, connecting American customers to Europe's best fashion houses. I built the brand system — logo, color, campaign language, and launch materials — around slow, handcrafted European fashion. The identity covers site, social, and pitch work that makes the house feel like a bridge between cultures, not just a storefront.</p>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-estera">
-                            <img src="img/estera/1.png" alt="Estera campaign: Handcrafted in Europe">
-                            <img src="img/estera/2.png" alt="Estera campaign: Pieces you can't find anywhere else">
-                            <img src="img/estera/3.png" alt="Estera brand look">
-                            <img src="img/estera/4.png" alt="Estera brand look">
-                            <img src="img/estera/5.png" alt="Estera brand look">
-                            <img src="img/estera/6.png" alt="Estera brand look">
-                            <img src="img/estera/7.png" alt="Estera milestones and social">
-                            <img src="img/estera/9.jpg" alt="Estera coming soon landing">
-                            <img src="img/estera/10.jpg" alt="Estera Quality First campaign">
-                            <img src="img/estera/11.jpg" alt="Estera Ethical Labor story">
-                            <img src="img/estera/12.jpg" alt="Estera A Sustainable Choice campaign">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-estera" data-total="11">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-estera">1 / 11</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-estera" data-total="11">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Brand Identity</span>
-                        <span class="skill-tag">Logo Design</span>
-                        <span class="skill-tag">Art Direction</span>
-                        <span class="skill-tag">Campaign</span>
-                        <span class="skill-tag">E-commerce</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- MODAL: Mattel -->
-    <div class="proj-modal" id="modal-mattel">
-        <div class="proj-modal-inner">
-
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2024</span>
-                    <span>Product Design</span>
-                    <span>Inventor</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Mattel — Tell-A-Tale</h2>
-                <p class="proj-modal-sub">Tell-A-Tale: an improv storytelling experience from ideation to prototype.</p>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Tell-A-Tale is an improv storytelling experience where anyone can be anything. It consists of dice that give kids prompts for stories and puppets they can build — featuring socially and emotionally complex characters. I created the product from ideation to prototyping and a full business plan, pitching directly to Mattel designers. Work spanned user research, a Figma app, and Fusion 360.</p>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-mattel">
-                            <img src="img/mattel/1.png" alt="">
-                            <img src="img/mattel/2.png" alt="">
-                            <img src="img/mattel/3.png" alt="">
-                            <img src="img/mattel/4.png" alt="">
-                            <img src="img/mattel/5.png" alt="">
-                            <img src="img/mattel/6.png" alt="">
-                            <img src="img/mattel/7.png" alt="">
-                            <img src="img/mattel/8.png" alt="">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-mattel" data-total="8">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-mattel">1 / 8</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-mattel" data-total="8">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Product Design</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Premiere Pro</span>
-                        <span class="skill-tag">Blender</span>
-                        <span class="skill-tag">Prototyping</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- MODAL: Shade Gap -->
-    <div class="proj-modal" id="modal-shadegap">
-        <div class="proj-modal-inner">
-
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2024</span>
-                    <span>ML &amp; Data Analytics</span>
-                    <span>Inventor</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">The Shade Gap</h2>
-                <p class="proj-modal-sub">Interactive insights into LA's shade-inequality problem. With intuitive and insightful data visualizations, policy proposals, strategy in anticipation of the 2028 olympics, and "cool roof" solutions.</p>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">For this project we researched the current problem area, identifying key issues and historical practices like redlining which have exasterbated this issue. To communicate the problem more effectively, we used data visualization techniques to map canopy coverage against heat levels, revealing clearly how poorer neighborhoods receive less shade and as a byproduct, experience higher temperatures and worse health conditions. Following the research, we looked for solutions, drawing heavily from Shade-LA. We came up with an easy to implement change to tree spacing guidelines, as well as drawing inspiration from New York's "cool roof" solution. We also researched next-steps and ways to realistically implement these ideas.</p>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-shadegap">
-                            <img src="img/shade-gap/1.png" alt="">
-                            <img src="img/shade-gap/2.png" alt="">
-                            <img src="img/shade-gap/3.png" alt="">
-                            <img src="img/shade-gap/4.png" alt="">
-                            <img src="img/shade-gap/5.png" alt="">
-                            <img src="img/shade-gap/6.png" alt="">
-                            <img src="img/shade-gap/7.png" alt="">
-                            <img src="img/shade-gap/8.png" alt="">
-                            <img src="img/shade-gap/9.png" alt="">
-                            <img src="img/shade-gap/10.png" alt="">
-                            <img src="img/shade-gap/11.png" alt="">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-shadegap" data-total="11">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-shadegap">1 / 11</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-shadegap" data-total="11">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Geospatial &amp; Policy Research</span>
-                        <span class="skill-tag">Product Design</span>
-                        <span class="skill-tag">Consulting</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- MODAL: Eth-X -->
-    <div class="proj-modal" id="modal-ethx">
-        <div class="proj-modal-inner">
-
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2024</span>
-                    <span>ML &amp; Data Analytics</span>
-                    <span>Inventor</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Eth-X</h2>
-                <p class="proj-modal-sub">Responsible AI Browser Extension exposing biases and addressing accessibility gaps for AI tools.</p>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Eth-X is a browser extension and website that exposes biases in AI while also providing tools for underprivileged communities to learn about and use AI. It detects bias using a self-made adversarial test set, breaks down complex AI policies through a summarized terms and conditions page for popular AI brands, and provides interactive resources like news articles and videos to keep users informed about recent news in the field and to bridge the AI literacy gap. Users can also file claims to report misuse or request to add a new company.</p>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-ethx">
-                            <img src="img/ethx/1.png" alt="">
-                            <img src="img/ethx/2.png" alt="">
-                            <img src="img/ethx/3.png" alt="">
-                            <img src="img/ethx/4.png" alt="">
-                            <img src="img/ethx/5.png" alt="">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-ethx" data-total="5">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-ethx">1 / 5</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-ethx" data-total="5">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">UI-UX Design</span>
-                        <span class="skill-tag">Business Strategy</span>
-                        <span class="skill-tag">Prototyping</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- MODAL: MemeSocial -->
-    <div class="proj-modal" id="modal-memesocial">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2025</span>
-                    <span>ML &amp; Data Analytics</span>
-                    <span>Full-Stack</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">MemeSocial</h2>
-                <p class="proj-modal-sub">Discover how social media activity affects financial assets like Bitcoin and meme stocks.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">MemeSocial looks at how social-media sentiment and posting volume relate to asset prices — with an emphasis on separating hype-driven market psychology from fundamentals. The site visualizes that link through interactive charts and a scenario simulator, so users can explore how shifts in online sentiment and trend dynamics may influence future price movements. Sentiment and post-frequency data come from the LunarCrush API.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-memesocial">
-                            <img src="img/memesocial/1.jpg" alt="MemeSocial landing page">
-                            <img src="img/memesocial/2.jpg" alt="Sentiment analysis: price density by sentiment">
-                            <img src="img/memesocial/3.jpg" alt="Market activity and reactions">
-                            <img src="img/memesocial/4.jpg" alt="Scenario simulator">
-                            <img src="img/memesocial/5.jpg" alt="Resources and data">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-memesocial" data-total="5">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-memesocial">1 / 5</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-memesocial" data-total="5">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Data Visualization</span>
-                        <span class="skill-tag">Sentiment Analysis</span>
-                        <span class="skill-tag">HTML / CSS / JS</span>
-                        <span class="skill-tag">PHP</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Furniture Website -->
-    <div class="proj-modal" id="modal-furniture">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Product Design</span>
-                    <span>UX / UI</span>
-                    <span>Client Work</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Furniture Website Design</h2>
-                <p class="proj-modal-sub">UX/UI design for a live client product.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">UX and UI design for a live client furniture product. Add process notes, screens, and the live link here. Images go in img/furniture/.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">UX / UI</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Client Work</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Mapping LLM Limits / Arkadium -->
-    <div class="proj-modal" id="modal-arkadium">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2026</span>
-                    <span>ML &amp; Data Analytics</span>
-                    <span>Arkadium × IYA</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Arkadium</h2>
-                <p class="proj-modal-sub">With Arkadium and Iovine and Young Academy, evaluating whether frontier LLMs can reason under structured, rule-bound conditions.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">We asked a simple question: can frontier models actually follow rules when the world is a game? I helped design and run an evaluation of Claude Opus, Gemini, and Grok across 5 Arkadium games and 115 episodes, scoring every turn in real time as a rule violation, a legal but sub-optimal move, or a strategic one. Models were strong at logical deduction — 94.3% competency on Ancestral Lines — and weak wherever spatial awareness mattered. Play also got worse as sessions ran longer, and 18.1% of all moves were illegal, including nearly a third of Grok's. Gameplay here is a stress test for constraint-following, not just a leaderboard.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-arkadium">
-                            <img src="img/arkadium/1.jpg" alt="Mapping LLM Limits Through Gameplay">
-                            <img src="img/arkadium/2.jpg" alt="Research question">
-                            <img src="img/arkadium/3.jpg" alt="Evaluation overview: 5 games, 3 models, 115 episodes">
-                            <img src="img/arkadium/4.jpg" alt="Human evaluation rubric">
-                            <img src="img/arkadium/5.jpg" alt="Prompt architecture">
-                            <img src="img/arkadium/6.jpg" alt="Finding: models fail at spatial reasoning">
-                            <img src="img/arkadium/7.jpg" alt="Finding: performance degrades over a session">
-                            <img src="img/arkadium/8.jpg" alt="Finding: illegal move rates by model">
-                            <img src="img/arkadium/9.jpg" alt="Finding: one in three moves were not the best choice">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-arkadium" data-total="9">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-arkadium">1 / 9</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-arkadium" data-total="9">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">LLM Evaluation</span>
-                        <span class="skill-tag">Research</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Prompt Design</span>
-                        <span class="skill-tag">Data Analysis</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Pneumonia Detection -->
-    <div class="proj-modal" id="modal-pneumonia">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2026</span>
-                    <span>ML &amp; Data Analytics</span>
-                    <span>Image Classification</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Pneumonia Detection</h2>
-                <p class="proj-modal-sub">Chest X-ray classification comparing a CNN, SVM, and Random Forest as a clinical decision-support study.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">This project asks whether machine learning can reliably distinguish pneumonia from healthy lungs in chest X-rays — and whether those predictions can help clinicians screen faster. I trained and compared three models on ~5,800 grayscale X-rays: a convolutional neural network, an RBF support vector machine, and a random forest. Random Forest led on this data scale (82.4% test accuracy, AUC ~0.98), with the CNN close behind at 80%. The models are framed as a second-opinion tool, not a replacement for clinical judgment. Full code lives in the pneumonia_classification folder of my ML projects repo.</p>
-                    <a class="proj-modal-link" href="https://github.com/drameh-svg/MLProjects/tree/main/pneumonia_classification" target="_blank" rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.02-.02-2-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.24-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.85 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-pneumonia">
-                            <img src="img/pneumonia/1.png" alt="Pneumonia detection title slide">
-                            <img src="img/pneumonia/2.png" alt="Problem statement">
-                            <img src="img/pneumonia/3.png" alt="The decision we are supporting">
-                            <img src="img/pneumonia/4.png" alt="Dataset overview">
-                            <img src="img/pneumonia/5.png" alt="Methodology overview">
-                            <img src="img/pneumonia/6.png" alt="Data preprocessing and augmentation">
-                            <img src="img/pneumonia/7.png" alt="CNN hyperparameter tuning">
-                            <img src="img/pneumonia/8.png" alt="SVM hyperparameter tuning">
-                            <img src="img/pneumonia/9.png" alt="Random forest results">
-                            <img src="img/pneumonia/10.png" alt="Final test results">
-                            <img src="img/pneumonia/11.png" alt="Analysis and limitations">
-                            <img src="img/pneumonia/12.png" alt="Future recommendations">
-                            <img src="img/pneumonia/13.png" alt="Conclusions">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-pneumonia" data-total="13">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-pneumonia">1 / 13</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-pneumonia" data-total="13">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">CNN</span>
-                        <span class="skill-tag">SVM</span>
-                        <span class="skill-tag">Random Forest</span>
-                        <span class="skill-tag">Image Classification</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Clothing Categorization -->
-    <div class="proj-modal" id="modal-clothing">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2026</span>
-                    <span>ML &amp; Data Analytics</span>
-                    <span>Neural Networks</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Clothing Categorization</h2>
-                <p class="proj-modal-sub">A multilayer perceptron trained from scratch on Fashion-MNIST to classify ten clothing types.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">This project implements a neural network by hand — weights, forward pass, backpropagation, and training loop in NumPy — then trains it on Fashion-MNIST. The model maps 28×28 grayscale images onto ten classes (T-shirt, trouser, pullover, dress, coat, sandal, shirt, sneaker, bag, and ankle boot). Data is split into train, validation, and test sets, normalized, and run through 60 epochs of minibatch gradient descent. The work sits in my ML projects repo alongside the pneumonia classifier.</p>
-                    <a class="proj-modal-link" href="https://github.com/drameh-svg/MLProjects/tree/main/Clothing_Categorization" target="_blank" rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.02-.02-2-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.24-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.85 1.24 1.92 1.24 3.24 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-clothing">
-                            <img src="img/clothing/cover.png" alt="Fashion-MNIST clothing classes">
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Neural Networks</span>
-                        <span class="skill-tag">Fashion-MNIST</span>
-                        <span class="skill-tag">Image Classification</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Masjid Al Mumin posters -->
-    <div class="proj-modal" id="modal-masjid">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Graphic Design</span>
-                    <span>Print</span>
-                    <span>Posters</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Masjid Al Mumin Posters</h2>
-                <p class="proj-modal-sub">Poster series designed for Masjid Al Mumin.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">A poster series for Masjid Al Mumin. Drop the finished posters into img/masjid/ and uncomment a gallery block (copy one from MOCA or Estera) when you are ready.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Poster Design</span>
-                        <span class="skill-tag">Typography</span>
-                        <span class="skill-tag">Photoshop</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Vectora -->
-    <div class="proj-modal" id="modal-vectora">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Fall 2025</span>
-                    <span>Product Design</span>
-                    <span>Neuron</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Vectora</h2>
-                <p class="proj-modal-sub">A gamified, socially-integrated GPS experience. Think Beli, but for route-making — focused on the journey, not just the destination.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Vectora is a concept for a GPS built around the roads we share. I collaborated with Della Smith, Joanne Chen, and Connie Sun on user research, then built a high-fidelity Figma prototype with Renae Wang — grinded out in two days, of course. We presented the work to Matt Stoner, founder of Neuron, and came away with invaluable feedback.</p>
-                    <a class="proj-modal-link" href="https://www.figma.com/proto/MIFQkTs9nEDeCbDoJeIUix/Neuron-App?page-id=1203%3A5839&amp;node-id=1229-7195&amp;starting-point-node-id=1229%3A7195&amp;scaling=min-zoom&amp;show-proto-sidebar=1" target="_blank" rel="noopener noreferrer">View Figma prototype</a>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-vectora">
-                            <img src="img/vectora/1.jpg" alt="Vectora — a new type of GPS">
-                            <img src="img/vectora/2.jpg" alt="Car rallying with my mom">
-                            <img src="img/vectora/3.jpg" alt="The problem — the journey is the experience">
-                            <img src="img/vectora/4.jpg" alt="User pain points">
-                            <img src="img/vectora/5.jpg" alt="Key takeaways">
-                            <img src="img/vectora/6.jpg" alt="Our solution — think Beli, but for route-making">
-                            <img src="img/vectora/7.jpg" alt="Walkthrough of the Vectora experience">
-                            <img src="img/vectora/8.jpg" alt="Financials">
-                            <img src="img/vectora/9.jpg" alt="Thank you">
-                            <img src="img/vectora/10.jpg" alt="Features and Figma prototype screens">
-                            <img src="img/vectora/11.jpg" alt="Vectora feature flow">
-                            <img src="img/vectora/12.jpg" alt="Explore, adjust, engage, gamify">
-                            <img src="img/vectora/13.jpg" alt="Vectora prototype screens">
-                            <img src="img/vectora/14.jpg" alt="Vectora prototype closing screens">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-vectora" data-total="14">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-vectora">1 / 14</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-vectora" data-total="14">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">User Research</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Prototyping</span>
-                        <span class="skill-tag">UX</span>
-                        <span class="skill-tag">Product Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: SHIFT SC Website Design -->
-    <div class="proj-modal" id="modal-shift">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Product Design</span>
-                    <span>Web Design</span>
-                    <span>SHIFT SC</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">SHIFT SC Website Design</h2>
-                <p class="proj-modal-sub">UX/UI and web design for SHIFT SC.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Website design for SHIFT SC. Drop screens and process into img/shift/ when they are ready to show.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">UX / UI</span>
-                        <span class="skill-tag">Web Design</span>
-                        <span class="skill-tag">Figma</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Whiskware Slides -->
-    <div class="proj-modal" id="modal-whiskware">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Consulting</span>
-                    <span>Sponsorship</span>
-                    <span>Whiskware</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Whiskware — Snack &amp; Splash</h2>
-                <p class="proj-modal-sub">A sponsorship proposal pairing Whiskware by Trove Brands with Swim Up Hill at LA84 Foundation Play Day.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Snack &amp; Splash puts a Whiskware booth inside LA84's annual Summer Play Day: kids complete Swim Bowl water safety activities, then take home character-themed snack packs and reusable lunch containers. The concept gives Whiskware direct exposure to 1,000–2,500 family interactions while expanding Swim Up Hill's water-safety reach. The deck covers concept, rationale, sample outreach, community purpose, and the longer vision of turning Swim Bowl into a partnership-powered event.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-whiskware">
-                            <img src="img/whiskware/1.jpg" alt="Swim Up Hill Play Day Whiskware sponsorship title">
-                            <img src="img/whiskware/2.jpg" alt="Snack and Splash concept">
-                            <img src="img/whiskware/3.jpg" alt="Why the partnership">
-                            <img src="img/whiskware/4.jpg" alt="Why snack packs and reusable containers">
-                            <img src="img/whiskware/5.jpg" alt="Sample outreach">
-                            <img src="img/whiskware/6.jpg" alt="Purpose for the community and Swim Up Hill">
-                            <img src="img/whiskware/7.jpg" alt="The vision">
-                            <img src="img/whiskware/8.jpg" alt="Thank you">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-whiskware" data-total="8">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-whiskware">1 / 8</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-whiskware" data-total="8">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Sponsorship</span>
-                        <span class="skill-tag">Partnership Strategy</span>
-                        <span class="skill-tag">Deck Design</span>
-                        <span class="skill-tag">Consulting</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: PresQ Studios posters -->
-    <div class="proj-modal" id="modal-presq-posters">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>2025</span>
-                    <span>Graphic Design</span>
-                    <span>Posters</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">PresQ Studios Posters</h2>
-                <p class="proj-modal-sub">Advertising posters, logo, and campaign graphics for the GOGO brand.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Alongside the GOGO boot, I designed a supplementary marketing plan, logo, and advertising posters to bring the brand to life. Swap these gallery images for poster-only files in img/presq-posters/ whenever you want.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-presq-posters">
-                            <img src="img/gogo/7.png" alt="">
-                            <img src="img/gogo/8.png" alt="">
-                            <img src="img/gogo/9.png" alt="">
-                            <img src="img/gogo/1.png" alt="">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-presq-posters" data-total="4">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-presq-posters">1 / 4</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-presq-posters" data-total="4">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Poster Design</span>
-                        <span class="skill-tag">Branding</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Marketing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Current & Future Creative Resume Design -->
-    <div class="proj-modal" id="modal-resumes">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Graphic Design</span>
-                    <span>Identity</span>
-                    <span>Print</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Current &amp; Future Creative Resume Design</h2>
-                <p class="proj-modal-sub">Two self-branded resumes — one for the person I am, one for the person I am growing into.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">The current resume is muted on purpose: restriction, a too-big head, glasses, and the feeling of having more to do than range to do it with. The future one is louder, more relaxed, and leaves the dates off. Process ran references → vibe → paper sketch → black-and-white layout in Photoshop → a type and color guide → then color, copy, shadows, and the last decorative layer.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-resumes">
-                            <img src="img/resumes/future.png" alt="Future creative resume">
-                            <img src="img/resumes/current.png" alt="Current creative resume">
-                            <img src="img/resumes/process-1.jpg" alt="Process notes and design choices">
-                            <img src="img/resumes/process-2.jpg" alt="Resume references">
-                            <img src="img/resumes/process-3.jpg" alt="Current resume style guide">
-                            <img src="img/resumes/process-4.jpg" alt="Layout studies">
-                            <img src="img/resumes/process-5.jpg" alt="Future resume style guide">
-                            <img src="img/resumes/process-6.jpg" alt="Texture and shape studies">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-resumes" data-total="8">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-resumes">1 / 8</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-resumes" data-total="8">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Layout</span>
-                        <span class="skill-tag">Typography</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Art Direction</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Freelance Event Flyers -->
-    <div class="proj-modal" id="modal-flyers">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Graphic Design</span>
-                    <span>Freelance</span>
-                    <span>Print</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Freelance Event Flyers</h2>
-                <p class="proj-modal-sub">Poster and flyer work for events — Masjid Al Mumin, SHIFT SC, and PresQ Studios.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">A run of freelance event flyers and posters: community work for Masjid Al Mumin, infographic-led pieces for SHIFT SC, and campaign posters for PresQ Studios. Drop more finished files into img/masjid/, img/shift/, and img/presq-posters/ anytime.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery">
-                        <div class="proj-gallery-track" id="track-flyers">
-                            <img src="img/gogo/7.png" alt="">
-                            <img src="img/gogo/8.png" alt="">
-                            <img src="img/gogo/9.png" alt="">
-                            <img src="img/moca/1.png" alt="">
-                            <img src="img/moca/2.png" alt="">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-flyers" data-total="5">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-flyers">1 / 5</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-flyers" data-total="5">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Poster Design</span>
-                        <span class="skill-tag">Typography</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Layout</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Crocs x Winter X Games -->
-    <div class="proj-modal" id="modal-crocs">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Consulting</span>
-                    <span>Brand Strategy</span>
-                    <span>Campaign</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Crocs x Winter X Games</h2>
-                <p class="proj-modal-sub">WINTR//CORE — a collab that puts Crocs into extreme sportswear through Winter X Games.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">People started noticing them last winter. This deck pitches Crocs x Winter X Games as a high-fashion, high-altitude collab: EVA protection, modular pads, and an extreme silhouette so wearers become the campaign. Crocs gets a lane in extreme sportswear and a higher price point. X Games gets more viewership, more women, and people who do not already watch sports. The myth is the product — athletes as figures in the sky, Crocs as the thing they wear down.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-crocs">
-                            <img src="img/crocs/1.jpg" alt="People started noticing them last winter">
-                            <img src="img/crocs/2.jpg" alt="Mammoth, Aspen, Big Sky">
-                            <img src="img/crocs/3.jpg" alt="So did their myth">
-                            <img src="img/crocs/4.jpg" alt="2026 Winter X Games">
-                            <img src="img/crocs/5.jpg" alt="Crocs x Winter X Games WINTR//CORE collab">
-                            <img src="img/crocs/6.jpg" alt="Crocs x X Games">
-                            <img src="img/crocs/7.jpg" alt="EVA layers and extreme silhouette">
-                            <img src="img/crocs/8.jpg" alt="Why partner with Winter X Games">
-                            <img src="img/crocs/9.jpg" alt="Why partner with Crocs">
-                            <img src="img/crocs/10.jpg" alt="Why it is compelling and viral">
-                            <img src="img/crocs/11.jpg" alt="Thank you">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-crocs" data-total="11">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-crocs">1 / 11</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-crocs" data-total="11">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Brand Strategy</span>
-                        <span class="skill-tag">Campaign</span>
-                        <span class="skill-tag">Product Design</span>
-                        <span class="skill-tag">Consulting</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Claude 9 -->
-    <div class="proj-modal" id="modal-claude9">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Consulting</span>
-                    <span>Product Strategy</span>
-                    <span>GTM</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Claude 9</h2>
-                <p class="proj-modal-sub">Claude helps founders build. Claude 9 helps them launch.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Claude 9 is a go-to-market layer for Claude, made with Reem K and Rania K. Most vibe-coded apps stall after launch — 25M+ generated, then no users, no revenue, and a loop that starves the coding tools themselves. Claude is strong from idea to build and weak from launch through growth. Claude 9 fills that gap with three GTM features: Intelligence (ICP targeting, live traffic, competitor gaps), Deploy &amp; Host (one-click AWS, Docker, Kubernetes), and Optimize (autonomous rewrites measured from real data). The work covers the strategy, the product UI, and the five-year prompt-to-product roadmap.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-claude9">
-                            <img src="img/claude9/1.png" alt="Vibe Coding is Dead without GTM">
-                            <img src="img/claude9/2.png" alt="25M+ apps generated, most stall post-launch">
-                            <img src="img/claude9/3.png" alt="Claude's Weakness">
-                            <img src="img/claude9/4.jpg" alt="Claude 9 title">
-                            <img src="img/claude9/5.jpg" alt="1 to 100: Claude builds, Claude 9 launches">
-                            <img src="img/claude9/6.png" alt="GTM features: Intelligence, Deploy and Host, Optimize">
-                            <img src="img/claude9/7.png" alt="Intelligence feature">
-                            <img src="img/claude9/8.png" alt="Deploy and Host feature">
-                            <img src="img/claude9/9.png" alt="Optimize feature">
-                            <img src="img/claude9/10.png" alt="Claude 9 product interface">
-                            <img src="img/claude9/11.png" alt="Five-year roadmap">
-                            <img src="img/claude9/12.png" alt="The market now">
-                            <img src="img/claude9/13.png" alt="If the bubble bursts">
-                            <img src="img/claude9/14.jpg" alt="Together, let's reach for the clouds">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-claude9" data-total="14">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-claude9">1 / 14</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-claude9" data-total="14">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">GTM Strategy</span>
-                        <span class="skill-tag">Product Strategy</span>
-                        <span class="skill-tag">UI Design</span>
-                        <span class="skill-tag">Consulting</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Sabi Juices -->
-    <div class="proj-modal" id="modal-sabi">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Consulting</span>
-                    <span>Growth Strategy</span>
-                    <span>Sabi Juices</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Sabi Juices</h2>
-                <p class="proj-modal-sub">Help scale the business without sacrificing core founder values.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Consulting for Carmen Herrera, founder of Sabi Juices — a Latina-owned, community-rooted cold-pressed juice company. The brief was growth that does not flatten what the brand was built on: small-batch quality, no HPP shortcuts, Latin-inspired flavors, and a mission around brain health and comunidad. The work sits between growth strategy and founder-led brand, so scaling does not mean giving up the values that made Sabi Sabi.</p>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Gallery</p>
-                    <div class="proj-gallery is-slides">
-                        <div class="proj-gallery-track" id="track-sabi">
-                            <img src="img/sabi/1.jpg" alt="Sabi Juice Your Mind title">
-                            <img src="img/sabi/2.jpg" alt="Core differentiators — mind, body, and community">
-                            <img src="img/sabi/3.jpg" alt="Challenges in the mix">
-                            <img src="img/sabi/4.jpg" alt="Comparable successes">
-                            <img src="img/sabi/5.jpg" alt="First ingredient: marketing">
-                            <img src="img/sabi/6.jpg" alt="Target audience">
-                            <img src="img/sabi/7.jpg" alt="Website recommendations">
-                            <img src="img/sabi/8.jpg" alt="Social media recommendations">
-                            <img src="img/sabi/9.jpg" alt="Distribution and additional revenue">
-                            <img src="img/sabi/10.jpg" alt="Sabi Club, merch, and limited-edition flavors">
-                            <img src="img/sabi/11.jpg" alt="Sincerely, Sabi">
-                            <img src="img/sabi/12.jpg" alt="Cultural presence and community connection">
-                            <img src="img/sabi/13.jpg" alt="Next steps and support systems">
-                            <img src="img/sabi/14.jpg" alt="Timeline of next steps">
-                        </div>
-                        <div class="proj-gallery-nav-row">
-                            <button class="proj-gallery-btn prev" type="button" data-track="track-sabi" data-total="14">&#8592;</button>
-                            <span class="proj-gallery-counter" id="counter-sabi">1 / 14</span>
-                            <button class="proj-gallery-btn next" type="button" data-track="track-sabi" data-total="14">&#8594;</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Skills &amp; Tools</p>
-                    <div class="project-skills">
-                        <span class="skill-tag">Growth Strategy</span>
-                        <span class="skill-tag">Brand Strategy</span>
-                        <span class="skill-tag">Founder Advisory</span>
-                        <span class="skill-tag">Consulting</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Product & UX Consulting -->
-    <div class="proj-modal" id="modal-consult-product">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Consulting</span>
-                    <span>Product &amp; UX</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Product &amp; UX</h2>
-                <p class="proj-modal-sub">Short, focused product and UX engagements.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">User research, information architecture, and interface design for products that have to work in the real world — apps, sites, and physical prototypes. Related work includes Mattel, Furniture, and MemeSocial.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Research & Data Consulting -->
-    <div class="proj-modal" id="modal-consult-data">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Consulting</span>
-                    <span>Research &amp; Data</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Research &amp; Data</h2>
-                <p class="proj-modal-sub">Evaluation, geospatial analysis, and visualization.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Evaluation frameworks, geospatial analysis, and visualization that turn messy public or product data into something a team can actually act on. Related work includes Arkadium, Shade Gap, and Pneumonia Detection.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- MODAL: Brand & Communications Consulting -->
-    <div class="proj-modal" id="modal-consult-brand">
-        <div class="proj-modal-inner">
-            <div class="proj-modal-header">
-                <div class="proj-modal-meta">
-                    <span>Consulting</span>
-                    <span>Brand &amp; Communications</span>
-                </div>
-                <button class="proj-modal-close" type="button">&times;</button>
-            </div>
-            <div class="proj-modal-body">
-                <h2 class="proj-modal-title">Brand &amp; Communications</h2>
-                <p class="proj-modal-sub">Identity, campaigns, and youth-facing communications.</p>
-                <div class="proj-modal-section">
-                    <p class="proj-modal-label">Overview</p>
-                    <p class="proj-modal-text">Identity systems, posters, campaigns, and youth-facing communications — from first sketch through print, merch, and social. Related work includes MOCA, Estera, PresQ, and Masjid Al Mumin.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ===================== 4. SKILLS ===================== -->
-    <section id="skills" class="skills-section">
-        <p class="skills-header">Skills</p>
-
-        <div class="skill-item">
-            <span class="skill-name">UI / UX Design</span>
-            <span class="skill-desc">Research-led interfaces that prioritize usability without sacrificing character.</span>
-        </div>
-
-        <div class="skill-item">
-            <span class="skill-name">Graphic Design</span>
-            <span class="skill-desc">Brand identity, print, and visual systems built around clarity and concept.</span>
-        </div>
-
-        <div class="skill-item">
-            <span class="skill-name">Data Analytics / Machine Learning</span>
-            <span class="skill-desc">Models, analysis, and visualization that turn messy data into decisions.</span>
-        </div>
-
-        <div class="skill-item">
-            <span class="skill-name">Communications</span>
-            <span class="skill-desc">Campaigns, nonprofit messaging, and visual storytelling that make the work easy to follow.</span>
-        </div>
-
-        <!-- Toolbox — brand logos sit in a chest, like tools in foam. -->
-        <div class="toolbox">
-            <p class="toolbox-kicker">What's in the box</p>
-            <div class="toolbox-chest">
-                <div class="toolbox-handle" aria-hidden="true"></div>
-                <div class="toolbox-body">
-                    <div class="toolbox-lid">
-                        <p class="toolbox-header">Toolbox</p>
-                        <div class="toolbox-latches" aria-hidden="true">
-                            <span class="toolbox-latch"></span>
-                            <span class="toolbox-latch"></span>
-                        </div>
-                    </div>
-                    <ul class="toolbox-tray">
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/adobe.svg" alt=""></span>
-                            <span class="toolbox-name">Adobe Creative Suite</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/figma.svg" alt=""></span>
-                            <span class="toolbox-name">Figma</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/canva.svg" alt=""></span>
-                            <span class="toolbox-name">Canva</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/html5.svg" alt=""></span>
-                            <span class="toolbox-name">HTML</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/css3.svg" alt=""></span>
-                            <span class="toolbox-name">CSS</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/r.svg" alt=""></span>
-                            <span class="toolbox-name">R</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/python.svg" alt=""></span>
-                            <span class="toolbox-name">Python</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/microsoftexcel.svg" alt=""></span>
-                            <span class="toolbox-name">Excel</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/googlecloud.svg" alt=""></span>
-                            <span class="toolbox-name">Google Cloud</span>
-                        </li>
-                        <li class="toolbox-item">
-                            <span class="toolbox-well"><img src="img/tools/framer.svg" alt=""></span>
-                            <span class="toolbox-name">Framer</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ===================== 5. ABOUT ===================== -->
-    <section id="about">
-
-        <div class="about-layout">
-
-            <div class="about-text">
-                <div>
-                    <h1>Hey!<br>I'm <em>ZEINAB.</em></h1>
-
-                    <p>
-                        ZEINAB DRAMEH is a designer, developer, and strategist at the USC Iovine and Young Academy with a background spanning UX design, brand identity, data analytics, machine learning, nonprofit communications, and research.
-                    </p>
-
-                    <p>
-                        Rooted in Central LA, she builds work that sits at the intersection of design, technology and social impact, bringing both creative and analytical thinking to every problem she takes on.
-                    </p>
-
-                    <p>
-                        In her free time, she enjoys reading, spending time with friends, listening to post-punk music, and making art :)
-                    </p>
-                </div>
-
-                <a class="btn" href="#contact">Get in Touch</a>
-            </div>
-
-            <div class="about-photo">
-
-                <div class="carousel up">
-                    <div class="scroll-container">
-                        <img src="img/about/speaking.jpeg" alt="Zeinab speaking at the Ronald Tutor Campus Center">
-                        <img src="img/about/09.jpg" alt="">
-                        <img src="img/about/15.jpg" alt="">
-                        <img src="img/about/16.jpg" alt="">
-                        <img src="img/about/01.jpg" alt="">
-                        <img src="img/about/08.jpg" alt="">
-                        <img src="img/about/speaking.jpeg" alt="">
-                        <img src="img/about/09.jpg" alt="">
-                        <img src="img/about/15.jpg" alt="">
-                        <img src="img/about/16.jpg" alt="">
-                        <img src="img/about/01.jpg" alt="">
-                        <img src="img/about/08.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="carousel down">
-                    <div class="scroll-container">
-                        <img src="img/about/03.jpg" alt="">
-                        <img src="img/about/10.jpg" alt="">
-                        <img src="img/about/14.jpg" alt="">
-                        <img src="img/about/04.jpg" alt="">
-                        <img src="img/about/05.jpg" alt="">
-                        <img src="img/about/12.jpg" alt="">
-                        <img src="img/about/03.jpg" alt="">
-                        <img src="img/about/10.jpg" alt="">
-                        <img src="img/about/14.jpg" alt="">
-                        <img src="img/about/04.jpg" alt="">
-                        <img src="img/about/05.jpg" alt="">
-                        <img src="img/about/12.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="carousel up">
-                    <div class="scroll-container">
-                        <img src="img/about/02.jpg" alt="">
-                        <img src="img/about/06.jpg" alt="">
-                        <img src="img/about/07.jpg" alt="">
-                        <img src="img/about/11.jpg" alt="">
-                        <img src="img/about/13.jpg" alt="">
-                        <img src="img/about/02.jpg" alt="">
-                        <img src="img/about/06.jpg" alt="">
-                        <img src="img/about/07.jpg" alt="">
-                        <img src="img/about/11.jpg" alt="">
-                        <img src="img/about/13.jpg" alt="">
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================== CONTACT ===================== -->
-    <section id="contact">
-
-        <div class="contact-layout">
-
-            <div class="contact-intro">
-                <h1>Let's<br><em>Talk.</em></h1>
-                <p>
-                    Have a project in mind, a collaboration idea,
-                    or just want to say hello? Fill in the form
-                    and I'll get back to you soon.
-                </p>
-
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                        LinkedIn
-                    </a>
-                    <a href="img/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                        Resume
-                    </a>
-                </div>
-                <div class="balls">
-                    <div class="ball ball-1"></div>
-                    <div class="ball ball-2"></div>
-                    <div class="ball ball-3"></div>
-                </div>
-            </div>
-
-            <div class="contact-form-wrap">
-                <form class="contact-form" id="contact-form" novalidate>
-
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="What's it about?" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="body">Message</label>
-                        <textarea id="body" name="body" placeholder="Your message..."></textarea>
-                    </div>
-
-                    <p id="form-message"></p>
-
-                    <button type="submit" class="form-submit">Send Message</button>
-
-                </form>
-            </div>
-
-        </div>
-
-    </section>
-
-    <footer>
-        <span>© 2026 ZEINAB DRAMEH</span>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 Zeinab Drameh</span>
+        <nav aria-label="Footer">
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </nav>
     </footer>
 
-    <script src="./script.js?v=17"></script>
+    <script>
+        setTimeout(function () {
+            var loader = document.getElementById("loader");
+            if (!loader || loader.classList.contains("is-done")) return;
+            loader.classList.add("is-done");
+            document.body.classList.remove("is-loading");
+        }, 12000);
+    </script>
+    <script src="projects.js?v=32"></script>
+    <script src="script.js?v=32"></script>
 </body>
 </html>
