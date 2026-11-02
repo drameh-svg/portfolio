@@ -179,7 +179,6 @@
 
         var currentFilter = "all";
         var currentIndex = 0;
-        var swapTimer = 0;
         var slideMarkup = '<a class="project-slide" href="#projects" data-pos="center">' +
             '<div class="slide-media"></div>' +
             '<div class="slide-copy">' +
@@ -286,7 +285,7 @@
                     if (!item.fresh) return;
                     item.node.classList.add("is-instant");
                     paint(item.node, item.project);
-                    item.node.dataset.pos = dir < 0 ? "off-left" : "off-right";
+                    item.node.dataset.pos = "hidden";
                 });
                 if (plan.some(function (item) { return item.fresh; })) {
                     stage.getBoundingClientRect();
@@ -329,12 +328,7 @@
             button.setAttribute("aria-selected", "true");
             currentFilter = button.dataset.filter;
             currentIndex = 0;
-            window.clearTimeout(swapTimer);
-            stage.classList.add("is-swap");
-            swapTimer = window.setTimeout(function () {
-                render(true, 1);
-                stage.classList.remove("is-swap");
-            }, 180);
+            render(true, 1);
         });
 
         stage.addEventListener("click", function (event) {
