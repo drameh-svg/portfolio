@@ -80,7 +80,7 @@
             summary: "Data visualization, geospatial research, and policy analysis of LA's shade inequality.",
             blurb: "An interactive look at Los Angeles shade inequality: canopy and heat maps, policy context including redlining, and practical responses ahead of the 2028 Olympics, including tree-spacing changes and cool-roof ideas drawn from Shade-LA and New York.",
             lede: "Interactive insights into LA's shade-inequality problem, with data visualizations, policy proposals, strategy ahead of the 2028 Olympics, and cool-roof solutions.",
-            cover: "img/projects/project7.png",
+            cover: "img/projects/project7.jpg",
             coverAlt: "The Shade Gap",
             tags: ["Figma", "Photoshop", "Geospatial & Policy Research", "Data Visualization", "Consulting"],
             links: [],
@@ -106,18 +106,18 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("shade-gap", "1.png", "The Shade Gap"),
-                        shot("shade-gap", "2.png", "Shade Gap research"),
-                        shot("shade-gap", "3.png", "Shade Gap map"),
-                        shot("shade-gap", "4.png", "Canopy and heat comparison"),
-                        shot("shade-gap", "5.png", "Shade Gap visualization"),
-                        shot("shade-gap", "6.png", "Shade Gap visualization"),
-                        shot("shade-gap", "7.png", "Policy context"),
-                        shot("shade-gap", "8.png", "Proposed response"),
-                        shot("shade-gap", "9.png", "Cool roof reference"),
-                        shot("shade-gap", "10.png", "Implementation notes"),
-                        shot("shade-gap", "11.png", "Shade Gap closing slide"),
-                        shot("projects", "project7.png", "The Shade Gap cover")
+                        shot("shade-gap", "1.jpg", "The Shade Gap"),
+                        shot("shade-gap", "2.jpg", "Shade Gap research"),
+                        shot("shade-gap", "3.jpg", "Shade Gap map"),
+                        shot("shade-gap", "4.jpg", "Canopy and heat comparison"),
+                        shot("shade-gap", "5.jpg", "Shade Gap visualization"),
+                        shot("shade-gap", "6.jpg", "Shade Gap visualization"),
+                        shot("shade-gap", "7.jpg", "Policy context"),
+                        shot("shade-gap", "8.jpg", "Proposed response"),
+                        shot("shade-gap", "9.jpg", "Cool roof reference"),
+                        shot("shade-gap", "10.jpg", "Implementation notes"),
+                        shot("shade-gap", "11.jpg", "Shade Gap closing slide"),
+                        shot("projects", "project7.jpg", "The Shade Gap cover")
                     ]
                 }
             ]
@@ -270,7 +270,7 @@
             summary: "Chest X-ray classification comparing a CNN, an SVM, and a random forest.",
             blurb: "A clinical decision-support study comparing a convolutional neural network, an RBF support vector machine, and a random forest on about 5,800 chest X-rays.",
             lede: "Chest X-ray classification comparing a CNN, an SVM, and a random forest as a clinical decision-support study.",
-            cover: "img/pneumonia/1.png",
+            cover: "img/pneumonia/1.jpg",
             coverAlt: "Pneumonia detection title slide",
             tags: ["Python", "CNN", "SVM", "Random Forest", "Image Classification"],
             links: [
@@ -298,19 +298,19 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("pneumonia", "1.png", "Pneumonia detection title slide"),
-                        shot("pneumonia", "2.png", "Problem statement"),
-                        shot("pneumonia", "3.png", "The decision we are supporting"),
-                        shot("pneumonia", "4.png", "Dataset overview"),
-                        shot("pneumonia", "5.png", "Methodology overview"),
-                        shot("pneumonia", "6.png", "Data preprocessing and augmentation"),
-                        shot("pneumonia", "7.png", "CNN hyperparameter tuning"),
-                        shot("pneumonia", "8.png", "SVM hyperparameter tuning"),
-                        shot("pneumonia", "9.png", "Random forest results"),
-                        shot("pneumonia", "10.png", "Final test results"),
-                        shot("pneumonia", "11.png", "Analysis and limitations"),
-                        shot("pneumonia", "12.png", "Future recommendations"),
-                        shot("pneumonia", "13.png", "Conclusions")
+                        shot("pneumonia", "1.jpg", "Pneumonia detection title slide"),
+                        shot("pneumonia", "2.jpg", "Problem statement"),
+                        shot("pneumonia", "3.jpg", "The decision we are supporting"),
+                        shot("pneumonia", "4.jpg", "Dataset overview"),
+                        shot("pneumonia", "5.jpg", "Methodology overview"),
+                        shot("pneumonia", "6.jpg", "Data preprocessing and augmentation"),
+                        shot("pneumonia", "7.jpg", "CNN hyperparameter tuning"),
+                        shot("pneumonia", "8.jpg", "SVM hyperparameter tuning"),
+                        shot("pneumonia", "9.jpg", "Random forest results"),
+                        shot("pneumonia", "10.jpg", "Final test results"),
+                        shot("pneumonia", "11.jpg", "Analysis and limitations"),
+                        shot("pneumonia", "12.jpg", "Future recommendations"),
+                        shot("pneumonia", "13.jpg", "Conclusions")
                     ]
                 }
             ]
@@ -324,7 +324,7 @@
             summary: "A multilayer perceptron trained from scratch on Fashion-MNIST.",
             blurb: "A neural network written by hand in NumPy — weights, forward pass, backpropagation, and the training loop — trained on Fashion-MNIST's ten clothing classes.",
             lede: "A multilayer perceptron trained from scratch on Fashion-MNIST to classify ten clothing types.",
-            cover: "img/clothing/cover.png",
+            cover: "img/clothing/cover.jpg",
             coverAlt: "Fashion-MNIST clothing classes",
             tags: ["Python", "NumPy", "Neural Networks", "Fashion-MNIST", "Image Classification"],
             links: [
@@ -346,7 +346,7 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("clothing", "cover.png", "Fashion-MNIST clothing classes")
+                        shot("clothing", "cover.jpg", "Fashion-MNIST clothing classes")
                     ]
                 }
             ]
@@ -403,19 +403,19 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("claude9", "1.png", "Vibe Coding is Dead without GTM"),
-                        shot("claude9", "2.png", "25M+ apps generated, most stall post-launch"),
-                        shot("claude9", "3.png", "Claude's Weakness"),
+                        shot("claude9", "1.jpg", "Vibe Coding is Dead without GTM"),
+                        shot("claude9", "2.jpg", "25M+ apps generated, most stall post-launch"),
+                        shot("claude9", "3.jpg", "Claude's Weakness"),
                         shot("claude9", "4.jpg", "Claude 9 title"),
                         shot("claude9", "5.jpg", "1 to 100: Claude builds, Claude 9 launches"),
-                        shot("claude9", "6.png", "GTM features: Intelligence, Deploy and Host, Optimize"),
-                        shot("claude9", "7.png", "Intelligence feature"),
-                        shot("claude9", "8.png", "Deploy and Host feature"),
-                        shot("claude9", "9.png", "Optimize feature"),
-                        shot("claude9", "10.png", "Claude 9 product interface"),
-                        shot("claude9", "11.png", "Five-year roadmap"),
-                        shot("claude9", "12.png", "The market now"),
-                        shot("claude9", "13.png", "If the bubble bursts"),
+                        shot("claude9", "6.jpg", "GTM features: Intelligence, Deploy and Host, Optimize"),
+                        shot("claude9", "7.jpg", "Intelligence feature"),
+                        shot("claude9", "8.jpg", "Deploy and Host feature"),
+                        shot("claude9", "9.jpg", "Optimize feature"),
+                        shot("claude9", "10.jpg", "Claude 9 product interface"),
+                        shot("claude9", "11.jpg", "Five-year roadmap"),
+                        shot("claude9", "12.jpg", "The market now"),
+                        shot("claude9", "13.jpg", "If the bubble bursts"),
                         shot("claude9", "14.jpg", "Together, let's reach for the clouds")
                     ]
                 }
@@ -506,7 +506,7 @@
             summary: "Posters, merch, and social for a citywide Teen Night of 500+ guests.",
             blurb: "Communications work for the Museum of Contemporary Art’s Teen Night: posters, stickers, merch, and social for a citywide event of more than 500 teens.",
             lede: "Communications teen intern at the Museum of Contemporary Art — posters, merch, and social for a citywide Teen Night of 500+ guests.",
-            cover: "img/projects/project1.png",
+            cover: "img/projects/project1.jpg",
             coverAlt: "Museum of Contemporary Art Teen Night",
             tags: ["Photoshop", "Instagram", "TikTok", "Poster Design", "Event Planning"],
             links: [],
@@ -520,14 +520,14 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("moca", "1.png", "REFLECT Teen Night poster"),
-                        shot("moca", "2.png", "ARRIVE / DEPART Teen Night poster"),
+                        shot("moca", "1.jpg", "REFLECT Teen Night poster"),
+                        shot("moca", "2.jpg", "ARRIVE / DEPART Teen Night poster"),
                         shot("moca", "3.jpeg", "MOCA Teen Night work"),
                         shot("moca", "4.jpeg", "MOCA Teen Night work"),
                         shot("moca", "5.jpeg", "MOCA Teen Night work"),
-                        shot("moca", "6.png", "MOCA Teen Night graphic"),
+                        shot("moca", "6.jpg", "MOCA Teen Night graphic"),
                         shot("moca", "7.jpeg", "MOCA Teen Night work"),
-                        shot("moca", "8.png", "MOCA Teen Night graphic"),
+                        shot("moca", "8.jpg", "MOCA Teen Night graphic"),
                         shot("moca", "9.jpg", "What is Teen Night promotional poster"),
                         shot("moca", "IMG_0015.jpeg", "Printed ARRIVE Teen Night posters")
                     ]
@@ -575,7 +575,7 @@
             summary: "Poster series for a boot that blends 1960s fashion with West African tailoring.",
             blurb: "GOGO blends bold 1960s fashion with West African tailoring. The posters carry that into print: three colorways of the same walking-boot composition, plus a logo and campaign graphics for PresQ Studios.",
             lede: "Poster series for GOGO — a PresQ Studios brand blending 1960s fashion with West African tailoring.",
-            cover: "img/gogo/cover.png",
+            cover: "img/gogo/cover.jpg",
             coverAlt: "GOGO boot poster",
             tags: ["Poster Design", "Illustration", "Photoshop", "Branding"],
             links: [],
@@ -596,14 +596,14 @@
                     label: "Evidence",
                     layout: "grid",
                     images: [
-                        shot("gogo", "cover.png", "GOGO cover"),
-                        shot("gogo", "poster-orange.png", "GOGO poster, orange"),
-                        shot("gogo", "poster-blue.png", "GOGO poster, blue"),
-                        shot("gogo", "poster-pink.png", "GOGO poster, pink"),
-                        shot("gogo", "1.png", "GOGO campaign graphic"),
-                        shot("gogo", "7.png", "GOGO advertising poster"),
-                        shot("gogo", "8.png", "GOGO advertising poster"),
-                        shot("gogo", "9.png", "GOGO advertising poster")
+                        shot("gogo", "cover.jpg", "GOGO cover"),
+                        shot("gogo", "poster-orange.jpg", "GOGO poster, orange"),
+                        shot("gogo", "poster-blue.jpg", "GOGO poster, blue"),
+                        shot("gogo", "poster-pink.jpg", "GOGO poster, pink"),
+                        shot("gogo", "1.jpg", "GOGO campaign graphic"),
+                        shot("gogo", "7.jpg", "GOGO advertising poster"),
+                        shot("gogo", "8.jpg", "GOGO advertising poster"),
+                        shot("gogo", "9.jpg", "GOGO advertising poster")
                     ]
                 }
             ]
@@ -617,7 +617,7 @@
             summary: "Brand identity for a European slow-fashion house — logo, color, campaign, and launch materials.",
             blurb: "Estera connects American customers to Europe’s slow, handcrafted fashion houses. The identity covers logo, color, campaign language, and launch materials for site, social, and pitch.",
             lede: "Discover Europe's best fashion — no passport needed.",
-            cover: "img/projects/project5.png",
+            cover: "img/projects/project5.jpg",
             coverAlt: "Estera brand design",
             tags: ["Brand Identity", "Logo Design", "Art Direction", "Campaign", "E-commerce"],
             links: [],
@@ -631,13 +631,13 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("estera", "1.png", "Estera campaign: Handcrafted in Europe"),
-                        shot("estera", "2.png", "Estera campaign: Pieces you can't find anywhere else"),
-                        shot("estera", "3.png", "Estera brand look"),
-                        shot("estera", "4.png", "Estera brand look"),
-                        shot("estera", "5.png", "Estera brand look"),
-                        shot("estera", "6.png", "Estera brand look"),
-                        shot("estera", "7.png", "Estera milestones and social"),
+                        shot("estera", "1.jpg", "Estera campaign: Handcrafted in Europe"),
+                        shot("estera", "2.jpg", "Estera campaign: Pieces you can't find anywhere else"),
+                        shot("estera", "3.jpg", "Estera brand look"),
+                        shot("estera", "4.jpg", "Estera brand look"),
+                        shot("estera", "5.jpg", "Estera brand look"),
+                        shot("estera", "6.jpg", "Estera brand look"),
+                        shot("estera", "7.jpg", "Estera milestones and social"),
                         shot("estera", "9.jpg", "Estera coming soon landing"),
                         shot("estera", "10.jpg", "Estera Quality First campaign"),
                         shot("estera", "11.jpg", "Estera Ethical Labor story"),
@@ -769,7 +769,7 @@
             summary: "An improv storytelling toy, from ideation through a prototype pitched to Mattel.",
             blurb: "Tell-A-Tale gives kids dice prompts and puppets they can build, with socially and emotionally complex characters. The project runs from user research and a Figma app through Fusion 360 and a business plan pitched to Mattel designers.",
             lede: "Tell-A-Tale: an improv storytelling experience from ideation to prototype.",
-            cover: "img/projects/project6.png",
+            cover: "img/projects/project6.jpg",
             coverAlt: "Mattel Tell-A-Tale",
             tags: ["Product Design", "Photoshop", "Premiere Pro", "Blender", "Prototyping"],
             links: [],
@@ -783,14 +783,14 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("mattel", "1.png", "Tell-A-Tale"),
-                        shot("mattel", "2.png", "Tell-A-Tale research"),
-                        shot("mattel", "3.png", "Tell-A-Tale concept"),
-                        shot("mattel", "4.png", "Tell-A-Tale prototype"),
-                        shot("mattel", "5.png", "Tell-A-Tale app"),
-                        shot("mattel", "6.png", "Tell-A-Tale characters"),
-                        shot("mattel", "7.png", "Tell-A-Tale presentation"),
-                        shot("mattel", "8.png", "Tell-A-Tale presentation")
+                        shot("mattel", "1.jpg", "Tell-A-Tale"),
+                        shot("mattel", "2.jpg", "Tell-A-Tale research"),
+                        shot("mattel", "3.jpg", "Tell-A-Tale concept"),
+                        shot("mattel", "4.jpg", "Tell-A-Tale prototype"),
+                        shot("mattel", "5.jpg", "Tell-A-Tale app"),
+                        shot("mattel", "6.jpg", "Tell-A-Tale characters"),
+                        shot("mattel", "7.jpg", "Tell-A-Tale presentation"),
+                        shot("mattel", "8.jpg", "Tell-A-Tale presentation")
                     ]
                 }
             ]
@@ -804,7 +804,7 @@
             summary: "Two self-branded resumes — one for now, one for the version still arriving.",
             blurb: "The current resume is muted on purpose. The future one is louder and leaves the dates off. The path ran from references and a paper sketch to a type and color system in Photoshop.",
             lede: "Two self-branded resumes — one for the person I am, one for the person I am growing into.",
-            cover: "img/resumes/future.png",
+            cover: "img/resumes/future.jpg",
             coverAlt: "Future creative resume",
             tags: ["Layout", "Typography", "Photoshop", "Art Direction"],
             links: [],
@@ -824,8 +824,8 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("resumes", "future.png", "Future creative resume"),
-                        shot("resumes", "current.png", "Current creative resume"),
+                        shot("resumes", "future.jpg", "Future creative resume"),
+                        shot("resumes", "current.jpg", "Current creative resume"),
                         shot("resumes", "process-1.jpg", "Process notes and design choices"),
                         shot("resumes", "process-2.jpg", "Resume references"),
                         shot("resumes", "process-3.jpg", "Current resume style guide"),
@@ -845,7 +845,7 @@
             summary: "A browser extension and site that surfaces AI bias and makes AI policy easier to read.",
             blurb: "Eth-X detects bias with a self-made adversarial test set, summarizes terms for popular AI products, and offers news, explainers, and a way to file a claim.",
             lede: "A browser extension and website that exposes biases in AI and addresses accessibility gaps in how people learn to use it.",
-            cover: "img/ethx/1.png",
+            cover: "img/ethx/1.jpg",
             coverAlt: "Eth-X",
             tags: ["Product Design", "AI Literacy", "Research", "Web"],
             links: [],
@@ -859,11 +859,11 @@
                 {
                     label: "Evidence",
                     images: [
-                        shot("ethx", "1.png", "Eth-X"),
-                        shot("ethx", "2.png", "Eth-X"),
-                        shot("ethx", "3.png", "Eth-X"),
-                        shot("ethx", "4.png", "Eth-X"),
-                        shot("ethx", "5.png", "Eth-X")
+                        shot("ethx", "1.jpg", "Eth-X"),
+                        shot("ethx", "2.jpg", "Eth-X"),
+                        shot("ethx", "3.jpg", "Eth-X"),
+                        shot("ethx", "4.jpg", "Eth-X"),
+                        shot("ethx", "5.jpg", "Eth-X")
                     ]
                 }
             ]
