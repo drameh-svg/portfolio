@@ -1,33 +1,27 @@
 # Zeinab Drameh — Portfolio
 
-One-page site. Files are kept simple on purpose:
+Static site. Upload the whole folder.
 
 ```
-index.html    full page (home, projects, about, contact)
-style.css     all styling
-script.js     featured carousel, filters, modals, form
-img/          all images, grouped by project
+index.html       home: hero, featured projects, clients, skills, about, contact
+featured.html    featured project list
+projects.html    filterable shuffling project deck
+project.html     individual project page (?id=slug)
+projects.js      shared project data
+style.css        styling
+script.js        cursor, deck, pages, contact form
+fonts/           Geist, Geist Mono, Hanken Grotesk
+img/             images grouped by project
 ```
 
-## How to add a project
+## Project order and categories
 
-1. Copy an existing `<article class="project-tile">` in the All Projects gallery in `index.html`.
-2. Set `data-modal` to a new id, for example `modal-newname`.
-3. Set `data-categories` to one or more of: `product`  `ml`  `graphic`  `consulting`.
-4. Copy a `<div class="proj-modal">` and give it that same id.
-5. Put images in `img/newname/` and update the `src` paths.
-6. Optional: add it to the Featured Work coverflow as well.
+Edit `projects.js`. `order` is the starting sequence in All and inside every filter. `categories` can include more than one of `ml`, `product`, `consulting`, and `brand`. Featured projects are the ids in `featuredIds`.
 
-There is a longer version of these steps in a comment at the top of `index.html`.
+Category labels, in filter order:
 
-## New project image folders
-
-Drop covers and gallery shots here when you have them:
-
-- `img/memesocial/`
-- `img/furniture/`
-- `img/arkadium/`
-- `img/pneumonia/`
-- `img/masjid/`
-- `img/shift/`
-- `img/presq-posters/`
+1. All
+2. ML & Data Analytics
+3. Product Design
+4. Consulting
+5. Brand Design and Marketing
