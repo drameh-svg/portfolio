@@ -867,6 +867,70 @@
                     ]
                 }
             ]
+        },
+        {
+            id: "yusra",
+            title: "Yusra",
+            order: 21,
+            categories: ["product", "consulting"],
+            year: "2026",
+            summary: "Modest shopping made easy: find clothes that already fit your coverage rules.",
+            blurb: "Yusra scrapes the internet for clothing, then filters by coverage, style, budget, size, and color. The Ignite pitch covers the product, the MVP, traction, and the case for building it.",
+            lede: "Find Sutra with Yusra. Modest shopping made easy.",
+            cover: "img/yusra/1.jpg",
+            coverAlt: "Yusra, modest shopping made easy",
+            tags: ["Product", "Research", "Pitch"],
+            links: [
+                { label: "MVP", href: "https://soutrawithyusra.vercel.app/" }
+            ],
+            sections: [
+                {
+                    label: "Overview",
+                    paragraphs: [
+                        "Shopping for modest clothes online is frustrating and time consuming, and that makes it hard to express yourself with confidence. Trendy, youthful pieces are hard to find, modest clothes online are often unaffordable, and a piece you love may have no modest alternative.",
+                        "Yusra is a centralized modest shopping platform that scrapes the internet for clothing, then filters by personalized modesty preferences, style, budget, and more."
+                    ]
+                },
+                {
+                    label: "What it includes",
+                    paragraphs: [
+                        "Search and filters cover coverage rules, aesthetic, price, size, and color. For You is a feed tailored to those preferences. Explore holds outfit inspiration, spotlighted brands, and trending pieces. Reverse search, still needed for the MVP, lets someone upload a photo and find a modest alternative.",
+                        "The MVP at soutrawithyusra.vercel.app currently has search, For You, and Explore."
+                    ]
+                },
+                {
+                    label: "Traction and the ask",
+                    paragraphs: [
+                        "The pitch reports 362,383 Instagram views, 20 user interviews, and 90% validated, plus TikTok and Instagram videos about the problem. The audience is Gen-Z women globally who dress modestly.",
+                        "The model starts with affiliate commissions, then sponsored placements and embedded checkout. The deck sizes the global modest fashion market at $433B, the serviceable market at $95.69B, and a $229.7M revenue opportunity. The funding request is $3,000: $1,800 influencer ads, $600 engineering, $480 hosting and catalog tools, and $120 other marketing. Year-one projections are $1,575 in affiliate revenue, 3,885 active users by month 12, and a month-3 launch."
+                    ]
+                },
+                {
+                    label: "Team",
+                    paragraphs: [
+                        "Ines Ziane and Amani Ziane, tech leads. Rania Khan, business lead. Zeinab Drameh, project manager. Seneam Ahmed, marketing."
+                    ]
+                },
+                {
+                    label: "Evidence",
+                    images: [
+                        shot("yusra", "1.jpg", "Yusra title"),
+                        shot("yusra", "2.jpg", "The problem"),
+                        shot("yusra", "3.jpg", "The solution"),
+                        shot("yusra", "4.jpg", "Features"),
+                        shot("yusra", "5.jpg", "MVP"),
+                        shot("yusra", "6.jpg", "Traction"),
+                        shot("yusra", "7.jpg", "Target audience"),
+                        shot("yusra", "8.jpg", "Competitive landscape"),
+                        shot("yusra", "9.jpg", "Business model"),
+                        shot("yusra", "10.jpg", "Market opportunity"),
+                        shot("yusra", "11.jpg", "Use of funds"),
+                        shot("yusra", "12.jpg", "Projections"),
+                        shot("yusra", "13.jpg", "Team"),
+                        shot("yusra", "14.jpg", "Yusra closing slide")
+                    ]
+                }
+            ]
         }
     ];
 
@@ -874,7 +938,7 @@
         categories: categories,
         categoryLabels: categoryLabels,
         projects: projects,
-        featuredIds: ["arkadium", "shadegap", "spotify"],
+        featuredIds: ["arkadium", "shadegap", "spotify", "yusra"],
         byId: function (id) {
             for (var i = 0; i < projects.length; i++) {
                 if (projects[i].id === id) return projects[i];
