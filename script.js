@@ -22,7 +22,7 @@
 
     function mediaHtml(project) {
         if (project.cover) {
-            return '<img src="' + escapeHtml(project.cover) + '" alt="' + escapeHtml(project.coverAlt || project.title) + '">';
+            return '<img src="' + escapeHtml(project.cover) + '" alt="' + escapeHtml(project.coverAlt || project.title) + '" loading="lazy" decoding="async">';
         }
         return '<div class="work-placeholder" role="img" aria-label="' + escapeHtml(project.title) + '">' +
             escapeHtml(project.placeholder || project.title) + "</div>";
@@ -53,10 +53,17 @@
         var rx = 0;
         var ry = 0;
         var running = false;
+        var seen = false;
 
         document.addEventListener("mousemove", function (event) {
             x = event.clientX;
             y = event.clientY;
+            if (!seen) {
+                seen = true;
+                rx = x;
+                ry = y;
+                document.body.classList.add("is-cursor-on");
+            }
             dot.style.transform = "translate3d(" + x + "px," + y + "px,0)";
             if (!running) {
                 running = true;
@@ -215,13 +222,14 @@
             while (stage.childElementCount > count) stage.removeChild(stage.lastElementChild);
         }
 
-        function paint(node, project) {
+        function paint(node, project, role) {
             if (node.dataset.id === project.id) return;
             node.dataset.id = project.id;
             node.href = projectHref(project);
             var media = node.querySelector(".slide-media");
             if (project.cover) {
                 var img = media.querySelector("img");
+                var eager = role === "center";
                 if (!img) {
                     media.textContent = "";
                     img = document.createElement("img");
@@ -229,7 +237,11 @@
                     img.alt = "";
                     media.appendChild(img);
                 }
-                if (img.getAttribute("src") !== project.cover) img.src = project.cover;
+                if (img.getAttribute("src") !== project.cover) {
+                    img.loading = eager ? "eager" : "lazy";
+                    img.fetchPriority = eager ? "high" : "low";
+                    img.src = project.cover;
+                }
                 img.alt = project.coverAlt || project.title;
             } else {
                 media.innerHTML = '<div class="slide-placeholder">' + escapeHtml(project.placeholder || project.title) + "</div>";
@@ -284,7 +296,7 @@
                 plan.forEach(function (item) {
                     if (!item.fresh) return;
                     item.node.classList.add("is-instant");
-                    paint(item.node, item.project);
+                    paint(item.node, item.project, "hidden");
                     item.node.dataset.pos = "hidden";
                 });
                 if (plan.some(function (item) { return item.fresh; })) {
@@ -297,7 +309,7 @@
             }
             plan.forEach(function (item) {
                 if (instant) item.node.classList.add("is-instant");
-                paint(item.node, item.project);
+                paint(item.node, item.project, item.role);
                 item.node.dataset.pos = item.role;
                 item.node.tabIndex = item.role === "center" ? 0 : -1;
             });
@@ -392,36 +404,37 @@
 
     function initSpline() {
         var canvas = document.getElementById("hero-canvas");
-        if (!canvas) return Promise.resolve();
+        if (!canvas) return null;
         var box = canvas.closest(".hero-spline");
         if (reduce.matches) {
             if (box) box.hidden = true;
-            return Promise.resolve();
+            return null;
         }
-        var loaded = import(SPLINE_RUNTIME).then(function (mod) {
-            var app = new mod.Application(canvas);
-            splineApp = app;
-            return app.load(SPLINE_SCENE).then(function () {
-                presentSpline(app);
-                if (!box || !("IntersectionObserver" in window)) return;
-                var watcher = new IntersectionObserver(function (entries) {
-                    var visible = entries.some(function (entry) { return entry.isIntersecting; });
-                    if (visible) {
-                        if (typeof app.play === "function") app.play();
-                    } else if (typeof app.stop === "function") {
-                        app.stop();
-                    }
-                }, { rootMargin: "160px 0px" });
-                watcher.observe(box);
+        var started = false;
+        return function start() {
+            if (started) return;
+            started = true;
+            import(SPLINE_RUNTIME).then(function (mod) {
+                var app = new mod.Application(canvas);
+                splineApp = app;
+                return app.load(SPLINE_SCENE).then(function () {
+                    presentSpline(app);
+                    if (box) box.classList.add("is-ready");
+                    if (!box || !("IntersectionObserver" in window)) return;
+                    var watcher = new IntersectionObserver(function (entries) {
+                        var visible = entries.some(function (entry) { return entry.isIntersecting; });
+                        if (visible) {
+                            if (typeof app.play === "function") app.play();
+                        } else if (typeof app.stop === "function") {
+                            app.stop();
+                        }
+                    }, { rootMargin: "160px 0px" });
+                    watcher.observe(box);
+                });
+            }).catch(function () {
+                if (box) box.hidden = true;
             });
-        }).catch(function () {
-            if (box) box.hidden = true;
-        });
-        window.addEventListener("resize", function () {
-            if (!splineApp) return;
-            window.requestAnimationFrame(function () { presentSpline(splineApp); });
-        });
-        return loaded;
+        };
     }
 
     /* ---------- case study ---------- */
@@ -468,7 +481,8 @@
             var chevron = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5 9 12l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
             var slides = images.map(function (image, imageIndex) {
                 return '<figure class="case-slide' + (imageIndex === 0 ? " is-active" : "") + '">' +
-                    '<img src="' + escapeHtml(image.src) + '" alt="' + escapeHtml(image.alt) + '">' +
+                    '<img src="' + escapeHtml(image.src) + '" alt="' + escapeHtml(image.alt) + '" decoding="async" loading="' +
+                    (imageIndex === 0 ? "eager" : "lazy") + '">' +
                 "</figure>";
             }).join("");
             var arrows = "";
@@ -642,28 +656,41 @@
 
     var loaderDismissed = false;
     var playRise = null;
+    var startSpline = null;
 
     function dismissLoader() {
         if (loaderDismissed) return;
         loaderDismissed = true;
         var loader = document.getElementById("loader");
+        document.body.classList.add("is-ready");
         document.body.classList.remove("is-loading");
         if (loader) {
             loader.classList.add("is-done");
             loader.setAttribute("aria-busy", "false");
             window.setTimeout(function () {
                 if (loader.parentNode) loader.parentNode.removeChild(loader);
-            }, 680);
+            }, 420);
         }
         var hash = window.location.hash;
         if (hash.length > 1) {
             var target = document.getElementById(hash.slice(1));
-            if (target) target.scrollIntoView();
+            if (target) {
+                var root = document.documentElement;
+                var previous = root.style.scrollBehavior;
+                root.style.scrollBehavior = "auto";
+                target.scrollIntoView();
+                root.style.scrollBehavior = previous;
+            }
         }
         if (playRise) {
             var start = playRise;
             playRise = null;
             window.requestAnimationFrame(start);
+        }
+        if (startSpline) {
+            var begin = startSpline;
+            startSpline = null;
+            window.setTimeout(begin, 1200);
         }
     }
 
@@ -680,30 +707,6 @@
         });
     }
 
-    function whenImage(img) {
-        function decoded() {
-            if (typeof img.decode === "function") return img.decode().catch(function () {});
-            return Promise.resolve();
-        }
-        if (img.complete) return decoded();
-        return new Promise(function (resolve) {
-            function done() {
-                img.removeEventListener("load", done);
-                img.removeEventListener("error", done);
-                resolve();
-            }
-            img.addEventListener("load", done);
-            img.addEventListener("error", done);
-        }).then(decoded);
-    }
-
-    function whenWindowLoad() {
-        if (document.readyState === "complete") return Promise.resolve();
-        return new Promise(function (resolve) {
-            window.addEventListener("load", resolve, { once: true });
-        });
-    }
-
     function nextFrames(count) {
         return new Promise(function (resolve) {
             function step(left) {
@@ -714,23 +717,16 @@
         });
     }
 
-    function initLoader(splineReady) {
+    function initLoader() {
         var started = performance.now();
-        var images = Array.prototype.map.call(document.images, whenImage);
         var fonts = document.fonts && document.fonts.ready
             ? document.fonts.ready
             : Promise.resolve();
-        var assets = Promise.all([
-            whenWindowLoad(),
-            fonts,
-            Promise.all(images),
-            splineReady || Promise.resolve()
-        ]);
-        whenSettled(assets, 10000).then(function () {
-            var remaining = 700 - (performance.now() - started);
+        whenSettled(fonts, 700).then(function () {
+            var remaining = 450 - (performance.now() - started);
             if (remaining > 0) return new Promise(function (resolve) { window.setTimeout(resolve, remaining); });
         }).then(function () {
-            return nextFrames(2);
+            return nextFrames(1);
         }).then(dismissLoader);
     }
 
@@ -760,12 +756,12 @@
         return play;
     }
 
-    window.setTimeout(dismissLoader, 12000);
+    window.setTimeout(dismissLoader, 1500);
 
     ready(function () {
         initCursor();
         initHeader();
-        var splineReady = initSpline();
+        startSpline = initSpline();
         initSectionNav();
         renderHomeFeatured();
         renderFeaturedPage();
@@ -773,6 +769,6 @@
         renderCase();
         initContact();
         playRise = initRise();
-        initLoader(splineReady);
+        initLoader();
     });
 })();

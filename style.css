@@ -199,8 +199,8 @@ footer { position: relative; z-index: 1; }
     z-index: 80;
 }
 
-body.has-cursor .cursor-dot,
-body.has-cursor .cursor-ring { display: block; }
+body.has-cursor.is-cursor-on .cursor-dot,
+body.has-cursor.is-cursor-on .cursor-ring { display: block; }
 
 .cursor-dot {
     width: 8px;
@@ -468,7 +468,11 @@ h1, h2, .display {
     height: 100%;
     display: block;
     background: transparent;
+    opacity: 0;
+    transition: opacity 0.45s ease;
 }
+
+.hero-spline.is-ready canvas { opacity: 1; }
 
 .scroll-hint {
     align-self: center;
@@ -481,26 +485,16 @@ h1, h2, .display {
     text-decoration: none;
 }
 
-.hero-copy .line,
-.hero h1 .hl {
-    animation: rise 0.85s var(--ease) both;
+body.is-ready .hero-copy .line,
+body.is-ready .hero h1 .hl {
+    animation: rise 0.7s var(--ease) both;
 }
-.hero h1 .hl:nth-child(1) { animation-delay: 0.08s; }
-.hero h1 .hl:nth-child(2) { animation-delay: 0.16s; }
-.hero h1 .hl:nth-child(3) { animation-delay: 0.24s; }
-.hero-support { animation: rise 0.85s var(--ease) 0.32s both; }
-.hero-actions { animation: rise 0.85s var(--ease) 0.42s both; }
-.hero-visual { animation: rise 1s var(--ease) 0.18s both; }
-
-body.is-loading .hero-copy .line,
-body.is-loading .hero h1 .hl,
-body.is-loading .hero-support,
-body.is-loading .hero-actions,
-body.is-loading .hero-visual {
-    animation: none;
-    opacity: 0;
-    transform: translateY(16px);
-}
+body.is-ready .hero h1 .hl:nth-child(1) { animation-delay: 0.05s; }
+body.is-ready .hero h1 .hl:nth-child(2) { animation-delay: 0.1s; }
+body.is-ready .hero h1 .hl:nth-child(3) { animation-delay: 0.16s; }
+body.is-ready .hero-support { animation: rise 0.7s var(--ease) 0.18s both; }
+body.is-ready .hero-actions { animation: rise 0.7s var(--ease) 0.24s both; }
+body.is-ready .hero-visual { animation: rise 0.8s var(--ease) 0.1s both; }
 
 .rise-in.is-armed {
     opacity: 0;
@@ -1548,7 +1542,7 @@ body.is-loading .hero-visual {
     justify-content: center;
     background: var(--mint);
     color: var(--text);
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 .loader-name {
     margin: 0;
