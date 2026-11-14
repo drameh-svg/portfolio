@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects — Zeinab Drameh</title>
     <meta name="description" content="All projects by Zeinab Drameh, filterable by category.">
-    <link rel="stylesheet" href="style.css?v=33">
+    <link rel="preload" href="fonts/geist-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=34">
     <noscript><style>.loader{display:none!important}body.is-loading{overflow:visible}</style></noscript>
 </head>
 <body data-page="projects" class="is-loading">
@@ -64,13 +65,15 @@
 
     <script>
         setTimeout(function () {
+            document.body.classList.add("is-ready");
+            document.body.classList.remove("is-loading");
             var loader = document.getElementById("loader");
             if (!loader || loader.classList.contains("is-done")) return;
             loader.classList.add("is-done");
-            document.body.classList.remove("is-loading");
-        }, 12000);
+            loader.setAttribute("aria-busy", "false");
+        }, 1500);
     </script>
-    <script src="projects.js?v=33"></script>
-    <script src="script.js?v=33"></script>
+    <script src="projects.js?v=34"></script>
+    <script src="script.js?v=34"></script>
 </body>
 </html>
