@@ -3,20 +3,20 @@
 Static site. Upload the whole folder.
 
 ```
-index.html       home: hero, featured projects, clients, skills, about, contact
-featured.html    featured project list
-projects.html    filterable shuffling project deck
+index.html       home: hero, clients, featured work, practice, about, contact
+projects.html    “See more work” — full archive with category filters
 project.html     individual project page (?id=slug)
+featured.html    redirects to index.html#work
 projects.js      shared project data
-style.css        styling
-script.js        cursor, deck, pages, contact form
-fonts/           Geist, Geist Mono, Hanken Grotesk
+style.css        black/white + Averia Serif Libre
+script.js        featured cards, archive filters, case studies, contact
+fonts/           Averia Serif Libre (woff2)
 img/             images grouped by project
 ```
 
 ## Project order and categories
 
-Edit `projects.js`. `order` is the starting sequence in All and inside every filter. `categories` can include more than one of `ml`, `product`, `consulting`, and `brand`. Featured projects are the ids in `featuredIds`.
+Edit `projects.js`. `order` is the starting sequence in All and inside every filter. `categories` can include more than one of `ml`, `product`, `consulting`, and `brand`. Featured projects on the homepage are the ids in `featuredIds`.
 
 Category labels, in filter order:
 

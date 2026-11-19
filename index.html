@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeinab Drameh</title>
     <meta name="description" content="Zeinab Drameh builds at the intersection of data, design, AI, and communications.">
-    <link rel="stylesheet" href="style.css?v=33">
+    <link rel="stylesheet" href="style.css?v=41">
     <noscript><style>.loader{display:none!important}body.is-loading{overflow:visible}</style></noscript>
 </head>
 <body data-page="home" class="is-loading">
@@ -18,51 +18,39 @@
         </div>
     </div>
     <a class="skip-link" href="#main">Skip to content</a>
-    <div class="site-bg" aria-hidden="true"><div class="site-pattern"></div></div>
     <div class="cursor-dot" aria-hidden="true"></div>
     <div class="cursor-ring" aria-hidden="true"></div>
 
     <header class="site-header">
-        <a class="brand" href="#home">zeinab.drameh</a>
+        <a class="brand" href="#home">Zeinab Drameh</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
             <span class="sr-only">Menu</span>
             <span></span>
         </button>
         <nav id="primary-nav" class="primary-nav" aria-label="Primary">
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#process">Process</a>
+            <a href="#work">Work</a>
+            <a href="projects.html">See more</a>
             <a href="#about">About</a>
-            <a class="nav-cta" href="#contact">Contact</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main id="main">
         <section class="hero" id="home">
-            <div class="hero-grid">
-                <div class="hero-copy">
-                    <p class="eyebrow line"><span class="pulse" aria-hidden="true"></span> Zeinab Drameh · Los Angeles</p>
-                    <h1>
-                        <span class="hl">Building</span>
-                        <span class="hl">at the</span>
-                        <span class="hl hl-last">intersection.</span>
-                    </h1>
-                    <p class="hero-support">Utilizing my skills in <em>data, design, AI, and communications</em> to create innovative solutions to complex problems. Grounded in a strong set of values, I seek out projects and opportunities committed to <em>social impact</em>.</p>
-                    <div class="hero-actions">
-                        <a class="btn" href="#featured">See the work</a>
-                        <a class="btn btn-quiet" href="img/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-spline">
-                        <canvas id="hero-canvas" aria-label="3D computer that follows the cursor"></canvas>
-                    </div>
-                </div>
+            <p class="eyebrow">Los Angeles · Iovine and Young Academy</p>
+            <h1>
+                <span>Building at the</span>
+                <em>intersection.</em>
+            </h1>
+            <p class="hero-support">Using data, design, AI, and communications to make work that holds up under complexity — and stays committed to social impact.</p>
+            <div class="hero-actions">
+                <a class="btn" href="#work">See the work</a>
+                <a class="btn btn-quiet" href="img/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </section>
 
         <section class="clients-section" data-rise aria-label="Clients and collaborators">
-            <p class="clients-label">Clients &amp; Collaborators</p>
+            <p class="clients-label">Clients &amp; collaborators</p>
             <div class="clients-track-wrap">
                 <div class="clients-track">
                     <a class="client-mark" href="https://www.moca.org/" target="_blank" rel="noopener noreferrer"><img src="img/clients/1.png" alt="MOCA"></a>
@@ -87,34 +75,24 @@
             </div>
         </section>
 
-        <section class="band" id="featured" data-rise>
+        <section class="band" id="work" data-rise>
             <div class="wrap">
                 <div class="band-head">
                     <div>
-                        <p class="eyebrow">Selected work</p>
-                        <h2>Featured Work</h2>
+                        <p class="eyebrow">Selected</p>
+                        <h2>Featured work</h2>
                     </div>
-                    <a class="text-link" href="#projects">All projects</a>
+                    <a class="text-link" href="projects.html">See more work</a>
                 </div>
-                <div id="home-featured" class="work-grid"></div>
-            </div>
-        </section>
-
-        <section class="home-collection" id="projects" data-rise>
-            <div class="projects-head">
-                <p class="projects-kicker">Filter projects by category</p>
-                <div class="project-filters" id="project-filters" role="tablist" aria-label="Filter projects by category"></div>
-            </div>
-            <div class="wrap deck">
-                <button type="button" class="deck-arrow prev" aria-label="Previous project">←</button>
-                <div class="deck-stage" id="deck-stage"></div>
-                <button type="button" class="deck-arrow next" aria-label="Next project">→</button>
-                <p class="deck-status"><span id="deck-counter" aria-live="polite">1 / 1</span></p>
+                <div id="home-featured" class="feat-list"></div>
+                <p class="more-work">
+                    <a class="btn" href="projects.html">See more work</a>
+                </p>
             </div>
         </section>
 
         <section id="process" class="skills-section" data-rise>
-            <p class="skills-header">Skills</p>
+            <p class="skills-header">Practice</p>
             <div class="skill-item">
                 <span class="skill-name">UI / UX Design</span>
                 <span class="skill-desc">Research-led interfaces that prioritize usability without sacrificing character.</span>
@@ -131,45 +109,19 @@
                 <span class="skill-name">Communications</span>
                 <span class="skill-desc">Campaigns, nonprofit messaging, and visual storytelling that make the work easy to follow.</span>
             </div>
-            <div class="toolbox">
-                <p class="toolbox-kicker">What's in the box</p>
-                <div class="toolbox-chest">
-                    <div class="toolbox-handle" aria-hidden="true"></div>
-                    <div class="toolbox-body">
-                        <div class="toolbox-lid">
-                            <p class="toolbox-header">Toolbox</p>
-                            <div class="toolbox-latches" aria-hidden="true">
-                                <span class="toolbox-latch"></span>
-                                <span class="toolbox-latch"></span>
-                            </div>
-                        </div>
-                        <ul class="toolbox-tray">
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/adobe.svg" alt=""></span><span class="toolbox-name">Adobe Creative Suite</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/figma.svg" alt=""></span><span class="toolbox-name">Figma</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/canva.svg" alt=""></span><span class="toolbox-name">Canva</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/html5.svg" alt=""></span><span class="toolbox-name">HTML</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/css3.svg" alt=""></span><span class="toolbox-name">CSS</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/r.svg" alt=""></span><span class="toolbox-name">R</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/python.svg" alt=""></span><span class="toolbox-name">Python</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/microsoftexcel.svg" alt=""></span><span class="toolbox-name">Excel</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/googlecloud.svg" alt=""></span><span class="toolbox-name">Google Cloud</span></li>
-                            <li class="toolbox-item"><span class="toolbox-well"><img src="img/tools/framer.svg" alt=""></span><span class="toolbox-name">Framer</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section id="about" data-rise>
             <div class="about-layout">
                 <div class="about-text">
                     <div>
-                        <h1>Hey!<br>I'm <em>ZEINAB.</em></h1>
-                        <p>ZEINAB DRAMEH is a designer, developer, and strategist at the USC Iovine and Young Academy with a background spanning UX design, brand identity, data analytics, machine learning, nonprofit communications, and research.</p>
-                        <p>Rooted in Central LA, she builds work that sits at the intersection of design, technology and social impact, bringing both creative and analytical thinking to every problem she takes on.</p>
-                        <p>In her free time, she enjoys reading, spending time with friends, listening to post-punk music, and making art :)</p>
+                        <p class="eyebrow">About</p>
+                        <h1>Hey — I’m <em>Zeinab.</em></h1>
+                        <p>Zeinab Drameh is a designer, developer, and strategist at the USC Iovine and Young Academy. Her work spans UX, brand, data, machine learning, nonprofit communications, and research.</p>
+                        <p>Rooted in Central LA, she builds at the intersection of design, technology, and social impact — bringing both creative and analytical thinking to every brief.</p>
+                        <p>In her free time: reading, friends, post-punk, and making art.</p>
                     </div>
-                    <a class="btn" href="#contact">Get in Touch</a>
+                    <a class="btn" href="#contact">Get in touch</a>
                 </div>
                 <div class="about-photo">
                     <div class="carousel up">
@@ -225,16 +177,12 @@
         <section id="contact" data-rise>
             <div class="contact-layout">
                 <div class="contact-intro">
-                    <h1>Let's<br><em>Talk.</em></h1>
-                    <p>Have a project in mind, a collaboration idea, or just want to say hello? Fill in the form and I'll get back to you soon.</p>
+                    <p class="eyebrow">Contact</p>
+                    <h1>Let’s <em>talk.</em></h1>
+                    <p>A project, a collaboration, or a hello — write and I’ll get back to you.</p>
                     <div class="contact-links">
-                        <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">LinkedIn</a>
-                        <a href="img/resume.pdf" target="_blank" rel="noopener noreferrer" class="contact-icon-link">Resume</a>
-                    </div>
-                    <div class="balls" aria-hidden="true">
-                        <div class="ball ball-1"></div>
-                        <div class="ball ball-2"></div>
-                        <div class="ball ball-3"></div>
+                        <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="img/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                     </div>
                 </div>
                 <div class="contact-form-wrap">
@@ -256,7 +204,7 @@
                             <textarea id="body" name="body"></textarea>
                         </div>
                         <p id="form-message" role="status"></p>
-                        <button type="submit" class="form-submit">Send Message</button>
+                        <button type="submit" class="form-submit">Send message</button>
                     </form>
                 </div>
             </div>
@@ -266,8 +214,8 @@
     <footer class="site-footer">
         <span>© 2026 Zeinab Drameh</span>
         <nav aria-label="Footer">
-            <a href="#projects">Projects</a>
-            <a href="#process">Process</a>
+            <a href="#work">Work</a>
+            <a href="projects.html">See more work</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <a href="https://www.linkedin.com/in/zeinab-drameh-850751368/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -282,7 +230,7 @@
             document.body.classList.remove("is-loading");
         }, 12000);
     </script>
-    <script src="projects.js?v=33"></script>
-    <script src="script.js?v=33"></script>
+    <script src="projects.js?v=41"></script>
+    <script src="script.js?v=41"></script>
 </body>
 </html>

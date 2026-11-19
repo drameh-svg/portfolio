@@ -120,26 +120,24 @@
         }
     }
 
-    /* ---------- home + featured page cards ---------- */
+    /* ---------- home featured ---------- */
     function renderHomeFeatured() {
         var mount = document.getElementById("home-featured");
         if (!mount || !data) return;
-        mount.innerHTML = data.featuredIds.map(function (id) {
+        mount.innerHTML = data.featuredIds.map(function (id, index) {
             var project = data.byId(id);
             if (!project) return "";
-            var year = project.year ? '<span class="work-year">' + escapeHtml(project.year) + "</span>" : "";
-            return '<a class="work-card" href="' + projectHref(project) + '">' +
-                '<div class="work-frame">' +
-                    '<div class="work-chrome" aria-hidden="true"><i></i><i></i><i></i></div>' +
-                    '<div class="work-media">' + mediaHtml(project) +
-                        '<div class="glass-bar" aria-hidden="true">' +
-                            '<p class="glass-cat">' + escapeHtml(data.labelsFor(project).join(" · ")) + "</p>" +
-                            "<h3>" + escapeHtml(project.title) + "</h3>" +
-                        "</div>" +
-                    "</div>" +
+            var n = ("0" + (index + 1)).slice(-2);
+            var meta = data.labelsFor(project).join(" · ");
+            if (project.year) meta = project.year + " · " + meta;
+            return '<a class="feat-card" href="' + projectHref(project) + '">' +
+                '<div class="feat-media">' + mediaHtml(project) + "</div>" +
+                '<div class="feat-copy">' +
+                    '<p class="feat-index">' + n + "</p>" +
+                    '<p class="eyebrow">' + escapeHtml(meta) + "</p>" +
+                    "<h3>" + escapeHtml(project.title) + "</h3>" +
+                    "<p>" + escapeHtml(project.summary) + "</p>" +
                 "</div>" +
-                '<div class="work-meta"><h3>' + escapeHtml(project.title) + "</h3>" + year + "</div>" +
-                '<p class="work-summary">' + escapeHtml(project.summary) + "</p>" +
             "</a>";
         }).join("");
     }
@@ -364,6 +362,92 @@
         render(true, 1);
     }
 
+    /* ---------- see more work archive ---------- */
+    function initWorkArchive() {
+        var gallery = document.getElementById("work-gallery");
+        var filters = document.getElementById("project-filters");
+        if (!gallery || !filters || !data) return;
+
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var token = 0;
+
+        filters.innerHTML = data.categories.map(function (category, index) {
+            return '<button type="button" class="filter-btn' + (index === 0 ? " is-active" : "") +
+                '" data-filter="' + category.id + '" role="tab" aria-selected="' + (index === 0 ? "true" : "false") + '">' +
+                escapeHtml(category.label) + "</button>";
+        }).join("");
+
+        gallery.innerHTML = data.sorted().map(function (project) {
+            var cats = (project.categories || []).join(" ");
+            var label = data.labelsFor(project)[0] || "";
+            return '<a class="work-tile" href="' + projectHref(project) + '" data-categories="' + escapeHtml(cats) + '">' +
+                mediaHtml(project) +
+                '<div class="work-tile-bar">' +
+                    "<p>" + escapeHtml(label) + "</p>" +
+                    "<h3>" + escapeHtml(project.title) + "</h3>" +
+                "</div>" +
+            "</a>";
+        }).join("");
+
+        var tiles = gallery.querySelectorAll(".work-tile");
+
+        function matches(tile, filter) {
+            if (filter === "all") return true;
+            return (tile.dataset.categories || "").split(/\s+/).indexOf(filter) !== -1;
+        }
+
+        function apply(filter) {
+            var run = ++token;
+            var hide = [];
+            var show = [];
+            tiles.forEach(function (tile) {
+                var on = matches(tile, filter);
+                var hidden = tile.classList.contains("is-hidden");
+                tile.classList.remove("is-exiting", "is-entering");
+                if (!on && !hidden) hide.push(tile);
+                else if (on && hidden) show.push(tile);
+            });
+            if (reduceMotion.matches) {
+                tiles.forEach(function (tile) {
+                    tile.classList.toggle("is-hidden", !matches(tile, filter));
+                });
+                return;
+            }
+            hide.forEach(function (tile) { tile.classList.add("is-exiting"); });
+            window.setTimeout(function () {
+                if (run !== token) return;
+                hide.forEach(function (tile) {
+                    tile.classList.add("is-hidden");
+                    tile.classList.remove("is-exiting");
+                });
+                show.forEach(function (tile, i) {
+                    tile.classList.remove("is-hidden");
+                    tile.style.animationDelay = i * 40 + "ms";
+                    void tile.offsetWidth;
+                    tile.classList.add("is-entering");
+                    tile.addEventListener("animationend", function done(e) {
+                        if (e.target !== tile) return;
+                        tile.classList.remove("is-entering");
+                        tile.style.animationDelay = "";
+                        tile.removeEventListener("animationend", done);
+                    });
+                });
+            }, hide.length ? 240 : 0);
+        }
+
+        filters.addEventListener("click", function (event) {
+            var button = event.target.closest(".filter-btn");
+            if (!button) return;
+            filters.querySelectorAll(".filter-btn").forEach(function (item) {
+                item.classList.remove("is-active", "is-pop");
+                item.setAttribute("aria-selected", "false");
+            });
+            button.classList.add("is-active", "is-pop");
+            button.setAttribute("aria-selected", "true");
+            apply(button.dataset.filter);
+        });
+    }
+
     /* ---------- spline hero ---------- */
     var SPLINE_SCENE = "https://prod.spline.design/9D6gECR1BDJHmO97/scene.splinecode";
     var SPLINE_RUNTIME = "https://cdn.jsdelivr.net/npm/@splinetool/runtime@2.0.114/build/runtime.js";
@@ -448,7 +532,7 @@
         var params = new URLSearchParams(window.location.search);
         var project = data.byId(params.get("id"));
         if (!project) {
-            mount.innerHTML = '<div class="wrap case"><p>That project is not on this site.</p><p><a class="case-back" href="index.html#projects">Back to all projects</a></p></div>';
+            mount.innerHTML = '<div class="wrap case"><p>That project is not on this site.</p><p><a class="case-back" href="projects.html">Back to all work</a></p></div>';
             return;
         }
         document.title = project.title + " — Zeinab Drameh";
@@ -530,7 +614,7 @@
 
         mount.innerHTML =
             '<article class="wrap case">' +
-                '<a class="case-back" href="index.html#projects">← All projects</a>' +
+                '<a class="case-back" href="projects.html">← See more work</a>' +
                 '<p class="case-kicker">' + escapeHtml(meta) + "</p>" +
                 "<h1>" + escapeHtml(project.title) + "</h1>" +
                 '<p class="case-lede">' + escapeHtml(project.lede || project.summary) + "</p>" +
@@ -770,6 +854,7 @@
         renderHomeFeatured();
         renderFeaturedPage();
         initDeck();
+        initWorkArchive();
         renderCase();
         initContact();
         playRise = initRise();
